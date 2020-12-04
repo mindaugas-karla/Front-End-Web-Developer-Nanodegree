@@ -5,6 +5,8 @@ The goal to start this program was to refresh my knowledge and set myself on the
 
 ## Front End Web Developer Nanodegree
 
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Udacity_logo.svg/1200px-Udacity_logo.svg.png)
+
 The goal of the Front End Web Developer Nanodegree program is to equip learners with the unique skills
 they need to build and develop a variety of websites and applications. A graduate of this Nanodegree
 program will be able to:
@@ -24,6 +26,11 @@ Specific roles include:
 * UI/UX Developer
 * Front End Designer
 
+### Program Includes
+* Real-world projects from industry experts
+* Technical mentor support
+* Personal career coach and career services
+* Flexible learning program
 
 ### More Information:
 
