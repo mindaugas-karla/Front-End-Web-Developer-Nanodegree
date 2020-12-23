@@ -5,8 +5,8 @@ The main goal to start this program was to refresh my knowledge and set myself o
 
 ## Project 1: Personal Blog
 
-- [Personal Blog: Project Task](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/)
-- [Personal Blog: Project Index](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/personal_blog_website/index.html)
+- [Personal Blog: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/)
+- [Personal Blog: Page](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/personal_blog_website/index.html)
 
 ## Front End Web Developer Nanodegree
 
