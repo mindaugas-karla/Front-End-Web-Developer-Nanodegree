@@ -19,12 +19,17 @@ Personal blog website preview links are active. From homepage you can navigate t
 - [Personal Blog: Blog](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 
 ### Mobile Homepage
+![](images/mobile_size.png)
 
-PAVEIKSLAS 1
+### Website Homepage (Mini)
+![](images/mini_size.png)
 
-### Website Homepage
+### Website Homepage (Medium)
+![](images/medium_size.png)
 
-PAVEIKSLAS 2
+### Website Homepage (Full)
+![](images/full_size.png)
+
 
 ### Axe Test
 ![](images/axe_screenshot.png)
