@@ -13,7 +13,7 @@ This project was evaluated by a Udacity code reviewer according to the Personal 
 Personal blog website designed and built from scratch using HTML and CSS. Layouts are made with CSS grid along with flexbox. This project is made as part of the Udacity Front End Developer Nanodegree Program.
 
 ### Preview Links
-Personal blog website preview links are active. From homepage you can navigate to any of these pages and back. Some links, and futures like search, buttons, sort lists are fake. 
+Personal blog website preview links are active. From homepage you can navigate to any of these pages and back. Some links, and futures like search, buttons, sort lists are fake and lead to Blog page. 
 
 - [Personal Blog: Homepage](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/personal_blog_website/index.html)
 - [Personal Blog: Blog](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/personal_blog_website/blog.html)
