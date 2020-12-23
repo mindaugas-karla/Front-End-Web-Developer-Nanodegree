@@ -39,12 +39,9 @@ Personal blog website preview links are active. From homepage you can navigate t
 
 
 ## References
-In addition to the Udacity course materials, I got helpful tips for creating this website from the following articles and resources: (pakeisti teksta)
 - [Design System](https://www.forumone.com/ideas/what-is-design-system/)
 - [Web Dev](https://web.dev/)
 - [Axe Tester](https://axe.deque.com/)
-
-
 - [Breaking Down How A Nanodegree Program Works](https://blog.udacity.com/2016/05/breaking-down-how-a-nanodegree-program-works.html)
 - [Digital Nomad](https://en.wikipedia.org/wiki/Digital_nomad)
 
