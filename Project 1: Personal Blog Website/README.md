@@ -1,7 +1,7 @@
 # Project 1: Personal Blog
 ### Udacity Front End Developer Nanodegree Program
 
-This project requires you to utilize HTML and CSS skills to build out a personal blog website, including custom images, layout, and styling. Along with webpage design considerations, needs to appropriately structure your files, as well as use proper CSS and HTML formatting & style.
+This project requires to utilize HTML and CSS skills to build out a personal blog website, including custom images, layout, and styling. Along with webpage design considerations, needs to appropriately structure your files, as well as use proper CSS and HTML formatting & style.
 
 ## Requirements
 
