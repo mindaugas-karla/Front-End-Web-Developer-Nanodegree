@@ -44,7 +44,8 @@ Personal blog website preview links are active. From homepage you can navigate t
 - [Axe Tester](https://axe.deque.com/)
 - [Breaking Down How A Nanodegree Program Works](https://blog.udacity.com/2016/05/breaking-down-how-a-nanodegree-program-works.html)
 - [Digital Nomad](https://en.wikipedia.org/wiki/Digital_nomad)
-
+- [Sony wh1000xm4](https://www.cnet.com/news/sony-wh-1000xm4-review-a-nearly-flawless-noise-canceling-headphone/)
+- [Sport Article](https://eu.usatoday.com/story/life/health-wellness/2020/04/30/coronavirus-dont-exercise-too-much-during-quarantine-heres-why/3048034001/)
 
 
 ## Images/Icons
