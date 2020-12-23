@@ -30,6 +30,9 @@ Personal blog website preview links are active. From homepage you can navigate t
 ### Website Homepage (Full)
 ![](images/full_size.png)
 
+### Website Blog (Full)
+![](images/blog_full.png)
+
 
 ### Axe Test
 ![](images/axe_screenshot.png)
