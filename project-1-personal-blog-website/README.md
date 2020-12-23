@@ -15,8 +15,8 @@ Personal blog website designed and built from scratch using HTML and CSS. Layout
 ### Preview Links
 Personal blog website preview links are active. From homepage you can navigate to any of these pages and back. Some links, and futures like search, buttons, sort lists are fake. 
 
-- [Personal Blog: Homepage](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
-- [Personal Blog: Blog](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
+- [Personal Blog: Homepage](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/personal_blog_website/index.html)
+- [Personal Blog: Blog](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/personal_blog_website/blog.html)
 
 ### Mobile Homepage
 ![](images/mobile.png)
