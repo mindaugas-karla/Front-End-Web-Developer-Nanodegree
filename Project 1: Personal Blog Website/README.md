@@ -17,9 +17,6 @@ Personal blog website preview links are active. From homepage you can navigate t
 
 - [Personal Blog: Homepage](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 - [Personal Blog: Blog](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
-- [Personal Blog: About Me](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
-- [Personal Blog: Contact Me](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
-
 
 ### Mobile Homepage
 
@@ -29,14 +26,23 @@ PAVEIKSLAS 1
 
 PAVEIKSLAS 2
 
+### Axe Test
+![](images/axe_screenshot.png)
+
+
 ## References
 In addition to the Udacity course materials, I got helpful tips for creating this website from the following articles and resources: (pakeisti teksta)
 - [Design System](https://www.forumone.com/ideas/what-is-design-system/)
-- [informacija 2](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
+- [Web Dev](https://web.dev/)
+- [Axe Tester](https://axe.deque.com/)
+
+
+- [Breaking Down How A Nanodegree Program Works](https://blog.udacity.com/2016/05/breaking-down-how-a-nanodegree-program-works.html)
+- [Digital Nomad](https://en.wikipedia.org/wiki/Digital_nomad)
 
 
 
 ## Images/Icons
 
-- [Icons](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
-- [Pictures](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
+- [Icons](https://www.iconsdb.com/)
+- [Pictures](https://unsplash.com/s/photos/nomad)
