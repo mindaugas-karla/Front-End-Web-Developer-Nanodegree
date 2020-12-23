@@ -12,8 +12,8 @@ This project was evaluated by a Udacity code reviewer according to the Personal 
 
 Personal blog website designed and built from scratch using HTML and CSS. Layouts are made with CSS grid along with flexbox. This project is made as part of the Udacity Front End Developer Nanodegree Program.
 
-# Preview Links
-The following pages are active. From the homepage you can navigate to any of these pages. Note: I have one example blog page, all blog posts you click on will lead to this one. (pakeisti teksta)
+### Preview Links
+Personal blog website preview links are active. From homepage you can navigate to any of these pages and back. Some links, and futures like search, buttons, sort lists are fake. 
 
 - [Personal Blog: Homepage](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 - [Personal Blog: Blog](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
@@ -21,17 +21,17 @@ The following pages are active. From the homepage you can navigate to any of the
 - [Personal Blog: Contact Me](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 
 
-# Mobile Homepage
+### Mobile Homepage
 
 PAVEIKSLAS 1
 
-# Website Homepage
+### Website Homepage
 
 PAVEIKSLAS 2
 
 ## References
 In addition to the Udacity course materials, I got helpful tips for creating this website from the following articles and resources: (pakeisti teksta)
-- [informacija 1](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
+- [Design System](https://www.forumone.com/ideas/what-is-design-system/)
 - [informacija 2](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 
 

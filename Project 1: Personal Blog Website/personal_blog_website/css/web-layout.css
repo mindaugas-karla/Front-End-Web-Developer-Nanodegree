@@ -1,0 +1,1077 @@
+
+/* header, top */
+#header {
+	grid-area: top;
+	position: sticky;
+	top: 0;
+	/* Ensure header appears on top of content/sidebars */
+	z-index: 1;
+	display: grid;
+	width: 100%;
+	margin: auto;
+	grid-template-columns: 80px 200px 1fr 250px 180px 60px;
+	grid-template-rows: 1fr;
+	grid-gap: 10px;
+	grid-template-areas: 
+		"logo logoText empty search profile logout";
+	justify-content: center;
+	background-color: #ffffff;
+	border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: transparent;
+	box-shadow: -5px -12px 20px 0px grey;
+}
+
+#header_logo {
+	grid-area: logo;
+	align-items: center;
+	justify-content: center;  
+	text-align: left;
+}
+
+#header_logo img {
+	height: 55px;
+	padding: 5px 5px 5px 15px;
+}
+
+#header_logout {
+	grid-area: logout;
+	align-items: center;
+	justify-content: center;
+	text-align: left;
+	padding-top: 15px;
+}
+
+.header_logout_icon {
+	height: 35px; 
+	opacity: 0.95;
+}
+
+#header_profile {
+	grid-area: profile;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-top: 8px;
+    opacity: 0.95;
+}
+
+.headerProfileIcon {
+	height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: black;
+	overflow: hidden;
+    margin: 0 auto;
+	border-style: solid;
+    border-width: 2px;
+    border-color: black;
+	box-shadow: 0px 1px 1px 0px grey;
+	float: left;
+}
+
+.headerLoggInfo {
+	color: black;
+	text-align: left;
+	padding-top: 10px;
+    float: left;
+	padding-left: 20px;
+	font-size: 12px;
+}
+
+.headerAvatar {
+	height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.headerLoggUsername {
+	font-weight: bold;
+}
+
+#header_search {
+	grid-area: search;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding-right: 30px;
+}
+
+.header_search_bar {
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #e7e8e7;
+    background-color: #f9fafa;
+    padding-left: 5px;
+	margin-top: 17px;
+	height: 30px;
+	width: 100%;
+}
+
+#header_text_tab {
+	grid-area: logoText;
+	padding-top: 25px;
+	line-height: 12px;
+	color: black;
+	text-align: left;
+}
+
+.header_text {
+	font-size: 18px;
+	font-weight: 800;
+	margin: 0px;
+}
+
+.header_slogan {
+	font-size: 10px;
+	margin: 0px;
+	font-weight: lighter;
+    margin-top: 2px;
+}
+/* ------------------------ */
+
+.menu_block {
+	border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.menuElement {
+	background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c2c2c25c;
+    border-bottom: none;
+    padding: 10px;
+    text-align: left;
+    padding-left: 15px;
+    color: black;
+    display: flex;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    flex-direction: row;
+    margin-bottom: 15px;
+    box-shadow: 1px 2px 4px 0px grey;
+}
+
+.menuElement:hover {
+	background-color: #7d7d7d38;
+}
+
+.menuElement img {
+	height: 15px;
+    width: 15px;
+    padding-top: 2px;
+	padding-right: 5px;
+}
+/* ------------------------ */
+
+
+/* widgets, right side */
+#widgets {
+	grid-area: widgets;
+	display: flex;
+	flex-direction: column;
+	padding-right: 25px;
+}
+
+.widgetsElement {
+	display: flex;
+	flex-direction: column;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	border: 1px solid #eee;
+    background-color: white;
+	width: 100%;
+	width: -moz-available;          /* WebKit-based browsers will ignore this. */
+	width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+	width: fill-available;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	padding: 20px 20px 20px 20px;
+	border-radius: 5px;
+	color: black;
+}
+
+.widgetsElement ul {
+	padding-left: 17px;
+}
+
+.widgetsElement h3 {
+	text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-top: 15px;
+}
+
+.widgetsElement h4 {
+	text-align: center;
+    margin: 0;
+    color: #726e66;
+	
+}
+
+.widgetsElement a span {
+	color: #616161; font-size: 12px;
+	margin-top: 5px;
+}
+
+.widgetsTitleInside {
+	display: none;
+}
+
+.topList {
+	color: black;
+	padding: 0;
+    margin: 0;
+}
+
+.topListElement {
+	margin:0;
+	margin-bottom: 5px;
+}
+
+.topListElement:hover {
+	background-color: #7d7d7d38;
+}
+
+.authorIntroText {
+	color: black;
+    padding-top: 20px;
+    padding-right: 5px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.authorPortraitTab {
+	height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.authorPortraitTabImg {
+	height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#subscribeForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.subscribeFormTitle {
+	padding-top: 20px;
+	padding-bottom: 10px;
+	font-weight: 600;
+	color: black;
+}
+
+.subscribeFormInput {
+	padding: 5px 15px 5px 15px;
+	margin-bottom: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	background-color: #f5f5f5;
+}
+
+.subscribeFormButton {
+	padding: 5px 15px 5px 15px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+}
+/* ------------------------ */
+
+/* footer, social, bottom */
+#footer {
+	grid-area: ft;
+	bottom: 0;
+	background-color: #353535;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.footer_text {
+    font-size: 14px;
+    font-weight: lighter;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+}
+
+.social_info_tab {
+	display: flex;
+	flex-direction: row;
+}
+
+.social_info_single {
+	padding-left: 15px;
+    padding-top: 3px;
+}
+
+.social_info {
+	height: 20px;
+}
+/* ------------------------ */
+
+/* center */
+#content {
+	grid-area: sideCenter;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+/* slider */
+#bio {
+	grid-area: bio;
+	display: grid;
+	grid-template-columns: 45px 1fr 45px;
+	grid-auto-rows: 30px 1fr;
+	background-image: url("../images/digital_nomad.png");
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+	padding: 15px;
+	background-color: white;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: center;
+}
+
+.sliderButton {
+	text-align: center;
+}
+
+.sliderButton img {
+	height: 35px;
+	opacity: 0.4;
+}
+
+/*Responsive*/
+@media (max-width: 664px) {
+	html {overflow-x: hidden;}
+	body {
+		display: grid;
+		width: 100%;
+		margin: auto;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		grid-gap: 25px;
+		grid-template-areas: 
+			"top"
+			"bio"
+			"sideRight"
+			"sideCenter"
+			"ft";
+		justify-content: center;
+	}
+
+	/* menu, left side */
+	#menu {
+		display: none;
+	}
+
+	.menuElement {
+		background-color: white;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #c2c2c25c;
+		border-bottom: none;
+		padding: 10px;
+		text-align: left;
+		padding-left: 15px;
+		color: black;
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 15px;
+	}
+
+	.menuElement:hover {
+		background-color: #7d7d7d38;
+	}
+
+	.menuElement img {
+		height: 15px;
+		width: 15px;
+		padding-top: 2px;
+		padding-right: 5px;
+	}
+
+	#menu a {
+		width: -webkit-fill-available;
+	}
+
+	#content {
+		grid-area: sideCenter;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	#bio {
+		grid-area: bio;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-auto-rows: 1fr 50px;
+		grid-template-areas:
+			"center center"
+			"left right";
+		padding-top: 10px;
+		height: fit-content;
+		justify-content: center;
+		background-image: url("../images/digital_nomad.png");
+		background-position: center; /* Center the image */
+		background-repeat: no-repeat; /* Do not repeat the image */
+		background-size: cover; /* Resize the background image to cover the entire container */
+	}
+
+	.leftSlider {
+		grid-area: left;
+	}
+
+	.rightSlider {
+		grid-area: right;
+	}
+
+	.sliderButton {
+		margin-top: 15px;
+	}
+
+	#bioPost {
+		grid-area: center;
+		display: flex;
+		flex-direction: column;
+		padding-left: 10px;
+		padding-right: 10px;
+		color: black;
+	}
+
+	.bioPosted {
+		font-size: 10px;
+		font-weight: lighter;
+		padding-bottom: 5px;
+	}
+
+	.bioReadMore {
+		font-weight: 500;
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+
+	.bioTitle {
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: bolder;
+	}
+
+	.bioText {
+		display: flex;
+		flex-direction: column;
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+
+	#widgets {
+		grid-area: sideRight;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		padding-right: 0px;
+	}
+
+	.widgetDevider {
+		display: block;
+		height: 20px;
+	}
+
+	.widgetsElement {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.widgetsTitleInside {
+		display: block;
+		color: black;
+		padding-bottom: 15px;
+		font-weight: 600;
+	}
+
+	.widgetsTitle {
+		text-align: left;
+		color: #2b2a2a;
+		font-size: 15px;
+		border-top: 1px solid grey;
+		border-bottom: 1px solid grey;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-weight: 600;
+		display: none;
+	}
+
+	#header {
+		grid-template-columns: 80px 1fr 65px;
+		grid-template-areas: "logo search profile";
+	}
+
+	.headerLoggInfo {
+		display: none;
+	}
+
+	#header_text_tab {
+		display: none;
+	}
+
+	#header_logout {
+		display: none;
+	}
+
+	.article {
+		margin-bottom: 20px;
+	}
+
+	.likeShare {
+		float: right;
+	}
+
+	#footer {
+		grid-area: ft;
+		/* Stick footer to bottom of grid */
+		position: inherit;
+		bottom: 0;
+		background-color: #353535;
+	}
+}
+
+@media (min-width: 665px) and (max-width: 779px) {
+	body {
+		display: grid;
+		width: 100%;
+		margin: auto;
+		grid-template-columns: 50px 1fr 15px;
+		grid-template-rows: 1fr 1fr 1fr 1fr 50px;
+		grid-gap: 25px;
+		grid-template-areas: 
+			"top top top"
+			"sideLeft bio empty"
+			"sideLeft sideRight empty"
+			"sideLeft sideCenter empty"
+			"ft ft ft";
+		justify-content: center;
+	}
+
+	#menu {
+		grid-area: sideLeft;
+		display: flex;
+		flex-direction: column;
+		max-height: 350px;
+		width: fit-content;
+	}
+
+	.menuElement {
+		padding-right: 15px;
+	}
+
+	.menuElement span {
+		display: none;
+	}
+
+	#header_logout {
+		display: none;
+	}
+
+	#content {
+		grid-area: sideCenter;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	#bio {
+		grid-area: bio;
+		display: grid;
+		grid-template-columns: 45px 1fr 45px;
+		grid-auto-rows: 1fr;
+		height: fit-content;
+		justify-content: center;
+		background-image: url("../images/digital_nomad.png");
+		background-position: center; /* Center the image */
+		background-repeat: no-repeat; /* Do not repeat the image */
+		background-size: cover; /* Resize the background image to cover the entire container */
+	}
+
+	#bioPost {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10px;
+		padding-right: 10px;
+		color: black;
+	}
+
+	.bioPosted {
+		font-size: 10px;
+		font-weight: lighter;
+		padding-bottom: 5px;
+	}
+
+	.bioReadMore {
+		font-weight: 500;
+    	padding-top: 10px;
+		padding-bottom: 5px;
+	}
+
+	.bioTitle {
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: bolder;
+	}
+
+	.bioText {
+		display: flex;
+		flex-direction: column;
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+
+	#widgets {
+		grid-area: sideRight;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		padding-right: 0px;
+	}
+
+	.widgetDevider {
+		display: block;
+		height: 20px;
+	}
+
+	.widgetsElement {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.widgetsTitleInside {
+		display: block;
+		color: black;
+		padding-bottom: 15px;
+		font-weight: 600;
+	}
+
+	.widgetsTitle {
+		text-align: left;
+		color: #2b2a2a;
+		font-size: 15px;
+		border-top: 1px solid grey;
+		border-bottom: 1px solid grey;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-weight: 600;
+		display: none;
+	}
+
+	#menu {
+		top: 95px;
+		position: sticky;
+	}
+
+	#header {
+		grid-template-columns: 80px 200px 1fr 250px 65px;
+		grid-template-areas: 
+			"logo logoText empty search profile";
+	}
+
+	.headerLoggInfo {
+		display: none;
+	}
+
+	.article {
+		margin-bottom: 20px;
+	}
+
+	#footer {
+		grid-area: ft;
+		/* Stick footer to bottom of grid */
+		position: inherit;
+		bottom: 0;
+		background-color: #353535;
+	}
+}
+
+@media (min-width: 780px) and (max-width: 899px) {
+	body {
+		display: grid;
+		width: 100%;
+		margin: auto;
+		grid-template-columns: 100px 1fr 15px;
+		grid-template-rows: 1fr 1fr 1fr 1fr 50px;
+		grid-gap: 25px;
+		grid-template-areas: 
+			"top top top"
+			"sideLeft bio empty"
+			"sideLeft sideRight empty"
+			"sideLeft sideCenter empty"
+			"ft ft ft";
+		justify-content: center;
+	}
+
+	#menu {
+		grid-area: sideLeft;
+		display: flex;
+		flex-direction: column;
+		max-height: 350px;
+	}
+
+	#content {
+		grid-area: sideCenter;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	#bio {
+		grid-area: bio;
+		display: grid;
+		grid-template-columns: 45px 1fr 45px;
+		grid-auto-rows: 1fr;
+		height: fit-content;
+		justify-content: center;
+		background-image: url("../images/digital_nomad.png");
+		background-position: center; /* Center the image */
+		background-repeat: no-repeat; /* Do not repeat the image */
+		background-size: cover; /* Resize the background image to cover the entire container */
+	}
+
+	#bioPost {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10px;
+		padding-right: 10px;
+		color: black;
+	}
+
+	.bioPosted {
+		font-size: 10px;
+		font-weight: lighter;
+		padding-bottom: 5px;
+	}
+
+	.bioReadMore {
+		font-weight: 500;
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+	
+	.bioTitle {
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: bolder;
+	}
+
+	.bioText {
+		display: flex;
+		flex-direction: column;
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+
+	#widgets {
+		grid-area: sideRight;
+		display: flex;
+		flex-direction: row;
+		padding-right: 0px;
+	}
+
+	.widgetDevider {
+		width: 30px;
+	}
+
+	.widgetsElement {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.widgetsTitleInside {
+		display: block;
+		color: black;
+		padding-bottom: 15px;
+		font-weight: 600;
+	}
+
+	.widgetsTitle {
+		text-align: left;
+		color: #2b2a2a;
+		font-size: 15px;
+		border-top: 1px solid grey;
+		border-bottom: 1px solid grey;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-weight: 600;
+		display: none;
+	}
+
+	#menu {
+		top: 95px;
+		position: sticky;
+	}
+
+	.article {
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 900px) and (max-width: 1249px) {
+	body {
+		display: grid;
+		width: 100%;
+		margin: auto;
+		grid-template-columns: 100px 1fr 250px;
+		grid-template-rows: 1fr 1fr 1fr 50px;
+		grid-gap: 25px;
+		grid-template-areas: 
+			"top top top"
+			"sideLeft bio sideRight"
+			"sideLeft sideCenter sideRight"
+			"ft ft ft";
+		justify-content: center;
+	}
+
+	#menu {
+		grid-area: sideLeft;
+		display: flex;
+		flex-direction: column;
+		max-height: 350px;
+	}
+
+	#content {
+		grid-area: sideCenter;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	#bio {
+		grid-area: bio;
+		display: grid;
+		grid-template-columns: 45px 1fr 45px;
+		grid-auto-rows: 1fr;
+		height: fit-content;
+		justify-content: center;
+		background-image: url("../images/digital_nomad.png");
+		background-position: center; /* Center the image */
+		background-repeat: no-repeat; /* Do not repeat the image */
+		background-size: cover; /* Resize the background image to cover the entire container */
+	}
+
+	#bioPost {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10px;
+		padding-right: 10px;
+		color: black;
+	}
+
+	.bioPosted {
+		font-size: 10px;
+		font-weight: lighter;
+		padding-bottom: 5px;
+	}
+
+	.bioReadMore {
+		font-weight: 500;
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+
+	.bioTitle {
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: bolder;
+	}
+
+	.bioText {
+		display: flex;
+		flex-direction: column;
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+
+	#widgets {
+		grid-area: sideRight;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.widgetsTitle {
+		text-align: left;
+		color: #2b2a2a;
+		font-size: 15px;
+		border-top: 1px solid grey;
+		border-bottom: 1px solid grey;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-weight: 600;
+	}
+
+	#menu,
+	#widgets {
+		top:95px;
+		position: sticky;
+	}
+
+	#footer {
+		grid-area: ft;
+		/* Stick footer to bottom of grid */
+		position: sticky;
+		bottom: 0;
+		background-color: #353535;
+	}
+
+	.article {
+		margin-bottom: 20px;
+	}
+}
+
+@media(min-width:1250px) {
+	body {
+		display: grid;
+		width: 100%;
+		margin: auto;
+		grid-template-columns: 100px 1fr 250px;
+		grid-template-rows: 1fr 1fr 1fr 50px;
+		grid-gap: 25px;
+		grid-template-areas: 
+			"top top top"
+			"sideLeft bio sideRight"
+			"sideLeft sideCenter sideRight"
+			"ft ft ft";
+		justify-content: center;
+	}
+
+	#menu {
+		grid-area: sideLeft;
+		display: flex;
+		flex-direction: column;
+		max-height: 350px;
+	}
+
+	#content {
+		grid-area: sideCenter;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-auto-rows: 1fr;
+		grid-gap: 20px;
+	}
+
+	#bio {
+		grid-area: bio;
+		display: grid;
+		grid-template-columns: 45px 1fr 45px;
+		grid-auto-rows: 1fr;
+		height: fit-content;
+		justify-content: center;
+		background-image: url("../images/digital_nomad.png");
+		background-position: center; /* Center the image */
+		background-repeat: no-repeat; /* Do not repeat the image */
+		background-size: cover; /* Resize the background image to cover the entire container */
+	}
+
+	#bioPost {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10px;
+		padding-right: 10px;
+		color: black;
+	}
+
+	.bioPosted {
+		font-size: 10px;
+		font-weight: lighter;
+		padding-bottom: 5px;
+	}
+
+	.bioReadMore {
+		font-weight: 500;
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+
+	.bioTitle {
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: bolder;
+	}
+
+	.bioText {
+		display: flex;
+		flex-direction: column;
+		padding: 5px 15px 5px 15px;
+		background-color: #ffffffff;
+		width: fit-content;
+		border-radius: 5px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+
+	#widgets {
+		grid-area: sideRight;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.widgetsTitle {
+		text-align: left;
+		color: #2b2a2a;
+		font-size: 15px;
+		border-top: 1px solid grey;
+		border-bottom: 1px solid grey;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-weight: 600;
+	}
+
+	#menu,
+	#widgets {
+		top: 95px;
+		position: sticky;
+	}
+
+	#footer {
+		grid-area: ft;
+		/* Stick footer to bottom of grid */
+		position: sticky;
+		bottom: 0;
+		background-color: #353535;
+	}
+}

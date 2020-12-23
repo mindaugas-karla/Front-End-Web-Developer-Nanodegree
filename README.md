@@ -1,7 +1,7 @@
 
 # Intro
 
-The goal to start this program was to refresh my knowledge and set myself on the developer road. My career began as self-taught programmer and the time came to set things straight. Technology has changed our lives by increasing the speed of time and sometimes you need to step back and look at everything in different perspective.
+The main goal to start this program was to refresh my knowledge and set myself on the developer road. My career began as self-taught programmer and the time came to set things straight. Technology has changed our lives by increasing the speed of time and sometimes you need to step back and look at everything in different perspective.
 
 ## Front End Web Developer Nanodegree
 

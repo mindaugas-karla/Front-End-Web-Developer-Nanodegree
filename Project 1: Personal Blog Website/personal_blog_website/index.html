@@ -1,22 +1,330 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
         <title>Mindauga's Personal Blog</title>
-
-        <meta name="description" content="Mindaugas's Personal Blog. Travels, sports, books etc." />
-
-		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css'>
-		<link rel="shortcut icon" href="data_files/icon2_eQ7_icon.ico" />
-		<link rel="stylesheet" href="css/main.css">
+		<meta name="viewport" content = "width=device-width, initial-scale=1" />
+		<meta name="author" content="Mindaugas Karla">
+        <meta name="description" content="Mindaugas's Personal Blog. Travels, sports, books etc. This is not a comercial project and is for educational purposes only." />
+		<meta name="keywords" content="HTML, CSS, DOM, Web development, W3C, tutorials, programming, training,learning, quiz, primer, lessons, references, examples, exercises, source code, colors, demos, tips">
+		<link rel="shortcut icon" href="images/icona2.ico" />
+		<link rel="stylesheet" href="css/styles.css" />
     </head>
-    
-    <body>
 
+	<body>
+		<header id="header" class="header">
+			<div id="header_logo" class="noselect pointerCursor">
+				<a href="index.html">
+					<img title="Logo" src="images/mindaugas_blog_logo.png" alt="Logo Image">
+				</a>
+			</div>
 
+			<div id="header_text_tab" class="noselect pointerCursor">
+				<a href="index.html">
+					<h1 class="header_text">MINDAUGAS KARLA</h1>
+					<h2 class="header_slogan">Personal Blog</h2>
+				</a>
+			</div>
 
+			<div id="header_search" class="noselect" role="search">
+				<input id="search_bar" class="header_search_bar" type="text" placeholder="Search...">
+			</div>
 
+			<div id="header_profile">
+				<div class="headerProfileIcon noselect pointerCursor">
+					<img title="Profile Avatar" class="headerAvatar" src="images/profile_photo.jpg" alt="Profile Avatar">
+				</div>
+				<div class="headerLoggInfo noselect">
+					<span>Logged in as</span>
+					<br>
+					<span class="headerLoggUsername">mindaugask</span>
+				</div>
+			</div>
 
+			<div id="header_logout" class="noselect">
+				<a href="index.html"><img title="Logout" class="header_logout_icon" src="images/logout.png" alt="Logout Image"></a>
+			</div>
+		</header>
 
+		<nav id="menu" role="navigation" class="menu_block noselect">
+			<a href="blog.html">
+				<div class="menuElement pointerCursor">
+					<img title="Go Tech" src="images/computer-64.png" alt="Icon Tech">
+					<span>Tech</span>
+				</div>
+			</a>
+			<a href="blog.html">
+				<div class="menuElement pointerCursor">
+					<img title="Go Sports" src="images/soccer-2-64.png" alt="Icon Sports">
+					<span>Sports</span>
+				</div>
+			</a>
+			<a href="blog.html">
+				<div class="menuElement pointerCursor">
+					<img title="Go Travel" src="images/airplane-11-64.png" alt="Icon Travel">
+					<span>Travel</span>
+				</div>
+			</a>
+			<a href="blog.html">
+				<div class="menuElement pointerCursor">
+					<img title="Go Books" src="images/literature-64.png" alt="Icon Books">
+					<span>Books</span>
+				</div>
+			</a>
+			<a href="blog.html">
+				<div class="menuElement pointerCursor">
+					<img title="Go Archive" src="images/briefcase-5-64.png" alt="Icon Archive">
+					<span>Archive</span>
+				</div>
+			</a>
+		</nav>
+
+		<nav id="bio" aria-label="slider" >
+			<div class="sliderButton leftSlider" >
+				<img class="noselect pointerCursor" src="images/arrow-left-64.png" alt="Icon Left Arrow">
+			</div>
+
+			<div id="bioPost">
+				<div class="bioTitle pointerCursor">
+					Learn from Anywhere. Udacity.
+				</div>
+
+				<div class="bioText">
+					<div class="bioPosted">
+						DEC 22, 2020 AT 10:02 PM
+					</div>
+					<span>
+						One of the many aspects as freelancer is the ability to manage my time by myself. Udacity course consists of several units comprising video lectures with closed captioning, in conjunction with integrated quizzes to help students understand concepts and reinforce ideas, as well as follow-up homework, which promotes a "learn by doing" model so you can study practically from anywhere. Programming assignments are graded by automated grading programs on the Udacity servers. Working as a community, we are bound to achieve more and, therefore, provide more.
+					</span>
+					<div class="bioReadMore noselect pointerCursor">
+						<a href="blog.html">
+							Continue reading
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="sliderButton rightSlider">
+				<img class="noselect pointerCursor" src="images/arrow-right-64.png" alt="Icon Right Arrow" >
+			</div>
+		</nav>
+		<div id="content" role="main">
+			<article class="article">
+				<div class="articleImage">
+					<img title="Travel Image" src="images/travel_image.jpeg" alt="Travel Image">
+				</div>
+
+				<div class="articlePost">
+					<div class="articlePostPosted">
+						<div class="articlePostDate">
+							DEC 14, 2020 AT 7:55 PM
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							SHARE
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							LIKE
+						</div>
+					</div>
+
+					<div class="articlePostTitle pointerCursor">
+						Digital Nomad
+					</div>
+
+					<div class="articlePostText">
+						<p>Digital nomads are people who use telecommunications technologies to earn a living and, more generally, conduct their life in a nomadic manner. Such workers often work remotely from foreign countries, coffee shops, public libraries, co-working spaces, or recreational vehicles. This is often accomplished through the use of devices that have wireless Internet capabilities such as smartphones or mobile hotspots. Successful digital nomads typically have a financial cushion or need to develop high levels of self-reliance and self-discipline. </p>
+					</div>
+					<div class="articlePostContinue noselect pointerCursor">
+						<a href="blog.html">Continue reading</a>
+					</div>
+				</div>
+
+				<div class="articleComments">
+					<div class="articleCommentsTab">
+						Show all comments
+					</div>
+					<div class="addComment">
+						<textarea type="text" rows="1" placeholder="Write comment..." aria-label="Comment Field" class="addCommentField"></textarea>
+					</div>
+				</div>
+			</article>
+
+			<article class="article">
+				<div class="articleImage">
+					<img title="Headphones Image" src="images/maxresdefault.jpg" alt="Headphones Image">
+				</div>
+
+				<div class="articlePost">
+					<div class="articlePostPosted">
+						<div class="articlePostDate">
+							DEC 12, 2020 AT 6:32 PM
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							SHARE
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							LIKE
+						</div>
+					</div>
+
+					<div class="articlePostTitle pointerCursor">
+						Best Headphones 2020
+					</div>
+
+					<div class="articlePostText">
+						<p>When Sony's WH-1000XM3 headphones arrived in 2018, they were the first noise-canceling headphones that really gave Bose's QuietComfort models a run for their money. Now, Sony's successor model has arrived. And like any good Hollywood sequel, the eagerly awaited WH-1000XM4 is equal parts familiar and satisfying, with a dash of slight disappointment thrown in. </p>
+					</div>
+					<div class="articlePostContinue noselect pointerCursor">
+						<a href="blog.html">Continue reading</a>
+					</div>
+				</div>
+
+				<div class="articleComments">
+					<div class="articleCommentsTab">
+						Show all comments
+					</div>
+					<div class="addComment">
+						<textarea type="text" rows="1" placeholder="Write comment..." aria-label="Comment Field" class="addCommentField"></textarea>
+					</div>
+				</div>
+			</article>
+
+			<article class="article">
+				<div class="articleImage">
+					<img title="Udacity Image" src="images/udacitypost.png" alt="Udacity Image">
+				</div>
+
+				<div class="articlePost">
+					<div class="articlePostPosted">
+						<div class="articlePostDate">
+							DEC 12, 2020 AT 10:54 PM
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							SHARE
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							LIKE
+						</div>
+					</div>
+
+					<div class="articlePostTitle pointerCursor">
+						Online Courses
+					</div>
+
+					<div class="articlePostText">
+						<p><q>Making a decision about your education, your career, and your future is one of the biggest life choices you can make, and enrolling in a Nanodegree program is exactly that kind of decision—it’s about about your education, your career, and your future. You don’t choose lightly, and it’s important you have a clear understanding of what’s involved. So how does a Nanodegree program work?</q> - <i>Christopher Watkins</i></p>
+					</div>
+					<div class="articlePostContinue noselect pointerCursor">
+						<a href="blog.html">Continue reading</a>
+					</div>
+				</div>
+
+				<div class="articleComments">
+					<div class="articleCommentsTab">
+						Show all comments
+					</div>
+					<div class="addComment">
+						<textarea type="text" rows="1" placeholder="Write comment..." aria-label="Comment Field" class="addCommentField"></textarea>
+					</div>
+				</div>
+			</article>
+
+			<article class="article">
+				<div class="articleImage">
+					<img title="Runner Image" src="images/sport.jpg" alt="Runner Image">
+				</div>
+
+				<div class="articlePost">
+					<div class="articlePostPosted">
+						<div class="articlePostDate">
+							DEC 10, 2020 AT 4:32 PM
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							SHARE
+						</div>
+						<div class="noselect pointerCursor likeShare">
+							LIKE
+						</div>
+					</div>
+
+					<div class="articlePostTitle pointerCursor">
+						How to stay healthy at home
+					</div>
+
+					<div class="articlePostText">
+						<p>The coronavirus crisis upended most Americans' lifestyles in March – including their exercise routines. Zipping past pedestrians during a run or lifting weights at the gym right after someone else are things of the past, with socially distanced running routes and at-home workouts becoming more mainstream.</p>
+					</div>
+					<div class="articlePostContinue noselect pointerCursor">
+						<a href="blog.html">Continue reading</a>
+					</div>
+				</div>
+
+				<div class="articleComments">
+					<div class="articleCommentsTab">
+						Show all comments
+					</div>
+					<div class="addComment">
+						<textarea type="text" rows="1" placeholder="Write comment..." aria-label="Comment Field" class="addCommentField"></textarea>
+					</div>
+				</div>
+			</article>
+		</div>
+		
+		<aside id="widgets" >
+			<div class="noselect widgetsTitle">
+				<span>Top Posts</span>
+			</div>
+			<div class="widgetsElement noselect" >
+				<div class="noselect widgetsTitleInside"><span>Top Posts</span></div>
+				<ul class="topList" role="list">
+					<li class="topListElement pointerCursor"><a href="blog.html">Digital Nomad</a></li>
+					<li class="topListElement pointerCursor"><a href="blog.html">Best Headphones 2020</a></li>
+					<li class="topListElement pointerCursor"><a href="blog.html">Online Courses</a></li>
+				</ul>
+				<a href="blog.html">
+					<span class="noselect pointerCursor">
+					More Topics..
+					</span>
+				</a>
+
+				<form id="subscribeForm" action="index.html">
+					<span class="subscribeFormTitle">Don't Miss a Post</span>
+					<input name="client_name" class="subscribeFormInput" placeholder="Enter your name">
+					<input name="client_email" class="subscribeFormInput" placeholder="Enter your email address">
+					<button class="subscribeFormButton pointerCursor">Subscribe</button>
+				</form>
+
+			</div>
+			<div class="widgetDevider" ></div>
+			<div class="noselect widgetsTitle" ><span>Author</span></div>
+			<div class="widgetsElement" >
+				<div class="authorPortraitTab noselect">
+					<img title="Author Profile" class="authorPortraitTabImg" src="images/author_profile.jpeg" alt="Author Profile">;
+				</div>
+				<h3>Mindaugas Karla</h3>
+				<h4>Web Developer</h4>
+				<div class="authorIntroText">
+					<span>
+					One of the many aspects I have enjoyed about my job is the ability to manage my time by myself. If you asked me what I could do without being paid, it would be something that would leave some mark on the world. Not necessarily major impact but even a small achievement would be great. We can make the world a better place by helping each other. Working as a community, we are bound to achieve more and, therefore, provide more.
+					</span>
+				</div>
+			</div>
+		</aside>
+
+		<footer id="footer" class="footer_block">
+			<div class="footer_text noselect">
+				<span>
+					Copyright © 2020
+				</span>
+			</div>
+
+			<div id="social_info_tab">
+				<div class="social_info_single"><a href="https://twitter.com/droopyk" target="_blank"><img class="social_info" src="images/twitter-64-white.png" alt="Twitter Icon"></a></div>
+				<div class="social_info_single"><a href="https://www.instagram.com/karliukena/" target="_blank"><img class="social_info" src="images/instagram-64-white.png" alt="Instagram Icon"></a></div>
+				<div class="social_info_single"><a href="https://www.linkedin.com/in/mindaugas-karla/" target="_blank"><img class="social_info" src="images/linkedin-64-white.png" alt="LinkedIn Icon"></a></div>
+				<div class="social_info_single"><a href="https://www.facebook.com/MindaugasKarla" target="_blank"><img class="social_info" src="images/facebook-64-white.png" alt="Facebook Icon"></a></div>
+			</div>
+
+		</footer>
     </body>
 </html>
