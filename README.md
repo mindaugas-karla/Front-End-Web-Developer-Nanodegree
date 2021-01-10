@@ -9,6 +9,9 @@ The main goal to start this program was to refresh my knowledge and set myself o
 - [Personal Blog: Live Page](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/personal_blog_website/index.html)
 - [Personal Blog: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-1-personal-blog-website/personal_blog_website)
 
+## Project 2: Landing Page
+
+on process
 
 
 ## Front End Web Developer Nanodegree
