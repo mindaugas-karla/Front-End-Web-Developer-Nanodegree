@@ -8,7 +8,6 @@
  *
 */
 
-
 /* ---- Base Rules ---- */
 body {
     background: rgb(136,203,171);
@@ -220,4 +219,20 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+
+
+
+/* Custom */
+.active {
+    background: #333;
+    color: #fff !important;
+    transition: ease 0.3s all;
+}
+
+.hide-scroll-bar {
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.5s ease-out;
 }
