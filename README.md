@@ -11,7 +11,7 @@ The main goal to start this program was to refresh my knowledge and set myself o
 
 ## Project 2: Landing Page
 
-- [Landing Page: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-1-personal-blog-website/)
+- [Landing Page: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-2-landing-page/)
 - [Landing Page: Live Page](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-2-landing-page/landing_page/index.html)
 - [Landing Page: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-2-landing-page/landing_page)
 
