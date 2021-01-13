@@ -25,6 +25,6 @@ This project requires to build a multi-section landing page, with a dynamically 
 Landing page designed and built from using template produced by Udacity: 'refresh-2019' clonee branch on Github.
 
 ### Preview Links
-Personal blog website preview links are active. From homepage you can navigate to any of these pages and back. Some links, and futures like search, buttons, sort lists are fake and lead to Blog page. 
+Landing Page preview links are active. From generated link you can view active Landing page.
 
 - [Landing Page: Index](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-2-landing-page/landing_page/index.html)
