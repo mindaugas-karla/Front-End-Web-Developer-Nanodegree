@@ -16,7 +16,6 @@ The main goal to start this program was to refresh my knowledge and set myself o
 - [Personal Blog: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-2-landing-page/landing_page)
 
 
-
 ## Front End Web Developer Nanodegree
 
 <img align="center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Udacity_logo.svg/1200px-Udacity_logo.svg.png" width=280 style="cursor:default;">
