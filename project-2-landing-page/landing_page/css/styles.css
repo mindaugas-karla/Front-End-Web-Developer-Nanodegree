@@ -236,3 +236,89 @@ section.your-active-class .landing__container::after {
     overflow-y: hidden;
     transition: max-height 0.5s ease-out;
 }
+
+
+/* Scroller Up Styles  */
+.scroll-hide {
+    display: none;
+}
+
+.scroll-element {
+    position: fixed;
+    z-index: 1;
+    background-color: rgb(240 243 255 / 70%);
+    color:#102349;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    bottom: 100px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    opacity: 0.7;
+    box-shadow: 0px 0px 6px 0px;
+    transition: opacity 0.2s;
+   
+}
+
+.scroll-element:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	cursor: default;
+}
+.pointerCursor {
+	cursor: pointer !important;
+}
+
+.hide-menu-bar {
+   display:none;
+}
+
+/* trick to only apply in webkit */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	body::-webkit-scrollbar-thumb {
+		background-color: #cc1;
+	}
+	body:hover::-webkit-scrollbar-thumb {
+		background-color: rgb(0 0 0 / 41%);
+	}
+	body::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+	body::-webkit-scrollbar-track {
+		display: none;
+	}
+	body::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		/*background-color: inherit;*/
+	}
+}
+
+
+.page__footer {
+    padding: 25px;
+    text-align: center;
+}
+
+
+
+.collapse-section {
+    min-height: auto;
+
+}
+
+.collapse-section p {
+    display:none;
+}

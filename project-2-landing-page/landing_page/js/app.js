@@ -24,11 +24,11 @@ TASKS:
 
 Suggestions:
     [x] Add an active state to your navigation items when a section is in the viewport.
-    [] Hide fixed navigation bar while not scrolling (it should still be present on page load).
-    [] Hint: setTimeout can be used to check when the user is no longer scrolling.
-    [] Add a scroll to top button on the page that’s only visible when the user scrolls below the fold of the page.
+    [x] Hide fixed navigation bar while not scrolling (it should still be present on page load).
+    [x] Hint: setTimeout can be used to check when the user is no longer scrolling.
+    [x] Add a scroll to top button on the page that’s only visible when the user scrolls below the fold of the page.
     [] Update/change the design/content.
-    [] Make sections collapsible.
+    [x] Make sections collapsible.
  */
 
 
@@ -40,6 +40,8 @@ Suggestions:
  * 
 */
 history.scrollRestoration = "manual";
+const rootElement = document.documentElement;
+const navigationHeader = document.querySelector('.page__header');
 
 const navigationBar = document.getElementById('navbar__list');
 const navigationMenuLink = document.querySelectorAll('menu__link');
@@ -72,6 +74,21 @@ function removeActiveClass(section, className) {
     section.style.cssText = "";
 }
 
+
+function showScroller() {
+    // Do something on scroll
+    const scrollUpId = document.getElementById("scrollerToTop");
+    var scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
+    if ((rootElement.scrollTop / scrollTotal) > 0.3) {
+        // Show button
+        scrollUpId.classList.remove("scroll-hide");
+    }
+    else {
+        // Hide button
+        scrollUpId.classList.add("scroll-hide");
+    }
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -94,7 +111,12 @@ function createNavigationBar() {
         tabLink.classList = 'menu__link';
         tabLink.href = `#${sectionId}`;
         tabLink.id = `${sectionId}_link`;
-        const idas = `${sectionId}_link`;
+        tabLink.dataset.idas= `${sectionId}`;
+
+        tabLink.onclick = function() { toggleSection(this, 'link') };
+
+
+        
 
         listTab.appendChild(tabLink);
         navigationStack.appendChild(listTab);
@@ -150,6 +172,7 @@ function scrollToTopPage() {
 function addActiveStateLink(current) {
     const currentTab = document.getElementById(current);
     currentTab.classList.add("active");
+    showScroller();
 }
 
 function removeActiveStateLink(current) {
@@ -165,18 +188,36 @@ function removeActiveStateLink(current) {
 
 //function menuLinkActiveTab
 
+function createScroller() {
+    const scrollerDiv = document.createElement('div');
+    scrollerDiv.id = "scrollerToTop";
+    scrollerDiv.classList = "scroll-element scroll-hide noselect pointerCursor";
+    scrollerDiv.onclick = function () {scrollToTopPage()};
+    const scrollerSpan = document.createElement('span');
+    scrollerSpan.innerText = "UP";
+    scrollerDiv.appendChild(scrollerSpan);
 
-function disableScrollbar() { 
-    setTimeout(function() { 
+    const applyToHeader = document.querySelector('header');
+
+    document.body.appendChild(scrollerDiv);
+
+}
+
+createScroller();
+
+
+
+function disableScrollbar() {
+    setTimeout(function () {
         //document.body.style.overflow = 'hidden';
 
         body.classList.add("hide-scroll-bar");
-    }, 2000); 
-} 
+    }, 2000);
+}
 
-function enableScrollbar() { 
+function enableScrollbar() {
     body.classList.remove("hide-scroll-bar");
-} 
+}
 
 
 
@@ -192,8 +233,85 @@ createNavigationBar();
 
 // Scroll to section on link click
 
+let timerForHeaderDisplay;
 
+function showMenu () {
+    navigationHeader.classList.remove("hide-menu-bar");
+    clearTimeout(timerForHeaderDisplay);
+    timerForHeaderDisplay = setTimeout(function () {
+        navigationHeader.classList.add("hide-menu-bar");
+    }, 2500);
+}
+
+function toggleSection (test, type) {
+    const secId = test.dataset.idas;
+    const sectionCollapse = document.getElementById(secId);
+    const statuschange = sectionCollapse.querySelectorAll('span')[1];
+    if (type == "link") {
+        if (sectionCollapse.classList.contains("collapse-section")) {
+            sectionCollapse.classList.toggle("collapse-section");
+            statuschange.innerText = " - Opened";
+        }
+    }
+    else {
+        sectionCollapse.classList.toggle("collapse-section");
+
+        if (sectionCollapse.classList.contains("collapse-section")) {
+            statuschange.innerText = " - Closed";
+        }
+        else {
+            statuschange.innerText = " - Opened";
+        }
+    }
+    
+
+
+}
+function createSectionCollabsibleBar() {
+    //const customisedSection = document.createDocumentFragment();
+
+    for (const section of sectionsAll) {
+        const sectionId = section.id;
+        const sectionName = section.dataset.nav;
+
+        const titleCustom = section.querySelector('h2');
+        titleCustom.dataset.idas = sectionId;
+        titleCustom.classList.add("pointerCursor");
+        titleCustom.onclick = function() { toggleSection(this, 'section') };
+
+        //titleCustom.addEventListener("click", (event) => {
+            //section.classList.toggle("collapse-section");
+           //const name = section.dataset.nav;
+            //console.log(event.dataset.idas);
+
+                   //titleCustom.
+//alert(123);
+         // });
+
+
+
+
+        titleCustom.innerHTML = "";
+
+        const spanName = document.createElement('span');
+        spanName.innerText = sectionName;
+        
+        const spanCollapse = document.createElement('span');
+        spanCollapse.innerText = ' - Opened';
+        
+        titleCustom.appendChild(spanName);
+        titleCustom.appendChild(spanCollapse);
+
+        //customisedSection.appendChild(titleCustom);
+        //`<span>${sectionName}</span> <span class="collapse_section">Collapse</span>`;
+    }
+
+}
+createSectionCollabsibleBar ();
 
 // Set sections as active
 window.addEventListener('scroll', checkActiveView);
+
+
+window.addEventListener('scroll', showMenu);
 
