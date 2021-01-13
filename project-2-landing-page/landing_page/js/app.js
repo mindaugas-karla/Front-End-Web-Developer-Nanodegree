@@ -34,6 +34,7 @@ Suggestions:
  * Define Global Variables
  * 
 */
+//const startingTime = performance.now();
 history.scrollRestoration = "manual";
 
 const rootElement = document.documentElement;
@@ -258,4 +259,11 @@ window.addEventListener('scroll', checkActiveView);
 
 // Activate Menu Hide Than not scrolling
 window.addEventListener('scroll', showMenu);
+
+/**
+ * Performance Test
+ *
+*/
+//const endingTime = performance.now();
+//console.log('This code took ' + (endingTime - startingTime) + ' milliseconds.');
 
