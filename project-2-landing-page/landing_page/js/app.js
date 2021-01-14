@@ -73,7 +73,7 @@ function removeActiveClass(section, className) {
 
 function showScroller() {
     const scrollUpId = document.getElementById("scrollerToTop");
-    var scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
+    const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
     if ((rootElement.scrollTop / scrollTotal) > 0.3) {
         //show button
         scrollUpId.classList.remove("scroll-hide");
@@ -183,7 +183,7 @@ function changeScrollBehavior() {
 function scrollToTopPage() {
     const pageHref = window.location.href;
     if (pageHref.indexOf('#')) {
-        var noHashURL = pageHref.replace(/#.*$/, '');
+        const noHashURL = pageHref.replace(/#.*$/, '');
         window.history.replaceState('', document.title, noHashURL);
     }
     window.scrollTo(0, 0);
