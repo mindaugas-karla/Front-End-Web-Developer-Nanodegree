@@ -229,6 +229,11 @@ section.your-active-class .landing__container::after {
     background: #333;
     color: #fff !important;
     transition: ease 0.3s all;
+
+    /* transition for menu tabs 'carousel' */
+    -webkit-transition: background-color 700ms linear;
+    -ms-transition: background-color 700ms linear;
+    transition: background-color 700ms linear;
 }
 
 .hide-scroll-bar {
@@ -312,7 +317,6 @@ section.your-active-class .landing__container::after {
     padding: 25px;
     text-align: center;
 }
-
 
 
 .collapse-section {
