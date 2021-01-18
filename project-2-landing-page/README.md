@@ -8,18 +8,18 @@ This project requires to build a multi-section landing page, with a dynamically 
 ## Developement Strategy Used
 - [x] Linked app.js
 - [x] Build out your HTML and at least 3 content sections.
-### 3. Build the navigation menu.
-### 4. Add functionality to distinguish the section in view.
-### 5. Add the functionality to scroll to sections.
-### 6. Refactor
-### 7. Add additional sections to your HTML document.
-### 8. Test the performance.
-### 9. Completed Suggested tasks:
-* Add an active state to your navigation items when a section is in the viewport.
-* Hide fixed navigation bar while not scrolling (it should still be present on page load).
-* Add a scroll to top button on the page that’s only visible when the user scrolls below the fold of the page.
-* Update/change the design/content.
-* Make sections collapsible.
+- [x] Build the navigation menu.
+- [x] Add functionality to distinguish the section in view.
+- [x] Add the functionality to scroll to sections.
+- [x] Refactor
+- [x] Add additional sections to your HTML document.
+- [x] Test the performance.
+- [x] Suggested tasks:
+    - Add an active state to your navigation items when a section is in the viewport.
+    - Hide fixed navigation bar while not scrolling (it should still be present on page load).
+    - Add a scroll to top button on the page that’s only visible when the user scrolls below the fold of the page.
+    - Update/change the design/content.
+    - Make sections collapsible.
 
 ## Results
 Landing page designed and built from using template produced by Udacity: 'refresh-2019' clonee branch on Github.
