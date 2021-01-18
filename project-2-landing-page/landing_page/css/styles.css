@@ -233,12 +233,12 @@ body {
     transition: ease 0.1s all;
 
     /* transition for menu tabs 'carousel' */
-    -webkit-transition: background-color 700ms linear;
-    -ms-transition: background-color 700ms linear;
-    transition: background-color 700ms linear;
+    -webkit-transition: background-color 600ms linear;
+    -ms-transition: background-color 600ms linear;
+    transition: background-color 600ms linear;
 }
 .notactive {
-    background: #fff;
+    background: #fff !important;
     color: #000 !important;
 
     /* transition for menu tabs 'carousel' */
