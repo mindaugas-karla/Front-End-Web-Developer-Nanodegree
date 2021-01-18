@@ -336,6 +336,10 @@ body {
     text-align: center;
 }
 
+section {
+    margin-top: 10px;
+}
+
 @media (max-width: 980px) {
     .landing__container {
         text-align: center !important;
@@ -343,19 +347,13 @@ body {
     .landing__container h2 {
         font-size: 30px !important;
     }
-
-    
-
 }
 
 @media (max-width: 600px) {
     main {
         margin-top: 18vh !important;
-
     }
-
     header h1 {
         margin-bottom: 10px;
     }
-
 }
