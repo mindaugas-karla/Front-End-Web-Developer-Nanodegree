@@ -246,6 +246,10 @@ body {
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear;
 }
+.notactive:hover {
+    background: #fff !important;
+    color: #000 !important;
+}
 
 .hide-scroll-bar {
     max-height: 0;
