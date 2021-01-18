@@ -246,9 +246,9 @@ body {
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear;
 }
-.notactive:hover {
-    background: #fff !important;
-    color: #000 !important;
+.navbar__menu .menu__link:hover {
+    background: inherit !important;
+    color: inherit !important;
 }
 
 .hide-scroll-bar {
