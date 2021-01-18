@@ -25,7 +25,6 @@ This project requires to build a multi-section landing page, with a dynamically 
 The project have a structure like the one shown below. App successfully renders a home page with clear design and functionality added when index.html is loaded in the browser. No errors displayed in console.
 
 
-
 ```
 css
 - styles.css    
