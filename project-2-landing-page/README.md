@@ -32,8 +32,7 @@ css
 index.html
 js
 - app.js
-README.mdn true
-}
+README.mdn
 ```
 
 
