@@ -222,7 +222,9 @@ section.your-active-class .landing__container::after {
 }
 
 
-
+body {
+    font-family: monospace;
+}
 
 /* Custom */
 .active {
@@ -327,10 +329,8 @@ section.your-active-class .landing__container::after {
     text-align: center;
 }
 
-
 .collapse-section {
     min-height: auto;
-
 }
 
 .collapse-section p {
