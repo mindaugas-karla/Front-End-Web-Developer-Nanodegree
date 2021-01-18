@@ -32,7 +32,7 @@ css
 index.html
 js
 - app.js
-README.mdn
+../README.mdn
 ```
 
 ## Technologies Used
