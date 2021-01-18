@@ -29,23 +29,24 @@ Suggestions:
     [x] Make sections collapsible.
  */
 
- /**
-  Requires Changes:
-    [x] You are required to use the ES6 variable keywords let & const instead of var to be following the JavaScript Style Guide.
-    [x] Suggestions:
-        - change 2500 value to higher,
-        - improve your skills in using Markdown syntax.
-    [+/-] Your code doesn’t apply styles to the active state correctly.
-    ....../-    I really couldn't find whats wrong, all console.log echo's shows expected result,
-                but I still correct logic just a little bit, please don't let me pass this submission if still something wrong.
-                I checked https://www.w3schools.com/howto/howto_js_active_element.asp , but my idea was to make some kind carousel,
-                now added css transition to highlight it. (style.css .active 233)
-    [+/-] It should be clear which section is being viewed while scrolling through the page.
-    .......-    Mb this is relatedd with previous check, because everything highligts, or I don't understand something, or mb I fixe with previous update.
-    [x] All features are usable across modern desktop, tablet, and phone browsers.
-    As required per the project specifications, this item will be checked after all features applied.
-    .......-    Added some tweeks for mobile view. 
-  */
+/**
+ Requires Changes:
+   [x] You are required to use the ES6 variable keywords let & const instead of var to be following the JavaScript Style Guide.
+   [x] Suggestions:
+       - change 2500 value to higher,
+       - improve your skills in using Markdown syntax.
+   [+/-] Your code doesn’t apply styles to the active state correctly.
+   ....../-    I really couldn't find whats wrong, all console.log echo's shows expected result,
+               but I still correct logic just a little bit, please don't let me pass this submission if still something wrong.
+               I checked https://www.w3schools.com/howto/howto_js_active_element.asp , but my idea was to make some kind carousel,
+               now added css transition to highlight it. (style.css .active 233)
+               !!!! FOUND THE PROBLEM.. only then I tested on mobile devices...if the section doesn't fit fully to the screen it doesn't highlights!
+               Problem was in checkViewport() function.. made some adjustments.
+   [+/-] It should be clear which section is being viewed while scrolling through the page.
+   .......-    Mb this is related with previous check, because everything highligts, or I don't understand something, or mb I fixe with previous update.
+   [x] All features are usable across modern desktop, tablet, and phone browsers.
+   .......-    Added some tweeks for mobile view. 
+ */
 
 
 /**
@@ -71,17 +72,19 @@ let timerForHeaderDisplay;
 */
 function checkViewport(element) {
     const clientRect = element.getBoundingClientRect();
+    //console.log(clientRect)
+
     return (
-        clientRect.top >= 0 &&
-        clientRect.left >= 0 &&
-        clientRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        clientRect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        (clientRect.top >= 0 && (clientRect.bottom <= (window.innerHeight || document.documentElement.clientHeight))) ||
+        (clientRect.top <= 70 && (clientRect.bottom >= (window.innerHeight || document.documentElement.clientHeight)))
     );
 }
 
 function addActiveClass(section, className) {
-    section.classList.add(className);
-    section.style.cssText = "background-color: #1d191940; border-radius: 10px;";
+    if (!section.classList.contains(className)) {
+        section.classList.add(className);
+        section.style.cssText = "background-color: #1d191940; border-radius: 10px;";
+    }
 }
 
 function removeActiveClass(section, className) {
@@ -104,7 +107,10 @@ function showScroller() {
 
 function addActiveStateLink(current) {
     const currentTab = document.getElementById(current);
-    currentTab.classList.add("active");
+
+    if (!currentTab.classList.contains("active")) {
+        currentTab.classList.add("active");
+    }
 }
 
 function removeActiveStateLink(current) {
@@ -152,7 +158,12 @@ function createNavigationBar() {
         const tabLink = document.createElement('a');
 
         tabLink.innerText = sectionName.toUpperCase();
-        tabLink.classList = 'menu__link noselect pointerCursor';
+        if (section.classList.contains("your-active-class")) {
+            tabLink.classList = 'menu__link noselect pointerCursor active';
+        }
+        else {
+            tabLink.classList = 'menu__link noselect pointerCursor';
+        }
         tabLink.href = `#${sectionId}`;
         tabLink.id = `${sectionId}_link`;
         tabLink.dataset.idas = `${sectionId}`;
@@ -168,30 +179,52 @@ function createNavigationBar() {
 // Add class 'active' to section when near top of viewport
 
 function checkActiveView() {
+    let currentActive = document.querySelector('.your-active-class'); // Added live selector for lag issue
+    let notFound = true;
     for (const section of sectionsAll) {
         const sectionId = section.id;
         const updateMenuTab = `${sectionId}_link`;
-        var currentActive = document.querySelector('your-active-class'); // Added live selector for lag issue
-
 
         if (checkViewport(section)) {
-           // currentActive = sectionId;
-            if (!section.classList.contains("collapse-section")) {
-                addActiveClass(section, 'your-active-class');
-                //console.log("add!");
-           
-            }
-           
-            addActiveStateLink(updateMenuTab);
-            //console.log("add2!");
+            notFound = false;
+            //console.log("inView:"+section.id);
+            if (currentActive) {
+                const currentActiveId = currentActive.id;
+                const currentActiveIdLink = `${currentActiveId}_link`;
+                if (currentActive == section) {
+                    if (!section.classList.contains("collapse-section")) {
+                        addActiveClass(section, 'your-active-class');
+                        //console.log("add:"+section.id);
+                    }
+                    addActiveStateLink(updateMenuTab);
+                }
+                else {
+                    removeActiveClass(currentActive, 'your-active-class');
+                    removeActiveStateLink(currentActiveIdLink);
 
-        }
-        else {
-            if (currentActive !== section.id) {
-                removeActiveClass(section, 'your-active-class');
-                removeActiveStateLink(updateMenuTab);
-                //console.log("remove!");
+                    if (!section.classList.contains("collapse-section")) {
+                        addActiveClass(section, 'your-active-class');
+                        //console.log("add:"+section.id);
+                    }
+                    addActiveStateLink(updateMenuTab);
+                }
             }
+            else {
+                if (!section.classList.contains("collapse-section")) {
+                    addActiveClass(section, 'your-active-class');
+                    //console.log("add:"+section.id);
+                }
+                addActiveStateLink(updateMenuTab);
+            }
+        }
+    }
+    if (notFound) {
+        for (const section of sectionsAll) {
+            const sectionId = section.id;
+            const updateMenuTab = `${sectionId}_link`;
+
+            removeActiveClass(section, 'your-active-class');
+            removeActiveStateLink(updateMenuTab);
         }
     }
 }
