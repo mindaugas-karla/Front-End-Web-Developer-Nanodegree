@@ -158,12 +158,12 @@ function createNavigationBar() {
         const tabLink = document.createElement('a');
 
         tabLink.innerText = sectionName.toUpperCase();
-        if (section.classList.contains("your-active-class")) {
-            tabLink.classList = 'menu__link noselect pointerCursor active';
-        }
-        else {
-            tabLink.classList = 'menu__link noselect pointerCursor';
-        }
+        //if (section.classList.contains("your-active-class")) {
+        //    tabLink.classList = 'menu__link noselect pointerCursor active';
+        //}
+        //else {
+        tabLink.classList = 'menu__link noselect pointerCursor';
+        //}
         tabLink.href = `#${sectionId}`;
         tabLink.id = `${sectionId}_link`;
         tabLink.dataset.idas = `${sectionId}`;
