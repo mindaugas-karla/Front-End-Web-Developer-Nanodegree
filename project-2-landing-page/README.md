@@ -3,9 +3,9 @@
 This project aims to give real-world scenarios of manipulating the DOM. The functionality will be using serve two purposes: to prepare for appending dynamically added data to the DOM, and to show how javascript can improve the usability of an otherwise static site. This project barely touches the surface of what is possible, but it does use some incredibly common events, methods, and logic.
 
 ## Requirements
-This project requires to build a multi-section landing page, with a dynamically updating navigational menu based on the amount of content that is added to the page. This project was evaluated by a Udacity code reviewer according to the Personal Blog Website project rubric. Rubric for detailed project requirements prior to submission.
+This project requires to build a multi-section landing page, with a dynamically updating navigational menu based on the amount of content that is added to the page. This project was evaluated by a **Udacity** code reviewer according to the Personal Blog Website project rubric. Rubric for detailed project requirements prior to submission.
 
-## Developement Strategy Used
+## Developement Strategy Used :speech_balloon:
 - [x] Linked app.js
 - [x] Build out your HTML and at least 3 content sections.
 - [x] Build the navigation menu.
@@ -21,8 +21,22 @@ This project requires to build a multi-section landing page, with a dynamically 
     - Update/change the design/content.
     - Make sections collapsible.
 
+## Architecture
+
+```
+css
+- styles.css    
+index.html
+js
+- app.js
+README.mdn true
+}
+```
+
+
+
 ## Results
-Landing page designed and built from using template produced by Udacity: 'refresh-2019' clonee branch on Github.
+Landing page designed and built from using template produced by **Udacity**: 'refresh-2019' clone branch on Github.
 
 ### Preview Links
 Landing Page preview links are active. From generated link you can view active Landing page.
