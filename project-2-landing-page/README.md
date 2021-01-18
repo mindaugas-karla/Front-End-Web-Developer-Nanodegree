@@ -35,6 +35,11 @@ js
 README.mdn
 ```
 
+## Technologies Used
+- Html
+- Css
+- JavaScript
+
 
 
 ## Results
