@@ -228,12 +228,21 @@ section.your-active-class .landing__container::after {
 .active {
     background: #333;
     color: #fff !important;
-    transition: ease 0.3s all;
+    transition: ease 0.1s all;
 
     /* transition for menu tabs 'carousel' */
     -webkit-transition: background-color 700ms linear;
     -ms-transition: background-color 700ms linear;
     transition: background-color 700ms linear;
+}
+.notactive {
+    background: #fff;
+    color: #000 !important;
+
+    /* transition for menu tabs 'carousel' */
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
 }
 
 .hide-scroll-bar {
@@ -351,9 +360,14 @@ section {
 
 @media (max-width: 600px) {
     main {
-        margin-top: 18vh !important;
+        /* margin-top: 18vh !important; */
     }
     header h1 {
         margin-bottom: 10px;
+    }
+
+    #navbar__list {
+        line-height: 0px;
+        font-size: 11px;
     }
 }

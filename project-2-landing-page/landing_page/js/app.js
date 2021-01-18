@@ -109,6 +109,7 @@ function addActiveStateLink(current) {
     const currentTab = document.getElementById(current);
 
     if (!currentTab.classList.contains("active")) {
+        currentTab.classList.remove("notactive");
         currentTab.classList.add("active");
     }
 }
@@ -116,6 +117,8 @@ function addActiveStateLink(current) {
 function removeActiveStateLink(current) {
     const currentTab = document.getElementById(current);
     currentTab.classList.remove("active");
+    currentTab.classList.add("notactive");
+
 }
 
 function toggleSection(test, type) {
@@ -195,8 +198,8 @@ function checkActiveView() {
                     if (!section.classList.contains("collapse-section")) {
                         addActiveClass(section, 'your-active-class');
                         //console.log("add:"+section.id);
+                        addActiveStateLink(updateMenuTab);
                     }
-                    addActiveStateLink(updateMenuTab);
                 }
                 else {
                     removeActiveClass(currentActive, 'your-active-class');
@@ -205,16 +208,17 @@ function checkActiveView() {
                     if (!section.classList.contains("collapse-section")) {
                         addActiveClass(section, 'your-active-class');
                         //console.log("add:"+section.id);
+                        addActiveStateLink(updateMenuTab);
                     }
-                    addActiveStateLink(updateMenuTab);
                 }
             }
             else {
                 if (!section.classList.contains("collapse-section")) {
                     addActiveClass(section, 'your-active-class');
                     //console.log("add:"+section.id);
+                    addActiveStateLink(updateMenuTab);
+
                 }
-                addActiveStateLink(updateMenuTab);
             }
         }
     }

@@ -1,13 +1,13 @@
 # Project 2: Landing Page
-### Udacity Front End Developer Nanodegree Program
+##### Udacity Front End Developer Nanodegree Program
 This project aims to give real-world scenarios of manipulating the DOM. The functionality will be using serve two purposes: to prepare for appending dynamically added data to the DOM, and to show how javascript can improve the usability of an otherwise static site. This project barely touches the surface of what is possible, but it does use some incredibly common events, methods, and logic.
 
 ## Requirements
 This project requires to build a multi-section landing page, with a dynamically updating navigational menu based on the amount of content that is added to the page. This project was evaluated by a Udacity code reviewer according to the Personal Blog Website project rubric. Rubric for detailed project requirements prior to submission.
 
 ## Developement Strategy Used
-### 1. Start by linking your app.js
-### 2. Build out your HTML and at least 3 content sections.
+- [x] Linked app.js
+- [x] Build out your HTML and at least 3 content sections.
 ### 3. Build the navigation menu.
 ### 4. Add functionality to distinguish the section in view.
 ### 5. Add the functionality to scroll to sections.
