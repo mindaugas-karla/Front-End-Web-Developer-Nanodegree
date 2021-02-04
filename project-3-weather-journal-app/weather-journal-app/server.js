@@ -22,22 +22,21 @@ app.use(cors());
 app.use(express.static('/website'));
 
 // Set port
-const port = 1337;
+const port = 8000;
 
 // Spin up the server
 const server = app.listen(port, listening);
 
 // Callback to debug
 function listening() {
-    console.log('server running');
-    console.log(`running on localhost: ${port}`);
+    console.log(`ATTENTION: server running on port: ${port}`);
 };
 
 // Setup empty JS object to act as endpoint for all routes
 const projectData = [];
 
-// Callback function to complete GET '/all'
-app.get('/all', sendData);
+// Callback function to complete GET '/allData'
+app.get('/allData', sendData);
 
 function sendData(req, res) {
     res.send(projectData);
@@ -47,13 +46,12 @@ function sendData(req, res) {
 app.post('/addData', addData);
 
 function addData(req, res) {
-    newEntry = {
-        temperature: req.body.temperature,
-        date: req.body.date,
-        feelings: req.body.feelings,
-    };
+    let data = req.body;
+    console.log(data);
 
-    projectData.push(newEntry);
-    res.end();
+    projectData["date"] = req.body.date;
+    projectData["temperature"] = req.body.temperature;
+    projectData["feelings"] = req.body.feelings;
+
+    res.send(projectData);
 }
-
