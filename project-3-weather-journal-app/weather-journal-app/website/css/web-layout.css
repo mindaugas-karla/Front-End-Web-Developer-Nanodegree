@@ -46,6 +46,16 @@
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
+
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    
+    -moz-transition: height 1s ease;
+  -webkit-transition: height 1s ease;
+  -o-transition: height 1s ease;
+  transition: height 1s ease;
 }
 
 #weather_entries {
@@ -74,7 +84,8 @@
 
 
 .zipInput {
-    color: #2d3547;
+    color: #1888be;
+    font-weight: bold;
     width: 80%;
     font-size: 20px;
     border: 2px solid #d7e4ef;
@@ -86,6 +97,7 @@
     text-align: center;
     outline: none;
     background-color: #d3e2ed;
+    margin-right: 5px;
 }
 
 .zipButton {
@@ -97,10 +109,12 @@
     padding: 6px;
     margin: auto;
     width: 35px;
+    height: 38px;
     text-align: center;
     outline: none;
     background-color: #d3e2ed;
-    /* background: url("../images/temperature.ico") no-repeat scroll 0 0 transparent; */    
+    /* background: url("../images/temperature.ico") no-repeat scroll 0 0 transparent; */
+    margin-left: 5px;
 }
 
 
@@ -111,9 +125,9 @@
 }
 
 #loadedData {
-
+    display: none;
     margin-top:50px;
-
+    padding-bottom: 50px;
 }
 
 #feelings_set {
@@ -122,15 +136,41 @@
     justify-content: center;
 }
 
+#smilesBox {
+    display: none;
+    padding-bottom: 30px;
+}
+
+#noteBox {
+    display: none;
+    padding-bottom: 30px;
+
+}
+
+#saveBox {
+    display: none;
+    font-size: 20px;
+    border: 2px solid #fffff8;
+    color: #6c99bb;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 6px;
+    margin: auto;
+    width: 200px;
+    text-align: center;
+    outline: none;
+    background-color: #d3e2ed;
+}
+
+
 .title_feelings {
-    margin-top: 50px;
     margin-bottom: 20px;
 }
 .facesIcon {
     border-style: solid;
-    border-width: 5px;
+    border-width: 2px;
     border-radius: 50%;
-    background-color: #fffff8;
+    background-color: #d3e1ed;
     height: 45px;
     margin-left: 10px;
     margin-right: 10px;
@@ -141,7 +181,21 @@
     padding-right: 50px;
 }
 
-#noteText {
+#recents_entries {
+    text-align: left;
+    font-size: 14px;
+}
+
+#recents_entries img{
+    height: 20px;
+}
+#recents_note {
+    text-align: left;
+    font-size: 14px;
+    font-style: italic;
+}
+
+#feelings {
     outline: none;
     resize: vertical;
     padding: 15px;
@@ -150,13 +204,40 @@
     border-style: solid;
     border-width: 2px;
     border-color: #fffff8;
+    color: #1888be;
+}
+#showEntries {
+    padding-top: 20px;
 }
 
+.last_entry {
+    text-align: left;
 
+
+}
 
 .buttonImage {
     height: 100%;
-    width: 100%;
     object-fit: cover;
 }
 
+.titleStats {
+    font-size: 20px;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+.dataStats {
+    font-size: 15px;
+    font-style: italic;
+    padding-bottom: 5px;
+}
+
+.activeSmile {
+    border-color: yellow;
+    border-width: 5px;
+}
+
+.selectorSmiles {
+    display: none;
+}

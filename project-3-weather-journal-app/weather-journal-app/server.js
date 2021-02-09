@@ -19,7 +19,7 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('/website'));
+app.use(express.static('website'));
 
 // Set port
 const port = 8000;
@@ -35,10 +35,13 @@ function listening() {
 // Setup empty JS object to act as endpoint for all routes
 const projectData = [];
 
+
 // Callback function to complete GET '/allData'
 app.get('/allData', sendData);
 
 function sendData(req, res) {
+    console.log(projectData);
+
     res.send(projectData);
 }
 
@@ -47,11 +50,14 @@ app.post('/addData', addData);
 
 function addData(req, res) {
     let data = req.body;
-    console.log(data);
 
-    projectData["date"] = req.body.date;
-    projectData["temperature"] = req.body.temperature;
-    projectData["feelings"] = req.body.feelings;
-
-    res.send(projectData);
+    let newEntry = {
+        date: data.date,
+        temperature: data.temperature,
+        feels_like: data.feels_like,
+        mood: data.mood,
+        note: data.note
+    }
+    projectData.push(newEntry);
+    res.send(newEntry);
 }

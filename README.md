@@ -15,6 +15,10 @@ The main goal to start this program was to refresh my knowledge and set myself o
 - [Landing Page: Live Page](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-2-landing-page/landing_page/index.html)
 - [Landing Page: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-2-landing-page/landing_page)
 
+## Project 3: Weather Journal App
+
+- [Landing Page: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/)
+- [Landing Page: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-3-weather-journal-app/weather-journal-app)
 
 ## Front End Web Developer Nanodegree
 
