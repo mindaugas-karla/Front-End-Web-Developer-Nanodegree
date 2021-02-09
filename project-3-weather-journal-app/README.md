@@ -39,6 +39,9 @@ js
 ## Results
 Landing page designed and built from using template produced by **Udacity**: 'refresh-2019' clone branch on Github.
 
+
+![](images/weather_app.png)
+
 ### Preview Links
 Landing Page preview links are active. From generated link you can view active Landing page.
 
