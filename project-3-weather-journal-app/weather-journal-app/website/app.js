@@ -63,7 +63,7 @@ const apiKey = 'b0a261c59f09156790ca4d47525c070a';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = d.getMonth() + 1 + '.'+ d.getDate()+'.'+ d.getFullYear(); // EDITED: month + 1
 
 // Temporary Data before Save
 let tempData;
