@@ -183,16 +183,20 @@
 
 #recents_entries {
     text-align: left;
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 25px;
+    
 }
 
 #recents_entries img{
     height: 20px;
 }
 #recents_note {
+    padding-top: 5px;
     text-align: left;
-    font-size: 14px;
+    font-size: 15px;
     font-style: italic;
+    padding-bottom: 15px;
 }
 
 #feelings {
@@ -212,8 +216,7 @@
 
 .last_entry {
     text-align: left;
-
-
+    padding-bottom: 10px;
 }
 
 .buttonImage {
@@ -234,8 +237,8 @@
 }
 
 .activeSmile {
-    border-color: yellow;
-    border-width: 5px;
+    border-color: #1888be;
+    border-width: 8px;
 }
 
 .selectorSmiles {

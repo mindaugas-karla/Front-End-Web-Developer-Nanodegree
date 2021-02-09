@@ -18,6 +18,13 @@ This project requires you to create an asynchronous web app that uses Web API an
 - [x] How to chain Promises together
 - [x] How to access HTML elements with JavaScript and set their properties dynamically
 
+## Developement Strategy Used :speech_balloon:
+- [x] Setting up project environment, making sure Node and packages installed, and included in server.js file.
+- [x] Added POST and GET routes to ensure correct retrieval of data from the server.
+- [x] Acquired API credentials from OpenWeatherMap website.
+- [x] Created async functions to fetch weather data and store it on my local server.
+- [x] Set up a function that updated UI dynamically.
+
 ## Architecture
 The project have a structure like the one shown below. App successfully renders a home page with clear design and functionality added when index.html is loaded in the browser. No errors displayed in console.
 
@@ -59,9 +66,18 @@ Landing Page preview links are active. From generated link you can view active L
 - [Landing Page: Index](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/weather-journal-app/website/index.html)
 
 ### Testing
+To get the project up and running follow the steps below:
+- Open Terminal & navigate to project folder
 ```
 cd project-3-weather-journal-app
 cd weather-journal-app
+```
+- To set up project environment, make sure that the Node and packages (Express, Cors and Body-Parser) installed, and which are used to create the server.
+- After that to start your server, run the command node server.js in your terminal
+```
 node server.js
 ```
+
+
+
 

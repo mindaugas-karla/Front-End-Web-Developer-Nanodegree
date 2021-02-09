@@ -211,10 +211,10 @@ function createEntryLoad(recentDate, recentTemperature, recentFeelLike, recentMo
         recentMood = "unknown";
     }
 
-    let entryStack = recentDate + " " + "temp:" + fahrenheitTemp + "F (" + celciusTemp + "C) " + "feels:" + fahrenheitFeelsTemp + "F (" + celciusFeelsTemp + "C)" + recentMood;
+    let entryStack = "<b>Date:</b> "+recentDate + "<br><b>Temperature:</b> " + fahrenheitTemp + "F (" + celciusTemp + "C) " + "<br><b>Feels:</b> " + fahrenheitFeelsTemp + "F (" + celciusFeelsTemp + "C)" + "<br><b>Mood:</b> " + recentMood;
 
     document.getElementById("recents_entries").innerHTML = entryStack;
-    document.getElementById("recents_note").innerHTML = "Note: " + recentNote;
+    document.getElementById("recents_note").innerHTML = "<b>Note:</b> " + recentNote;
 }
 
 // Dynamically creating EventListener for Mood Selection.
