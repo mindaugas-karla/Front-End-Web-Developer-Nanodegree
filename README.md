@@ -17,8 +17,9 @@ The main goal to start this program was to refresh my knowledge and set myself o
 
 ## Project 3: Weather Journal App
 
-- [Landing Page: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/)
-- [Landing Page: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-3-weather-journal-app/weather-journal-app)
+- [Weather Journal App: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/)
+- [Weather Journal App: Live Page](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/weather-journal-app/website/index.html)
+- [Weather Journal App: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-3-weather-journal-app/weather-journal-app)
 
 ## Front End Web Developer Nanodegree
 

@@ -1,24 +1,25 @@
 # Project 3: Weather Journal App
 ##### Udacity Front End Developer Nanodegree Program
-
+This project consists of:
+- Lesson 1: Introduction
+- Lesson 2: Node & Express Environment
+- Lesson 3: HTTP Requests & Routes
+- Lesson 4: Asynchronous JavaScript
 
 ## Requirements
 This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI for a Weather-Journal App.
 
-
-## Developement Strategy Used :speech_balloon:
-- [x] 
-- [x] 
-- [x] 
-
-- [x] Suggested tasks:
-    - 
-    - 
-    
+## This project helped with :speech_balloon:
+- [x] How dto setup a Node environment with Express and the necessary project dependencies
+- [x] How to setup a server with GET and POST routes
+- [x] How to create developer credentials for a Web API
+- [x] How to use the Fetch API with my credentials and user input to get dynamic data into my app routes
+- [x] How to access a GET route on the server side, from a function called on the client side
+- [x] How to chain Promises together
+- [x] How to access HTML elements with JavaScript and set their properties dynamically
 
 ## Architecture
 The project have a structure like the one shown below. App successfully renders a home page with clear design and functionality added when index.html is loaded in the browser. No errors displayed in console.
-
 
 ```
 server.js
@@ -28,15 +29,17 @@ node_modules
 website
 - css
 -- styles.css
-
-
-
-
-css
-- styles.css    
-index.html
-js
+-- web-layout.css
+-- web-styling.css
+-- web-system.css
+- images
+-- sad_smile.png
+-- normal_smile.png
+-- happy_smile.png
+-- temperature.png
+-- icona.ico
 - app.js
+- index.html
 ../README.mdn
 ```
 
@@ -46,14 +49,19 @@ js
 - JavaScript
 
 
-
 ## Results
-Landing page designed and built from using template produced by **Udacity**: 'refresh-2019' clone branch on Github.
-
 
 ![](images/weather_app.png)
 
 ### Preview Links
 Landing Page preview links are active. From generated link you can view active Landing page.
 
-- [Landing Page: Index](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-2-landing-page/landing_page/index.html)
+- [Landing Page: Index](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/weather-journal-app/website/index.html)
+
+### Testing
+```
+cd project-3-weather-journal-app
+cd weather-journal-app
+node server.js
+```
+
