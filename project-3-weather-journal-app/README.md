@@ -78,6 +78,11 @@ cd weather-journal-app
 node server.js
 ```
 
+United States Zip Codes you can test with: 
+- [Zip Codes](https://www.unitedstateszipcodes.org/)
 
+
+Weather API:
+- [OpenWeather](https://openweathermap.org/)
 
 
