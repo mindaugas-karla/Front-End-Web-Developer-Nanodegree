@@ -21,6 +21,17 @@ The project have a structure like the one shown below. App successfully renders 
 
 
 ```
+server.js
+package.json
+package-lock.json
+node_modules
+website
+- css
+-- styles.css
+
+
+
+
 css
 - styles.css    
 index.html
