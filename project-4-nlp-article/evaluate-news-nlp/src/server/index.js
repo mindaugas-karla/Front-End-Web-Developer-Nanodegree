@@ -26,6 +26,6 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse);
 })
 
-var textapi = new meaningcloud({
-    application_key: process.env.API_KEY
- });
+// var textapi = new meaningcloud({
+//     application_key: process.env.API_KEY
+//  });
