@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
-    "meaningCloud_textapi": "^0.7.0"
+    "meaningCloud_textapi": "^2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
