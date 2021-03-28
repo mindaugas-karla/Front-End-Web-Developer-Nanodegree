@@ -20,7 +20,13 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-            }
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: {
+                  loader: 'file-loader'
+                }
+            }         
         ]
     },
     plugins: [

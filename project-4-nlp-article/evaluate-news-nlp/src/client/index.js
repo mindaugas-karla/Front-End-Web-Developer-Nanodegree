@@ -1,6 +1,10 @@
 import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
 
+import { ParticleNetwork } from './js/bgAnimation'
+
+
+
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/footer.scss'
@@ -11,3 +15,5 @@ export {
     checkForName,
     handleSubmit
 }
+
+

@@ -13,4 +13,4 @@ function checkForName(inputText) {
     }
 }
 
-export { checkForName }
+export { checkForName };
