@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <meta charset="utf-8">
-        <title>Test</title>
+        <meta charset="UTF-8">
+        <title>Mindauga's NLP Article App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Mindaugas Karla">
+        <meta name="description" content="Mindaugas's NLP Article App. This app allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. Udacity Front-End Program, Project 4" />
+        <meta name="keywords" content="HTML, CSS, DOM, Web development, nanodegree, udacity, W3C, tutorials, programming, training, learning, quiz, primer, lessons, references, examples, exercises, source code, colors, demos, tips">
     </head>
 
-    <body>
-        <div id="particle-canvas"></div>
+    <body id="particle-canvas">
+        <div></div>
 
         <header>
-            <div class="">
-                Logo
+            <div class="logoNlp noselect">
+                NLP
             </div>
-            <div class="">
-                navigation
+            <div class="logoDescription noselect">
+                This App allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. NLP is the ability of an application to understand the human language.
             </div>
         </header>
 
         <main>
             <section>
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="Client.onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                <!-- <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <input id="name" type="text" name="input" value="" placeholder="URL / TEXT">
+                    <input id="analyseButton" class="pointerCursor" type="submit" name="" value="Analyse" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                </form> -->
+                <form class="" onsubmit="return false;">
+                    <input id="name" type="text" name="input" value="" placeholder="URL / TEXT">
+                    <input id="analyseButton" class="pointerCursor" type="submit" name="" value="Analyse">
                 </form>
             </section>
 
-            <section>
-                <strong>Form Results:</strong>
+            <section class="resultsForm">
+                <div class="resultsTitleLine">
+                    <span class="resultsTitle">RESULTS:</span>
+                    <span class="resultsProcess">READY TO ANALYSE</span>
+                </div>
+                
                 <div id="results"></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p class="noselect">&copy; 2021, Mindaugas Karla</p>
         </footer>
 
     </body>

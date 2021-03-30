@@ -1,7 +1,9 @@
 form {
-    border: 1px solid #545454;
-    border-radius: 3px;
     padding: 40px;
+    display: flex;
+    -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
+    -moz-box-shadow: -1px 2px 8px 5px #0000001f;
+    box-shadow: -1px 2px 8px 5px #0000001f;
 }
 
 input {
@@ -9,4 +11,90 @@ input {
     width: 100%;
     line-height: 16px;
     margin: 10px 0;
+}
+
+#name {
+    color: #757575;
+    font-weight: bold;
+    width: 80%;
+    font-size: 20px;
+    border: 1px solid #dfe7e8;
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 12px;
+    margin: auto;
+    text-align: center;
+    outline: none;
+    background-color: #ffffff;
+    margin-right: 5px;
+}
+
+#analyseButton {
+    color: #757575;
+    font-weight: bold;
+    width: 15%;
+    min-width: 115px;
+    font-size: 20px;
+    border: 1px solid #dfe7e8;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 15.5px;
+    margin: auto;
+    text-align: center;
+    outline: none;
+    background-color: #ffffff;
+    margin-right: 5px;
+}
+
+@media (max-width: 650px) {
+    #name {
+        font-size: 18px;
+        padding: 13px;
+    }
+    #analyseButton {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    #name {
+        font-size: 15px;
+        padding: 15.5px;
+
+    }
+    #analyseButton {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 550px) {
+    #name {
+        font-size: 12px;
+        padding: 15px;
+
+    }
+    #analyseButton {
+        font-size: 12px;
+    }
+}
+
+.resultsForm {
+    padding: 15px;
+    -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
+    -moz-box-shadow: -1px 2px 8px 5px #0000001f;
+    box-shadow: -1px 2px 8px 5px #0000001f;
+}
+
+.resultsTitleLine {
+    text-align: center;
+}
+
+.resultsTitle {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.resultsProcess {
+    font-weight: lighter;
 }
