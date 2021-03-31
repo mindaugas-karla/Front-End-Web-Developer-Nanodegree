@@ -56,20 +56,44 @@ After Analyse
 To get the project up and running follow the steps below:
 - Open Terminal & navigate to project folder
 ```
-cd project-3-weather-journal-app
-cd weather-journal-app
+cd project-4-nlp-article
+cd evaluate-4-nlp-article
 ```
-- To set up project environment, make sure that the Node and packages (Express, Cors and Body-Parser) installed, and which are used to create the server.
+- To set up project environment, make sure that the Node and packages (Express, Cors and Body-Parser) installed, and which are used to create the server. Install all dependencies to run.
+```
+npm install
+```
+
+## Deployment
+# Production environment
+```
+npm run build-prod
+npm run start
+```
+
+
+# Developement environment
+```
+npm run build-dev
+```
+
 - After that to start your server, run the command node server.js in your terminal
 ```
 node server.js
 ```
 
-United States Zip Codes you can test with: 
-- [Zip Codes](https://www.unitedstateszipcodes.org/)
+### Also Used
 
 
-Weather API:
-- [OpenWeather](https://openweathermap.org/)
+Meaningcloud - Sentiment Analysis API: 
+- [Sentiment Analysis version 2.1](https://learn.meaningcloud.com/developer/sentiment-analysis/2.1)
+
+
+Background animation by Julian Laval:
+- [Codepen.io Code](https://codepen.io/JulianLaval/pen/KpLXOO)
+
+
+Free background wallpaper:
+- [Wallpaperaccess](https://wallpaperaccess.com/minimalist-robot)
 
 
