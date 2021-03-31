@@ -52,7 +52,7 @@ After Analyse
 ![](images/image2.png)
 
 
-### Testing
+### Deployment
 To get the project up and running follow the steps below:
 - Open Terminal & navigate to project folder
 ```
@@ -64,27 +64,28 @@ cd evaluate-4-nlp-article
 npm install
 ```
 
-## Deployment
+## Build
 # Production environment
 ```
 npm run build-prod
 npm run start
 ```
 
-
 # Developement environment
 ```
 npm run build-dev
 ```
 
-- After that to start your server, run the command node server.js in your terminal
+View the project by opening browser at http://localhost:8082/
+
+## Testing
+
 ```
-node server.js
+npm run test
 ```
+
 
 ### Also Used
-
-
 Meaningcloud - Sentiment Analysis API: 
 - [Sentiment Analysis version 2.1](https://learn.meaningcloud.com/developer/sentiment-analysis/2.1)
 
