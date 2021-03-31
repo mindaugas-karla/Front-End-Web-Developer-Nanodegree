@@ -4,14 +4,14 @@
 
 // Initialisation
 window.onload = function(e){ 
-    var canvasDiv = document.getElementById('particle-canvas');
+    const canvasDiv = document.getElementById('particle-canvas');
 
-    var options = {
+    const options = {
       particleColor: '#000',
       background: Client.webBg,
       interactive: false,
       speed: 'slow',
       density: 'medium'
     };
-    var particleCanvas = new ParticleNetwork(canvasDiv, options);
+    const particleCanvas = new ParticleNetwork(canvasDiv, options);
 }

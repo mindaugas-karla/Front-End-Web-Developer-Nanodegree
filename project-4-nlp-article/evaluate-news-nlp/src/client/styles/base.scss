@@ -10,7 +10,6 @@ body {
   overflow: hidden;
 }
 
-
 body {
     font: 100% $font-stack;
     color: $primary-color;
@@ -21,7 +20,6 @@ body {
     padding-left: 20px;
     padding-right: 20px;
 }
-
 
 #particle-canvas {
   width: 100%;
@@ -58,4 +56,12 @@ canvas {
   z-index: 1 !important;
   position: absolute !important;
   opacity: 0.5;
+}
+
+#results {
+  display: none;
+  text-align: center;
+  padding-top: 30px;
+  line-height: 30px;
+  font-weight: 100;
 }

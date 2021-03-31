@@ -1,13 +1,4 @@
-const dotenv = require('dotenv');
-dotenv.config();
-
-const fetch = require("node-fetch");
-
 /* Server & Routes Setup */
-
-// Get API KEY
-
-
 // Express to run server and routes
 const express = require('express');
 
@@ -17,8 +8,15 @@ const app = express();
 /* Dependencies */
 const bodyParser = require('body-parser');
 
+// To get API key from .env
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Somehow fetching doenst work without this
+const fetch = require("node-fetch");
+
 /* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
+// Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -40,18 +38,11 @@ function listening() {
     console.log(`ATTENTION: server running on port ${port} !`);
 };
 
-
-
-
-
-
-
 // Sentiment Analysis API version 2.1, Default Url
 const defaultUrl = 'https://api.meaningcloud.com/sentiment-2.1';
 
-// Personal API Key for OpenWeatherMap API
+// Get API KEY
 const apiKey = process.env.API_KEY;
-
 
 /* Function to GET Web API Data - Async GET */
 const getAnalyses = async (req, res) => {
@@ -68,7 +59,7 @@ const getAnalyses = async (req, res) => {
     else {
         analyseSet = '?txt=' + analyseValue;
     }
-    
+
     let urlSend = defaultUrl + analyseSet + '&key=' + apiKey + '&lang=en';
     const response = await fetch(urlSend);
     try {
@@ -80,29 +71,9 @@ const getAnalyses = async (req, res) => {
     }
 }
 
-
 // POST Route
 app.post('/apiFeed', getAnalyses);
-
-
-
-const mockAPIResponse = require('./mockAPI.js');
-
-
-
-
-
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
-
-
-
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse);
-})
-
-// var textapi = new meaningcloud({
-//     application_key: process.env.API_KEY
-//  });

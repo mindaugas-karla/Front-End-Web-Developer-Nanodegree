@@ -1,6 +1,6 @@
 /**
  * 
- * NLP article analyse
+ * NLP Article Analyse
  * This project requires you to
  * create an asynchronous web app that uses Web API 
  * and dynamically update the UI, to use Webpack and practices learned at course.
@@ -11,11 +11,8 @@
  * 
 */
 
-
 // Event listener to add function to existing HTML DOM element
 document.getElementById('analyseButton').addEventListener('click', generateResponse);
-
-
 
 // Check Input Field - Input Validation
 function checkInput(inputValue) {
@@ -29,7 +26,7 @@ function checkInput(inputValue) {
 
 // Validate Url
 function validURL(inputValue) {
-    var regex = new RegExp("^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?");
+    const regex = new RegExp("^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?");
     return regex.test(inputValue);
 }
 
@@ -39,8 +36,7 @@ function notifCenter(elmnt, option) {
         let notificationShow = document.getElementById("notificationForm");
         let notificationMessage = document.getElementById("notificationMark");
         let notificationInput = document.getElementById("analyseValue");
-        
-        
+
         if (option == 1) {
             notificationInput.style.borderColor = "#dfe7e8";
             notificationShow.style.display = "none";
@@ -70,14 +66,24 @@ function notifCenter(elmnt, option) {
             notificationProcess.innerHTML = "READY TO ANALYSE";
         }
     }
+    else if (elmnt == "completed") {
+        let notificationProcess = document.getElementById("resultsProcess");
+        let resultsProcess = document.getElementById("results");
+        if (option == 1) {
+            notificationProcess.innerHTML = "ANALYSE IS COMPLETED";
+            resultsProcess.style.display = "block";
+        }
+        else {
+            notificationProcess.innerHTML = "ANALYSE FAILED";
+            resultsProcess.style.display = "none";
+        }
+    }
     else {
         notificationInput.style.borderColor = "#dfe7e8";
         notificationShow.style.display = "none";
         notificationMessage.innerHTML = "";
     }
 }
-
-
 
 /* Function to POST data - Async POST */
 const postData = async (url = '', data = {}) => {
@@ -91,7 +97,6 @@ const postData = async (url = '', data = {}) => {
     });
     try {
         const newData = await postRequest.json();
-        console.log(newData);
         return newData;
     }
     catch (error) {
@@ -99,32 +104,85 @@ const postData = async (url = '', data = {}) => {
     }
 }
 
-function updateResults (data) {
-    console.log("Gauta");
-    console.log(data);
-
+// Convert Score Mark to Text
+function translateScore(score) {
+    let translation;
+    switch (score) {
+        case 'P+':
+            translation = 'strong positive';
+            break;
+        case 'P':
+            translation = 'positive';
+            break;
+        case 'NEW':
+            translation = 'neutral';
+            break;
+        case 'N':
+            translation = 'negative';
+            break;
+        case 'N+':
+            translation = 'strong negative';
+            break;
+        case 'NONE':
+            translation = 'without sentiment';
+            break;
+        default:
+            translation = 'unknown';
+    }
+    return translation.toUpperCase();
 }
 
+// Update and Show results for User
+function updateResults(data) {
+    const status = data.status.msg;
+    const credits = data.status.credits;
+    const remaining_credits = data.status.remaining_credits;
 
-function getNlpAnalyse (analyseSource, analyseOption) {
+    const model = data.model;
+    const confidence = data.confidence;
+    const agreement = data.agreement;
+    const score = data.score_tag;
+    const score_translated = translateScore(score);
+    const irony = data.irony;
+    const subjectivity = data.subjectivity;
+
+    if (status == "OK") {
+        let resultsProcess = document.getElementById("results");
+        let analysedResults = "";
+        analysedResults += "<span class='results_done_title'>MODEL: </span> <span>" + model + "</span> <br>";
+        analysedResults += "<span class='results_done_title'>CONFIDENCE: </span> <span>" + confidence + "% </span> <br>";
+        analysedResults += "<span class='results_done_title'>STATE: </span> <span>" + agreement + " </span> <br>";
+        analysedResults += "<span class='results_done_title'>SCORE: </span> <span>" + score + " (" + score_translated + ")" + " </span> <br>";
+        analysedResults += "<span class='results_done_title'>IRONY: </span> <span>" + irony + " </span> <br>";
+        analysedResults += "<span class='results_done_title'>SUBJECTIVITY: </span> <span>" + subjectivity + " </span> <br>";
+
+        resultsProcess.innerHTML = analysedResults;
+
+        notifCenter("completed", 1);
+    }
+    else {
+        notifCenter("completed", 0);
+    }
+}
+
+// Send data for NLP Analyse
+function getNlpAnalyse(analyseSource, analyseOption) {
     // Add data to POST request
     postData('http://localhost:8082/apiFeed', {
         analyseValue: analyseSource,
         analyseOption: analyseOption
     })
-    // Function which updates UI
-    .then(function (res) {
-        console.log(res);
-        updateResults (res);
-    })
+        // Function which updates UI
+        .then(function (res) {
+            updateResults(res);
+        })
 }
 
-
-
-
 // Analyse Input
-function generateResponse () {
+function generateResponse() {
     let analyseValue = document.getElementById("analyseValue");
+    let resultsProcess = document.getElementById("results");
+    resultsProcess.style.display = "none";
     if (checkInput(analyseValue.value)) {
         notifCenter("form", 1);
         let optionSet;

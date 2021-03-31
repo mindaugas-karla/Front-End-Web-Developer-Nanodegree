@@ -2,12 +2,3 @@
 
 
 
-function checkInputValue (response) {
-
-
-
-
-
-
-
-}
