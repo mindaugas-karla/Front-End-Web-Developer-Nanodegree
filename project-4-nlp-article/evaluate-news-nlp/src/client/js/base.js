@@ -201,3 +201,14 @@ function generateResponse() {
         notifCenter("form", 0);
     }
 }
+
+// no need
+// export {
+//     generateResponse,
+//     getNlpAnalyse,
+//     updateResults,
+//     translateScore,
+//     notifCenter,
+//     validURL,
+//     checkInput
+// }

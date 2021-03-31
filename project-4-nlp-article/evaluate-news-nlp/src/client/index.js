@@ -10,6 +10,7 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
+// no need to export other functions imho, no using it on index, or other files
 export {
     webBg
 }
