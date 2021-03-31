@@ -65,13 +65,13 @@ npm install
 ```
 
 ## Build
-# Production environment
+### Production environment
 ```
 npm run build-prod
 npm run start
 ```
 
-# Developement environment
+### Developement environment
 ```
 npm run build-dev
 ```
