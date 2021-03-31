@@ -1,69 +1,55 @@
-# Project 4: Weather Journal App
+# Project 4: News Article NLP
 ##### Udacity Front End Developer Nanodegree Program
-This project consists of:
-- Lesson 1: Introduction
-- Lesson 2: Node & Express Environment
-- Lesson 3: HTTP Requests & Routes
-- Lesson 4: Asynchronous JavaScript
+Following are the project prerequisites:
+- Webserver - Node
+- Web application framework for routing - Express
+- Build tool - Webpack. Using webpack, we will set up the app to have dev and prod environments, each with their own set of tools and commands.
+- External script - Service Worker
+- External API - Meaningcloud
 
 ## Requirements
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI for a Weather-Journal App.
+This project requires you to build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. NLP is a subset of AI that provides computers ability to process or interact with natural human speech. In NLP, machine learning and deep learning are used on massive amounts of data to obtain the rules and understanding of nuance in human speech.
+
 
 ## This project helped with :speech_balloon:
-- [x] How dto setup a Node environment with Express and the necessary project dependencies
-- [x] How to setup a server with GET and POST routes
-- [x] How to create developer credentials for a Web API
-- [x] How to use the Fetch API with my credentials and user input to get dynamic data into my app routes
-- [x] How to access a GET route on the server side, from a function called on the client side
-- [x] How to chain Promises together
-- [x] How to access HTML elements with JavaScript and set their properties dynamically
+- [x] Setting up Webpack
+- [x] Sass styles
+- [x] Webpack Loaders and Plugins
+- [x] Webpack Loaders and Plugins
+- [x] Creating layouts and page design
+- [x] Service workers
+- [x] JEST Unit tests
 
 ## Developement Strategy Used :speech_balloon:
-- [x] Setting up project environment, making sure Node and packages installed, and included in server.js file.
-- [x] Added POST and GET routes to ensure correct retrieval of data from the server.
-- [x] Acquired API credentials from OpenWeatherMap website.
-- [x] Created async functions to fetch weather data and store it on my local server.
-- [x] Set up a function that updated UI dynamically.
+- [x] Set up with Webpack, Express, Node, and Sass, and Service Workers
+- [x] Separated dev and prod configurations for Webpack
+- [x] Developer environment set up with the Webpack dev server
+- [x] Added one form field
+- [x] Created request to the Meaningcloud API
+- [x] Used Sass for styling
+- [x] Used Minify js and styles in the production environment
+- [x] Added response from the API to the view for a user to see 
+- [x] Added Service workers to be able to show content offline
 
-## Architecture
-The project have a structure like the one shown below. App successfully renders a home page with clear design and functionality added when index.html is loaded in the browser. No errors displayed in console.
-
-```
-server.js
-package.json
-package-lock.json
-node_modules
-website
-- css
--- styles.css
--- web-layout.css
--- web-styling.css
--- web-system.css
-- images
--- sad_smile.png
--- normal_smile.png
--- happy_smile.png
--- temperature.png
--- icona.ico
-- app.js
-- index.html
-../README.mdn
-```
 
 ## Technologies Used
 - Html
 - Css
 - JavaScript
+- Node
+- Express
+- Webpack
+- Jest
+- Workbox
+- Meaningcloud API
 
 
 ## Results
 
-![](images/weather_app.png)
+![](images/image1.png)
 
-### Preview Links
-Landing Page preview links are active. From generated link you can view active Landing page.
+![](images/image1.png)
 
-- [Landing Page: Index](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/weather-journal-app/website/index.html)
 
 ### Testing
 To get the project up and running follow the steps below:
