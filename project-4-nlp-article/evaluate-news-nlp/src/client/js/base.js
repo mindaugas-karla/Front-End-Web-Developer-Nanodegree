@@ -12,11 +12,14 @@
 */
 
 // Event listener to add function to existing HTML DOM element
-document.getElementById('analyseButton').addEventListener('click', generateResponse);
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('analyseButton').addEventListener('click', generateResponse);
+});
+
 
 // Check Input Field - Input Validation
 function checkInput(inputValue) {
-    if (inputValue.length !== 0 && inputValue !== null) {
+    if (inputValue !== null && inputValue.length !== 0) {
         return true;
     }
     else {
@@ -202,13 +205,12 @@ function generateResponse() {
     }
 }
 
-// no need
-// export {
-//     generateResponse,
-//     getNlpAnalyse,
-//     updateResults,
-//     translateScore,
-//     notifCenter,
-//     validURL,
-//     checkInput
-// }
+export {
+    generateResponse,
+    getNlpAnalyse,
+    updateResults,
+    translateScore,
+    notifCenter,
+    validURL,
+    checkInput
+}
