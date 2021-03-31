@@ -1,4 +1,12 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const fetch = require("node-fetch");
+
 /* Server & Routes Setup */
+
+// Get API KEY
+
 
 // Express to run server and routes
 const express = require('express');
@@ -24,11 +32,6 @@ app.use(express.static('dist'));
 // Set port
 const port = 8082;
 
-// Get API KEY
-const dotenv = require('dotenv');
-dotenv.config();
-
-
 // Spin up the server
 const server = app.listen(port, listening);
 
@@ -41,20 +44,45 @@ function listening() {
 
 
 
-/* Global Variables */
+
 
 // Sentiment Analysis API version 2.1, Default Url
-const defaultUrl = 'https://api.meaningcloud.com/sentiment-2.1?';
+const defaultUrl = 'https://api.meaningcloud.com/sentiment-2.1';
 
 // Personal API Key for OpenWeatherMap API
 const apiKey = process.env.API_KEY;
 
-// Setup empty JS object to act as endpoint for all routes
-let projectData = [];
+
+/* Function to GET Web API Data - Async GET */
+const getAnalyses = async (req, res) => {
+    let analyseValue = req.body.analyseValue;
+    let analyseOption = req.body.analyseOption;
+    let analyseSet;
+
+    if (analyseOption == "web") {
+        analyseSet = '?url=' + analyseValue;
+    }
+    else if (analyseOption == "text") {
+        analyseSet = '?txt=' + analyseValue;
+    }
+    else {
+        analyseSet = '?txt=' + analyseValue;
+    }
+    
+    let urlSend = defaultUrl + analyseSet + '&key=' + apiKey + '&lang=en';
+    const response = await fetch(urlSend);
+    try {
+        const data = await response.json();
+        res.send(data)
+    }
+    catch (error) {
+        console.log('error', error);
+    }
+}
 
 
-
-
+// POST Route
+app.post('/apiFeed', getAnalyses);
 
 
 

@@ -28,15 +28,21 @@
                     <input id="analyseButton" class="pointerCursor" type="submit" name="" value="Analyse" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form> -->
                 <form class="" onsubmit="return false;">
-                    <input id="name" type="text" name="input" value="" placeholder="URL / TEXT">
-                    <input id="analyseButton" class="pointerCursor" type="submit" name="" value="Analyse">
+                    <div>
+                        <input id="analyseValue" type="text" name="input" value="" placeholder="URL / TEXT">
+                        <input id="analyseButton" class="pointerCursor" type="submit" name="" value="Analyse">
+                    </div>
+                    <div id="notificationForm">
+                        <span id="notificationMark" class="noselect"></span>
+                    </div>
+                    
                 </form>
             </section>
 
             <section class="resultsForm">
-                <div class="resultsTitleLine">
-                    <span class="resultsTitle">RESULTS:</span>
-                    <span class="resultsProcess">READY TO ANALYSE</span>
+                <div class="resultsTitleLine" class="noselect">
+                    <span id="resultsTitle">RESULTS:</span>
+                    <span id="resultsProcess">READY TO ANALYSE</span>
                 </div>
                 
                 <div id="results"></div>
