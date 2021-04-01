@@ -31,7 +31,7 @@ The main goal to start this program was to refresh my knowledge and set myself o
 - [Travel App: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-6-travel-app/)
 - [Travel App: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-6-travel-app/travel-app)
 
-<br>
+
 ## Front End Web Developer Nanodegree
 <img align="center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Udacity_logo.svg/1200px-Udacity_logo.svg.png" width=280 style="cursor:default;">
 
