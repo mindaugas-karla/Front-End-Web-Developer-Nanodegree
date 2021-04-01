@@ -1,4 +1,4 @@
-# Project 6: Travel App
+# Project 7: Travel App
 
 NOT COMPLETED YET
 
