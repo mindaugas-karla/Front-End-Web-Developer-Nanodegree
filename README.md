@@ -26,6 +26,8 @@ The main goal to start this program was to refresh my knowledge and set myself o
 - [NLP Article App: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-4-nlp-article/evaluate-news-nlp)
 
 ## Project 4-5: Career Services
+- [LinkedIn](https://www.linkedin.com/in/mindaugas-karla/)
+- [GitHub ](https://github.com/mindaugas-karla/)
 
 ## Project 6: Travel App
 - [Travel App: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-6-travel-app/)
