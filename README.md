@@ -21,8 +21,12 @@ The main goal to start this program was to refresh my knowledge and set myself o
 - [Weather Journal App: Live Page](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-3-weather-journal-app/weather-journal-app/website/index.html)
 - [Weather Journal App: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-3-weather-journal-app/weather-journal-app)
 
-## Front End Web Developer Nanodegree
+## Project 4: NLP Article App
+- [NLP Article App: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-4-nlp-article/)
+- [NLP Article App: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-4-nlp-article/evaluate-news-nlp)
 
+<br>
+## Front End Web Developer Nanodegree
 <img align="center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Udacity_logo.svg/1200px-Udacity_logo.svg.png" width=280 style="cursor:default;">
 
 The goal of the Front End Web Developer Nanodegree program is to equip learners with the unique skills
