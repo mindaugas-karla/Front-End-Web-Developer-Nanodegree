@@ -1,7 +1,4 @@
-# Project 7: Travel App
-
-NOT COMPLETED YET
-
+# Project 4: News Article NLP
 ##### Udacity Front End Developer Nanodegree Program
 Following are the project prerequisites:
 - Webserver - Node
