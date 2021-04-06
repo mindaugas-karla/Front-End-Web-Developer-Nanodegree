@@ -32,7 +32,7 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             },
             {
-                test: /\.(jpg|ico)$/,
+                test: /\.(jpg|ico|png)$/i,
                 use: {
                   loader: 'file-loader'
                 }
@@ -54,8 +54,8 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         }),
-        new MiniCssExtractPlugin({ filename: "[name].css" }),
-        new WorkboxPlugin.GenerateSW()
+        new MiniCssExtractPlugin({ filename: "[name].css" })
+        //new WorkboxPlugin.GenerateSW()
 
     ]
 }

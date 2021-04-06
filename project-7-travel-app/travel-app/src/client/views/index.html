@@ -2,59 +2,60 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
-        <title>Mindauga's NLP Article App</title>
+        <title>Travel Assistant</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="Mindaugas Karla">
-        <meta name="description" content="Mindaugas's NLP Article App. This app allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. Udacity Front-End Program, Project 4" />
-        <meta name="keywords" content="HTML, CSS, DOM, Web development, nanodegree, udacity, W3C, tutorials, programming, training, learning, quiz, primer, lessons, references, examples, exercises, source code, colors, demos, tips">
+        <meta name="description" content="Mindaugas's Travel Assistant App. This app allows users to plan Travel, make to do lists, add hotels, flight date and etc." />
+        <meta name="keywords" content="HTML, CSS, DOM, Travel, Assistant, Web development, nanodegree, udacity, W3C, tutorials, programming, training, learning, quiz, primer, lessons, references, examples, exercises, source code, colors, demos, tips">
     </head>
 
-    <body id="particle-canvas">
-        <div></div>
+    <body id="travel-app">
 
-        <header>
-            <div class="logoNlp noselect">
-                NLP
-            </div>
-            <div class="logoDescription noselect">
-                This App allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites.
-                NLP is the ability of an application to understand the human language.
-            </div>
+        <header id="main-header">
+        <div id="header-logo" class="noselect pointerCursor"></div>
+        <div id="header-text" class="noselect">
+            <span>
+                Travel
+
+            </span>
+            <span>
+                Assistant
+
+            </span>
+             
+        
+        </div>
+        <div id="header-search"></div>
+        <div id="header-profile"></div>
+        <div id="header-logout" class="noselect pointerCursor"></div>
+
+
+
+
+
         </header>
 
-        <main>
+        <main id="main-content">
             <section>
-                <form class="" onsubmit="return false;">
-                    <div>
-                        <input id="analyseValue" type="text" name="input" value="" placeholder="URL / TEXT">
-                        <input id="analyseButton" class="pointerCursor" type="submit" name="" value="Analyse">
-                    </div>
-                    <div id="notificationForm">
-                        <span id="notificationMark" class="noselect"></span>
-                    </div>
-                </form>
+                
             </section>
 
-            <section class="resultsForm">
-                <div class="resultsTitleLine" class="noselect">
-                    <span id="resultsTitle">RESULTS:</span>
-                    <span id="resultsProcess">READY TO ANALYSE</span>
-                </div>
-                <div id="results"></div>
+            <section>
+                
             </section>
         </main>
 
-        <footer>
-            <p class="noselect">&copy; 2021, Mindaugas Karla</p>
+        <footer id="main-footer">
+            <p class="noselect">&copy; 2021, Travel Assistant by Mindaugas Karla</p>
         </footer>
         <script>
             // Check that service workers are supported
-            if ('serviceWorker' in navigator) {
-                // Use the window load event to keep the page load performant
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js');
-                });
-            }
+            // if ('serviceWorker' in navigator) {
+            //     // Use the window load event to keep the page load performant
+            //     window.addEventListener('load', () => {
+            //         navigator.serviceWorker.register('/service-worker.js');
+            //     });
+            // }
            </script>
     </body>
 </html>

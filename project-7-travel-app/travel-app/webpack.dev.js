@@ -28,7 +28,7 @@ module.exports = {
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             },
             {
-                test: /\.(jpg|png)$/,
+                test: /\.(jpg|ico|png)$/i,
                 use: {
                   loader: 'file-loader'
                 }
@@ -49,7 +49,7 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        }),
-        new WorkboxPlugin.GenerateSW()
+        })
+        //new WorkboxPlugin.GenerateSW()
     ]
 }

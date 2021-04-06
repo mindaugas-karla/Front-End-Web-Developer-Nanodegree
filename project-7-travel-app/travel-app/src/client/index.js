@@ -1,6 +1,6 @@
-import { ParticleNetwork } from './js/bgAnimation'
-import { extraMods } from './js/extraMods'
-import { base } from './js/base'
+//import { ParticleNetwork } from './js/bgAnimation'
+//import { extraMods } from './js/extraMods'
+//import { base } from './js/base'
 
 import  webBg from './images/bg.jpg'
 

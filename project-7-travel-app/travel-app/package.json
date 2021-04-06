@@ -1,16 +1,17 @@
 {
-  "name": "evaluate-news-nlp",
+  "name": "travel-app",
   "version": "1.0.0",
   "description": "This project is part of front-end web developer nanodegree program",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-4-nlp-article/"
+    "url": "https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-7-travel-app/"
   },
   "keywords": [
-    "evaluate",
-    "news",
-    "nlp",
+    "travel",
     "app",
+    "assistant",
+    "note",
+    "to-do-list",
     "webpack",
     "node",
     "front-end",
