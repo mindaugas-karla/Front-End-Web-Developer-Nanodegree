@@ -51,3 +51,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById("header-logged-in").innerHTML = userName;
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('menu-about').addEventListener('click', function(){menuNavigation("about");});
+    document.getElementById('menu-app').addEventListener('click', function(){menuNavigation("app");});
+    document.getElementById('menu-list').addEventListener('click', function(){menuNavigation("list");});
+    document.getElementById('menu-about').addEventListener('click', function(){menuNavigation("about");});
+    document.getElementById('menu-contact').addEventListener('click', function(){menuNavigation("contact");});
+});
+//submit_button.addEventListener("click", test_click_event);
+
+
+function menuNavigation (menuButton) {
+    console.log("mygtuka:"+menuButton);
+    const pagesAll = [
+        "intro",
+        "app",
+        "list",
+        "about",
+        "contact"
+    ];
+
+    //content-
+   
+    for (i = 0; i < pagesAll.length; i++) {
+        let page = pagesAll[i];
+        console.log("page:"+page);
+
+        document.getElementById("content-"+page).style.display = "none";
+      }
+
+      document.getElementById("content-"+menuButton).style.display = "block";
+
+
+
+}

@@ -9,8 +9,8 @@
         <meta name="keywords" content="HTML, CSS, DOM, Travel, Assistant, Web development, nanodegree, udacity, W3C, tutorials, programming, training, learning, quiz, primer, lessons, references, examples, exercises, source code, colors, demos, tips">
     </head>
 
-    <body id="travel-app">
-        <header id="main-header">
+    <body id="travel-app" class="hiddenBody">
+        <header id="main-header" class="hiddenPart" >
             <section id="header-logo" class="noselect pointerCursor"></section>
             <section id="header-text" class="noselect">
                 <span>
@@ -34,21 +34,21 @@
             <section id="header-logout" class="noselect pointerCursor"></section>
         </header>
 
-        <main id="main-content">
-            <nav id="content-menu">
-                <div class="menuButton noselect pointerCursor">
+        <main id="main-content" class="hiddenGrid">
+            <nav id="content-menu" class="hiddenPart">
+                <div id="menu-app" class="menuButton noselect pointerCursor">
                     <span class="newTripIcon"></span>
                     <span class="buttonText">New Trip +</span>
                 </div>
-                <div class="menuButton noselect pointerCursor">
+                <div id="menu-list" class="menuButton noselect pointerCursor">
                     <span class="newListIcon"></span>
                     <span class="buttonText">New List +</span>
                 </div>
-                <div class="menuButton noselect pointerCursor">
+                <div id="menu-about" class="menuButton noselect pointerCursor">
                     <span class="newAboutIcon"></span>
                     <span class="buttonText">About</span>
                 </div>
-                <div class="menuButton noselect pointerCursor">
+                <div id="menu-contact" class="menuButton noselect pointerCursor">
                     <span class="newContactsIcon"></span>
                     <span class="buttonText">Contacts</span>
                 </div>
@@ -56,19 +56,110 @@
 
             </nav>
 
-            <section id="content-intro">
+            <section id="content-login" class="">
+                
+                <div id="login-logo">
+
+                    <div class="helloProfile"></div>
+
+                </div>
+
+                <div class="hello_text noselect">
+                    
+                    <span>I am Your Personal Travel Assistant!</span>
+                <br>
+                </div>
+
+                <div class="noselect">
+                    Enter your <b>Username</b> below, and we can start planning!
+                    <br>
+                    <br>
+                    Waiting for a vacation?
+
+                </div>
+
+                <div id="login-username-frame">
+                    <input id="login-username" type="text" placeholder="Username">
+                </div>
+
+                <div id="login-username-next">
+                    <input id="login-username-button" class="pointerCursor" type="button" value="NEXT">
+                </div>
+
+
+
+
+            </section>
+
+            <section id="content-intro" class="hiddenPart">
                 intro
             </section>
 
-            <section id="content-about">
-                about
-            </section>
-
-            <section id="content-app">
+            <section id="content-app" class="hiddenPart">
                 app
             </section>
 
-            <section id="content-widget">
+            <section id="content-list" class="hiddenPart">
+                list
+            </section>
+
+            <section id="content-about" class="hiddenPart">
+                <div id="aboutTitle">About</div>
+                <div id="aboutText"><b>Travel Assistant</b> is a powerful tool to plan your Trips.
+                    You can create travel plans, add flight's dates, create to do lists.
+                    This app was created as part of Udacity Nano Degree program as final project.
+                </div>
+                <div id="aboutImage"></div>
+                <div id="aboutDescription">
+                    This project aims to give an opportunity to put all of the skills participant
+                    learned into one project to build own custom travel app.
+                    Due to the nature of this course,
+                    it is very JavaScript heavy,
+                    but it is still expected to write clean and appealing HTML/CSS.
+                    Participant has targeting the DOM, working with objects,
+                    and retrieving data from 3 APIs in which one of those is
+                    reliant on another to work. Finally,
+                    this is all done in a Webpack environment,
+                    using an express server, and wrapped up with service workers.                
+                </div>
+            </section>
+        
+            <section id="content-contact" class="hiddenPart">
+                <div id="contactTitle">Contacts</div>
+
+                
+                <div id="contactForm">
+
+                    <div>You can contact us by email: <span class="emailFont">mindaugaskarla@gmail.com</span></div>
+                    <br>
+                    <div>or</div>
+                    <br>
+
+                    <a href="https://twitter.com/droopyk" style="display: flex; flex-direction: row;" target="_blank">
+                        <div class="contact_icons"><div class="twitterIcon"></div><div class="contact_name">Twitter</div></div>
+                    </a>
+                    <a href="https://www.instagram.com/karliukena/" target="_blank">
+                        <div style="display: flex; flex-direction: row;"><div class="instagramIcon"></div><div class="contact_name">Instagram</div></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mindaugas-karla/" target="_blank">
+                        <div style="display: flex; flex-direction: row;"><div class="linkedinIcon"></div><div class="contact_name">LinkedIn</div></div>
+                    </a>
+                    <a href="https://www.facebook.com/MindaugasKarla" target="_blank">
+                        <div style="display: flex; flex-direction: row;"><div class="facebookIcon"></div><div class="contact_name">Facebook</div></div>
+                    </a>
+
+
+
+                </div>
+
+
+            </section>
+
+
+
+            
+
+            <section id="content-widget" class="hiddenPart">
                 <div id="content-widget-trips" class="widget">
                     <div class="widgetsTitle">Plans</div>
 
@@ -96,12 +187,14 @@
 
             </section>
 
-            <section id="content-slider">
+            <section id="content-slider" class="hiddenPart">
                 Slider
             </section>
+
+
         </main>
 
-        <footer id="main-footer">
+        <footer id="main-footer" class="hiddenFooter">
             <p class="noselect">&copy; 2021, Travel Assistant by Mindaugas Karla</p>
         </footer>
         <script>
