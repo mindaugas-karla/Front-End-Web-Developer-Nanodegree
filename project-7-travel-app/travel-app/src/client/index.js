@@ -2,6 +2,9 @@
 //import { extraMods } from './js/extraMods'
 //import { base } from './js/base'
 
+import { app } from './js/app'
+
+
 import  webBg from './images/bg.jpg'
 
 import './styles/resets.scss'
