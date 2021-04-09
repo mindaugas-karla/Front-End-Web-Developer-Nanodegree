@@ -344,18 +344,74 @@ html {
 }
 
 #login-username-button {
-  border-color: #8ec0dc;
-  width: 200px;
+
+  margin-top: 35px;
+
+}
+
+.formButton {
+  border-color: #8ec0dc4a;
+  width: 180px;
+  height: 50px;
+
   border-radius: 10px;
   background-color: #d7eff6;
   font-weight: bold;
-  color: #2c3d54;
-  border-width: 1px;
+  color: #74aad8;
+  border-width: 0.5px;
   text-decoration: none;
   outline: none;
-  height: 45px;
-  margin-top: 15px;
 
+}
+
+#login-notification {
+  float: left;
+    padding-left: 10px;
+    margin-top: -5px;
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+
+#avatar-selection {
+  display: -webkit-inline-box;
+}
+
+#first-label {
+  background-image: url("../images/avatar_female.jpg");
+  background-repeat: no-repeat;
+  background-size: 100px;
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: white;
+}
+.selectorProfiles {
+  display: none;
+}
+.profileError {
+  border-style: solid;
+  border-right-width: 5px;
+  border-color: red;
+}
+
+.profileSelected {
+  border-style: solid;
+  border-right-width: 5px;
+  border-color: #7faccd;
+}
+
+#second-label {
+  background-image: url("../images/avatar_male.jpg");
+  background-repeat: no-repeat;
+  background-size: 100px;
+  height: 100px;
+  width: 100px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background-color: white;
 }
 
 
@@ -656,6 +712,38 @@ html {
 
 }
 
+.activated {
+  display: inherit !important;
+}
+.deactivated {
+  display: none !important;
+}
+
+#user-name-profile {
+  font-weight: bolder;
+}
+
+#content-profile {
+  grid-area: app;
+  background-color: #fff5f5b0;
+  padding: 15px;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
+  -moz-box-shadow: -1px 2px 8px 5px #0000001f;
+  box-shadow: -1px 2px 8px 5px #0000001f;
+  display: block;
+  font-weight: lighter;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  display: block;
+}
+
 
 #content-login {
   grid-area: app;
@@ -676,6 +764,7 @@ html {
   display: flex;
   flex-direction: column;
 
+  display: none;
 }
 .hello_text {
   margin-top: 30px;
@@ -686,7 +775,7 @@ b {
   font-weight: bolder;
 }
 
-#login-logo {
+.login-logo {
   text-align: -webkit-center;
     width: 200px;
     height: 200px;

@@ -57,39 +57,84 @@
             </nav>
 
             <section id="content-login" class="">
-                
-                <div id="login-logo">
-
+                <div class="login-logo">
                     <div class="helloProfile"></div>
-
                 </div>
 
                 <div class="hello_text noselect">
-                    
                     <span>I am Your Personal Travel Assistant!</span>
-                <br>
+                    <br>
                 </div>
 
                 <div class="noselect">
-                    Enter your <b>Username</b> below, and we can start planning!
+                    Enter Your <b>Username</b> below, and We can Start Planning!
                     <br>
                     <br>
-                    Waiting for a vacation?
-
+                    Waiting for a Vacation?
                 </div>
 
                 <div id="login-username-frame">
-                    <input id="login-username" type="text" placeholder="Username">
+                    <input id="login-username" type="text" placeholder="Username" min="1" max="12">
+                    <span id="login-notification">Wrong username, please re-enter!</span>
                 </div>
 
                 <div id="login-username-next">
-                    <input id="login-username-button" class="pointerCursor" type="button" value="NEXT">
+                    <input id="login-username-button" class="formButton pointerCursor" type="button" value="NEXT">
+                </div>
+            </section>
+
+            <section id="content-profile" class="">
+                <div class="login-logo">
+                    <div class="helloProfile"></div>
                 </div>
 
+                <div class="hello_text noselect">
+                    <span>Hi, <span id="user-name-profile">droopyk</span>!</span>
+                    <br>
+                </div>
+                <div>
+                    <span>As a New User You have one more step.</span>
+                </div>
+
+                <div class="noselect">
+                    Choose your <b>Avatar</b>!
+                    <br>
+                    <br>
+                </div>
+
+              
+
+                <div class="selectorProfiles">
+                    <input id="firstProfile" type="radio" name="profiles" value="first">
+                    <input id="secondProfile" type="radio" name="profiles" value="second">
+                </div>
+                
+
+                <div id="avatar-selection">
+                    <div id="profile-first">
+                        <label for="firstProfile">
+                            <div id="first-label" class="noselect pointerCursor"></div>
+                        </label>
+                    </div>
+
+                    <div id="profile-second">
+                        <label for="secondProfile">
+                            <div id="second-label" class="noselect pointerCursor"></div>
+                        </label>
+                    </div>
 
 
 
+
+
+                </div>
+
+                <div id="login-profile-next">
+                    <input id="login-profile-button" class="formButton pointerCursor" type="button" value="NEXT">
+                </div>
             </section>
+
+
 
             <section id="content-intro" class="hiddenPart">
                 intro
@@ -166,9 +211,7 @@
                 </div>
                 <div id="content-widget-lists" class="widget">
                     <div class="widgetsTitle">Lists</div>
-
                 </div>
-
 
                 <div id="content-widget-author" class="widget">
                     <div class="widgetsTitle">Author</div>
