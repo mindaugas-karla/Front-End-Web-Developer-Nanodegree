@@ -172,18 +172,20 @@ html {
   }
 
 #header-profile-image {
-    background-image: url("../images/avatar_male.jpg");
     background-repeat: no-repeat;
     background-size: 55px;
     height: 55px;
     width: 55px;
     border-radius: 50%;
     margin-top: 3px;
-
 }
 
-
-  
+.profile_image_first {
+  background-image: url("../images/avatar_female.jpg");
+}
+.profile_image_second {
+  background-image: url("../images/avatar_male.jpg");
+}
 
 
   #header-profile-login {
@@ -397,10 +399,16 @@ html {
   border-color: red;
 }
 
+
+
 .profileSelected {
   border-style: solid;
   border-right-width: 5px;
   border-color: #7faccd;
+}
+
+#login-profile-next {
+  margin-top:15px;
 }
 
 #second-label {
@@ -425,7 +433,6 @@ html {
   -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
   -moz-box-shadow: -1px 2px 8px 5px #0000001f;
   box-shadow: -1px 2px 8px 5px #0000001f;
-  display: none;
 }
 
 //app
@@ -454,7 +461,6 @@ html {
   -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
   -moz-box-shadow: -1px 2px 8px 5px #0000001f;
   box-shadow: -1px 2px 8px 5px #0000001f;
-  display: none;
 }
 
 
@@ -483,7 +489,6 @@ html {
     ;
     
   justify-content: center;
-  display: none;
 }
 #aboutTitle {
   grid-area: aboutTitle;
@@ -535,7 +540,6 @@ html {
   font-weight: lighter;
 
   text-align: center;
-  display: none;
 }
 
 #contactTitle {
@@ -713,7 +717,7 @@ html {
 }
 
 .activated {
-  display: inherit !important;
+  display: block !important;
 }
 .deactivated {
   display: none !important;
@@ -734,14 +738,13 @@ html {
   -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
   -moz-box-shadow: -1px 2px 8px 5px #0000001f;
   box-shadow: -1px 2px 8px 5px #0000001f;
-  display: block;
   font-weight: lighter;
 
   text-align: center;
 
-  display: flex;
-  flex-direction: column;
   display: block;
+  flex-direction: column;
+  
 }
 
 
@@ -764,7 +767,6 @@ html {
   display: flex;
   flex-direction: column;
 
-  display: none;
 }
 .hello_text {
   margin-top: 30px;

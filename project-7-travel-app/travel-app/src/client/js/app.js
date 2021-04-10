@@ -1,94 +1,4 @@
-
-document.addEventListener('DOMContentLoaded', function () {
-    app ();
-    document.getElementById('login-username-button').addEventListener('click', function(){loginManager();});
-    document.getElementById('login-profile-button').addEventListener('click', function(){profileNext();});
-
-    document.getElementById('first-label').addEventListener('click', function(){profileSelect(1);});
-    document.getElementById('second-label').addEventListener('click', function(){profileSelect(2);});
-
-});
-
-function appInsideSet () {
-
-}
-
-
-
-
-function profileSelect(profile) {
-
-    if (profile == 1) {
-        document.getElementById("first-label").classList.add("profileSelected");
-        document.getElementById("second-label").classList.remove("profileSelected");
-    }
-    else {
-        document.getElementById("first-label").classList.remove("profileSelected");
-        document.getElementById("second-label").classList.add("profileSelected");
-
-    }
-
-
-}
-
-
-
-function app () {
-    let checkData = checkStorage("system");
-    if (checkData["status"]) {
-        console.log ("rado system");
-        let loggedIn = checkData["load"]["login"];
-
-        if (loggedIn == 1) {
-            console.log("PRISILOGGINES!");
-            appInsideSet ();
-        }
-        else {
-            console.log("NERISILOGGINES!");
-        }
-    }
-    else {
-        console.log ("create system setting");
-        let newEntry = {login:0};    
-        createEntry("system", newEntry);
-    }
-}
-
-function profileNext () {
-    const rbs = document.querySelectorAll('input[name="profiles"]');
-    let selectedValue;
-    for (const rb of rbs) {
-        if (rb.checked) {
-            selectedValue = rb.value;
-            break;
-        }
-    }
-
-    if (selectedValue == "first") {
-
-
-    }
-    else if (selectedValue == "second") {
-
-
-    }
-    else {
-        document.getElementById("first-label").classList.add("profileError");
-        document.getElementById("second-label").classList.add("profileError");
-       
-        setTimeout(function(){
-            document.getElementById("first-label").classList.remove("profileError");
-            document.getElementById("second-label").classList.remove("profileError");
-           
-        },3000);
-    }
-
-    //console.log("pasirinkta:"+selectedValue);
-
-}
-
-
-
+//** Helper Functions **/
 
 // Check Input Field - Input Validation
 function checkInput(inputValue) {
@@ -100,9 +10,9 @@ function checkInput(inputValue) {
     }
 }
 
-
-function checkStorage (userName) {
-    let getData = localStorage.getItem(userName);
+// Check and load Storage Data
+function checkStorage(systemName) {
+    let getData = localStorage.getItem(systemName);
     let response = [];
     if (getData) {
         response.status = true;
@@ -115,22 +25,202 @@ function checkStorage (userName) {
     return response;
 }
 
-
-function createEntry (userName, valueSet) {
+// Create New Storage Value
+function createEntry(userName, valueSet) {
     localStorage.setItem(userName, JSON.stringify(valueSet));
     return true;
 }
 
+function logOut (userName) {
+    let newEntry = { login: 0, user: 0 };
+    createEntry("system", newEntry);
 
+    //load login settings
+    document.getElementById("main-footer").classList.add("hiddenFooter");
+    document.getElementById("main-content").classList.add("hiddenGrid");
+    document.getElementById("main-header").classList.add("hiddenPart");
+    document.getElementById("travel-app").classList.add("hiddenBody");
 
-function chooseProfile () {
+    document.getElementById("content-widget").classList.add("hiddenPart");
+    document.getElementById("content-intro").classList.add("hiddenPart");
+    document.getElementById("content-menu").classList.add("hiddenPart");
 
-
-        //user-name-profile
+    blockManagement("content-profile", "hide");
+    blockManagement("content-login", "show");
 
 }
 
-function blockManagement (sectionId, sectionOption) {
+
+// Open App, with Logged In User settings
+function insideApp(userName) {
+    // Load User Data
+    let checkData = checkStorage("users");
+    if (checkData["status"]) {
+        if (checkData["load"][userName]) {
+            // Set Login Status to system storage
+            let newEntry = { login: 1, user: userName };
+            createEntry("system", newEntry);
+            document.getElementById("header-logged-in").innerHTML = userName;
+
+            // Add Logout button Listener
+            document.getElementById('header-logout').addEventListener('click', function () { logOut(userName); });
+
+
+            let profilePic = checkData["load"][userName]["profile"];
+
+            
+
+            // Set Profile
+            setProfileImage (profilePic);
+
+            //load user settings
+            document.getElementById("main-footer").classList.remove("hiddenFooter");
+            document.getElementById("main-content").classList.remove("hiddenGrid");
+            document.getElementById("main-header").classList.remove("hiddenPart");
+            document.getElementById("travel-app").classList.remove("hiddenBody");
+
+            document.getElementById("content-widget").classList.remove("hiddenPart");
+            document.getElementById("content-intro").classList.remove("hiddenPart");
+            document.getElementById("content-menu").classList.remove("hiddenPart");
+
+            blockManagement("content-profile", "hide");
+            blockManagement("content-login", "hide");
+
+            console.log("INICIJUOJA APPSA")
+
+        }
+        else {
+            console.log("KLAIDA!");
+        }
+    }
+
+    
+}
+
+// Create New User: add UserName and Selected Profile
+function updateUser(systemPart, userName, dataSet) {
+    console.log ("iraso i reiksme:"+userName);
+    console.log(dataSet)
+    let checkData = checkStorage(systemPart);
+    if (checkData["status"]) {
+        let loadedData = checkData["load"];
+        if (loadedData[userName]) {
+            let userData = loadedData[userName];
+
+            if (typeof dataSet === 'object' && dataSet !== null) {
+                for (const [key, value] of Object.entries(dataSet)) {
+                    console.log(`${key}: ${value}`);
+                    userData[key] = value;
+                }
+                let obj = {[userName]:userData};
+                createEntry(systemPart, obj);
+            }
+            else {
+                //Error
+                console.log("Error");
+            }
+        }
+        else {
+            //Error
+            console.log("Error");
+        }
+    }
+    else {
+        //Error
+        console.log("Error");
+    }
+}
+
+// Procced, Save Profile and Continue
+function profileNext(userName) {
+    const rbs = document.querySelectorAll('input[name="profiles"]');
+    let selectedValue;
+    for (const rb of rbs) {
+        if (rb.checked) {
+            selectedValue = rb.value;
+            break;
+        }
+    }
+
+    if (selectedValue == "first") {
+        let dataSet = { "profile": 1 };
+        updateUser("users", userName, dataSet);
+        insideApp(userName);
+    }
+    else if (selectedValue == "second") {
+        let dataSet = { "profile": 2 };
+        updateUser("users", userName, dataSet);
+        insideApp(userName);
+    }
+    else {
+        document.getElementById("first-label").classList.add("profileError");
+        document.getElementById("second-label").classList.add("profileError");
+
+        setTimeout(function () {
+            document.getElementById("first-label").classList.remove("profileError");
+            document.getElementById("second-label").classList.remove("profileError");
+
+        }, 3000);
+    }
+}
+
+// Check if User is loggedIn or loggedOut, or mb new User
+function checkSystem() {
+    console.log("1.START");
+    let checkData = checkStorage("system");
+    if (checkData["status"]) {
+        console.log("1A.RADO");
+        let loggedIn = checkData["load"]["login"];
+        let loggedUser = checkData["load"]["user"];
+
+        if (loggedIn == 1) {
+            console.log("1A1.PRILOGINTAS");
+
+            insideApp(loggedUser);
+        }
+        else {
+            console.log("1A2.OFFLINE");
+
+            // Do nothing: Leave Log In page
+        }
+    }
+    else {
+        console.log("1B.NERADO");
+
+        // Create basic system settings, for further use
+        let newEntry = { login: 0, user: 0 };
+        createEntry("system", newEntry);
+    }
+}
+
+// Set Profile Image To App
+function setProfileImage(selection) {
+    if (selection == 1) {
+        document.getElementById("header-profile-image").classList.remove("profile_image_second");
+        document.getElementById("header-profile-image").classList.add("profile_image_first");
+    }
+    else {
+        document.getElementById("header-profile-image").classList.remove("profile_image_first");
+        document.getElementById("header-profile-image").classList.add("profile_image_second");
+    }
+}
+
+// Choose Profile Image
+function profileSelect(profile) {
+    document.getElementById("first-label").classList.remove("profileError");
+    document.getElementById("second-label").classList.remove("profileError");
+    if (profile == 1) {
+        document.getElementById("first-label").classList.add("profileSelected");
+        document.getElementById("second-label").classList.remove("profileSelected");
+    }
+    else {
+        document.getElementById("first-label").classList.remove("profileSelected");
+        document.getElementById("second-label").classList.add("profileSelected");
+    }
+}
+
+// Pre-App Pages Management
+function blockManagement(sectionId, sectionOption) {
     if (document.getElementById(sectionId)) {
         let changeClass = document.getElementById(sectionId);
         if (sectionOption == "show") {
@@ -144,162 +234,96 @@ function blockManagement (sectionId, sectionOption) {
     }
 }
 
-function openProfileSetup (userName) {
+// Open Profile Setup Window
+function openProfileSetup(userName) {
     document.getElementById("user-name-profile").innerHTML = userName;
-    blockManagement ("content-login", "hide");
-    blockManagement ("content-profile", "show");    
+    document.getElementById('login-profile-button').addEventListener('click', function () { profileNext(userName); });
+    blockManagement("content-login", "hide");
+    blockManagement("content-profile", "show");
 }
 
-
-function proceedLogin (userName) {
+// Check user Username in the system
+function proceedLogin(userName) {
+    console.log("tikrina:"+userName);
     let checkData = checkStorage("users");
     if (checkData["status"]) {
+        console.log("yra USERS");
         let loadedData = checkData["load"];
-
         if (loadedData[userName]) {
-            console.log("RADO USERI");
             let userData = loadedData[userName];
             let userProfile = userData["profile"];
             if (userProfile == 0) {
-                console.log("nesukurtas profilis");
-                openProfileSetup (userName);
+                console.log("profilis nesukurtas");
+
+                openProfileSetup(userName);
             }
             else {
-                console.log("done, priloginti !");
+                console.log("profilis ok, go toliau");
 
-
+                insideApp(userName);
             }
-
         }
         else {
-            console.log("NERADO USERIO");
-            loadedData[userName] = { "profile" : 0};
+            console.log("mera tokio userio, kuria isnaujo");
+
+            console.log("nera tokio userio");
+            loadedData[userName] = { "profile": 0 };
             createEntry("users", loadedData);
+            openProfileSetup(userName);
         }
     }
     else {
-
+        console.log("BLOGAI");
         var userData = {
-            userName:{ "profile" : 0}
-        };   
+            [userName]: { "profile": 0 }
+        };
 
         createEntry("users", userData);
+        openProfileSetup(userName);
     }
-
-    // if (checkStorage (userName)) {
-    //     let userData = loadUser(userName);
-    //     console.log("atloadinta");
-    //     console.log(userData);
-
-    //     if (userData["profile"] == 0) {
-    //         console.log("neparinktas profilis");
-    //     }
-    //     else {
-    //         console.log("parinktas profilis");
-    //     }
-    // }
-    // else {
-    //     console.log("NERADO");
-        
-    // }
-
-
 }
 
-
-
+// Check if Username is not empty and valid
 function loginManager() {
     const userName = document.getElementById("login-username");
     const userNotification = document.getElementById("login-notification");
-    
+
     if (checkInput(userName.value)) {
         userName.style.borderColor = "";
         userNotification.style.display = "none";
-        proceedLogin (userName.value);
+        proceedLogin(userName.value);
     }
     else {
         userName.style.borderColor = "red";
         userNotification.style.display = "block";
-
-        setTimeout(function(){
+        setTimeout(function () {
             userName.style.borderColor = "";
             userNotification.style.display = "none";
-        },3000);
+        }, 3000);
     }
 }
 
-
-
-
-
-
-
-
-const userName = "JonasB";
-let leggedIn = 0;
-var useris1 = {name:"petras", image:"1"};
-var useris2 = {name:"jonas", image:"2"};
-var test = {user1:useris1, user2:useris2};
-
-
-
-localStorage.setItem('appData', JSON.stringify(test));
-
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-
-//     let appData;
-
-//     if (localStorage.getItem('appData')) {
-//         leggedIn = 1;
-//         console.log("123");
-//        appData = JSON.parse(localStorage.getItem('appData'));
-//        //appData = localStorage.getItem('appData');
-//        console.log(appData);
-//        if (appData['user2']) {
-
-//         console.log("rado");
-
-//        }
-//        else {
-//         console.log("nerado");
-
-//        }
-
-
-//        let user = appData["user"];
-
-//         console.log("user:"+user);
-//       }
-//       else {
-//         leggedIn = 2;
-//         console.log("222");
-//         appData = [];
-
-
-//       }
-
-
-//     console.log ("rez:"+leggedIn);
-
-
-//     document.getElementById("header-logged-in").innerHTML = userName;
-// });
-
-
+// Add event Listeners and start app functions only than DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('menu-about').addEventListener('click', function(){menuNavigation("about");});
-    document.getElementById('menu-app').addEventListener('click', function(){menuNavigation("app");});
-    document.getElementById('menu-list').addEventListener('click', function(){menuNavigation("list");});
-    document.getElementById('menu-about').addEventListener('click', function(){menuNavigation("about");});
-    document.getElementById('menu-contact').addEventListener('click', function(){menuNavigation("contact");});
+    // Check User Status [ if loggedIn or loggedOut, or mb new User? ]
+    checkSystem();
+
+    // Event listener to add function to existing HTML DOM element
+    document.getElementById('login-username-button').addEventListener('click', function () { loginManager(); });
+    document.getElementById('first-label').addEventListener('click', function () { profileSelect(1); });
+    document.getElementById('second-label').addEventListener('click', function () { profileSelect(2); });
 });
-//submit_button.addEventListener("click", test_click_event);
 
 
-function menuNavigation (menuButton) {
-    console.log("mygtuka:"+menuButton);
+
+
+
+
+//** Inside APP Functionality **/ 
+
+// Manage Navigation, Dinamically change play field :)
+function menuNavigation(menuButton) {
+    console.log("mygtuka:" + menuButton);
     const pagesAll = [
         "intro",
         "app",
@@ -308,17 +332,21 @@ function menuNavigation (menuButton) {
         "contact"
     ];
 
-    //content-
-   
-    for (i = 0; i < pagesAll.length; i++) {
+    for (var i = 0; i < pagesAll.length; i++) {
         let page = pagesAll[i];
-        console.log("page:"+page);
+        console.log("page:" + page);
+        document.getElementById("content-" + page).classList.add("hiddenPart");
 
-        document.getElementById("content-"+page).style.display = "none";
-      }
+    }
 
-      document.getElementById("content-"+menuButton).style.display = "block";
-
-
-
+    console.log ("ijungia:"+"content-" + menuButton);
+    document.getElementById("content-" + menuButton).classList.remove("hiddenPart");
 }
+
+// Add event Listeners only than DOM is loaded to add Functionality to APP
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('menu-app').addEventListener('click', function () { menuNavigation("app"); });
+    document.getElementById('menu-list').addEventListener('click', function () { menuNavigation("list"); });
+    document.getElementById('menu-about').addEventListener('click', function () { menuNavigation("about"); });
+    document.getElementById('menu-contact').addEventListener('click', function () { menuNavigation("contact"); });
+});
