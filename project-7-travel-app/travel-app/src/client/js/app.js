@@ -44,6 +44,8 @@ function logOut (userName) {
     document.getElementById("content-widget").classList.add("hiddenPart");
     document.getElementById("content-intro").classList.add("hiddenPart");
     document.getElementById("content-menu").classList.add("hiddenPart");
+    document.getElementById("content-slider").classList.add("hiddenPart");
+
 
     blockManagement("content-profile", "hide");
     blockManagement("content-login", "show");
@@ -65,10 +67,7 @@ function insideApp(userName) {
             // Add Logout button Listener
             document.getElementById('header-logout').addEventListener('click', function () { logOut(userName); });
 
-
             let profilePic = checkData["load"][userName]["profile"];
-
-            
 
             // Set Profile
             setProfileImage (profilePic);
@@ -82,6 +81,7 @@ function insideApp(userName) {
             document.getElementById("content-widget").classList.remove("hiddenPart");
             document.getElementById("content-intro").classList.remove("hiddenPart");
             document.getElementById("content-menu").classList.remove("hiddenPart");
+            document.getElementById("content-slider").classList.remove("hiddenPart");
 
             blockManagement("content-profile", "hide");
             blockManagement("content-login", "hide");
@@ -92,9 +92,7 @@ function insideApp(userName) {
         else {
             console.log("KLAIDA!");
         }
-    }
-
-    
+    }    
 }
 
 // Create New User: add UserName and Selected Profile
@@ -350,3 +348,88 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('menu-about').addEventListener('click', function () { menuNavigation("about"); });
     document.getElementById('menu-contact').addEventListener('click', function () { menuNavigation("contact"); });
 });
+
+
+
+/////////////////
+
+//* APP FUNCTIONS *//
+
+
+// Check Weather Header
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('header-search-bar-confirm').addEventListener('click', function () { checkWeather(); });
+});
+
+
+function updateResultsCheckBar () {
+
+
+
+}
+
+
+/* Function to POST data - Async POST */
+const postData = async (url = '', data = {}) => {
+    const postRequest = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    try {
+        const newData = await postRequest.json();
+        return newData;
+    }
+    catch (error) {
+        console.log('Error', error);
+    }
+}
+
+
+function getWeather(analyseName) {
+    // Add data to POST request
+    postData('http://localhost:8082/apiWeather', {
+        analyseValue: analyseName
+    })
+        .then(function (res) {
+            console.log("rezultatai");
+            console.log(res);
+            //updateResults(res);
+
+            managePopup("results-header-search", "show");
+        })
+}
+
+
+
+function checkWeather () {
+    let weatherInput = document.getElementById("header-search-bar").value;
+    console.log("Ieskos oro salies:"+weatherInput);    
+    getWeather(weatherInput);
+
+}
+
+
+
+function managePopup (popId, popOption) {
+    if (popOption == "show") {
+        document.getElementById(popId).style.display = "block";
+    }
+    else {
+       document.getElementById(popId).style.display = "none";
+    }
+
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('results-header-button').addEventListener('click', function () { managePopup("results-header-search", "hide"); });
+});
+
+
+
+

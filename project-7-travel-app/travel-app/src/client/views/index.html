@@ -24,12 +24,20 @@
             </span>
         </section>
         <section id="header-search">
-            <input id="header-search-bar" type="text" placeholder="Check weather...">
+            <input id="header-search-bar" type="text" placeholder="Weather by Destination...">
+            <input id="header-search-bar-confirm" type="button" value="" class="pointerCursor">
+            <div id="results-header-search">
+                <div id="results-header-button" class="noselect pointerCursor">x</div>
+
+                <div id="results-header"></div>
+
+
+            </div>
         </section>
         <section id="header-profile">
             <div id="header-profile-image" class="">
             </div>
-            <div id="header-profile-login">
+            <div id="header-profile-login" class="noselect">
                 <span>Logged in as</span>
                 <span id="header-logged-in"></span>
             </div>
@@ -138,8 +146,39 @@
             app
         </section>
 
+
+
         <section id="content-list" class="hiddenPart">
-            list
+
+            <div id="list-texts">
+                <span> Reach new productivity peak!</span>
+                <br>
+                <span>People often forget something importan when planning trip. Plan your trip before time comes and not too late!</span>
+                <br>
+                <span>Here you can create as many to do lists as you want!</span>
+                
+            </div>
+
+
+            <div id="list-to-do">
+                <input id="list-title" placeholder="Title">
+
+
+
+                <input id="list-item-1" placeholder="Passport..">
+
+
+                <input id="add-new-item" type="button" value="+">
+                <input id="list-save-button" type="button" value="Save">
+
+
+
+
+            </div>
+
+
+
+
         </section>
 
         <section id="content-about" class="hiddenPart">
@@ -205,10 +244,18 @@
         <section id="content-widget" class="hiddenPart">
             <div id="content-widget-trips" class="widget">
                 <div class="widgetsTitle">Plans</div>
+                <div id="widget-plans-results">
+                    No Plans Yet
+
+                </div>
 
             </div>
             <div id="content-widget-lists" class="widget">
                 <div class="widgetsTitle">Lists</div>
+                <div id="widget-lists-results">
+                    No Lists Yet
+
+                </div>
             </div>
 
             <div id="content-widget-author" class="widget">
@@ -233,7 +280,44 @@
         </section>
 
         <section id="content-slider" class="hiddenPart">
-            Slider
+            <div>Popular Destinations</div>
+
+            <div id="pupular-destinations">
+                <div style="height: 100px;
+                width: 100px;
+                background-color: red;
+                border-radius: 15px;
+                margin-right: 15px;">
+
+                    Paryzius
+
+
+                </div>
+
+                <div style="height: 100px;
+                width: 100px;
+                background-color: red;
+                border-radius: 15px;
+                margin-right: 15px;">
+
+Londonas
+
+
+                </div>
+
+                <div style="height: 100px;
+                width: 100px;
+                background-color: red;
+                border-radius: 15px;
+                margin-right: 15px;">Vilnius
+                
+                </div>
+
+
+            </div>
+
+
+            
         </section>
 
 
