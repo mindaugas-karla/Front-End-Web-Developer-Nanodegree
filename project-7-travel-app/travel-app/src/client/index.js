@@ -2,20 +2,24 @@
 //import { extraMods } from './js/extraMods'
 //import { base } from './js/base'
 
+
+import { checkInput, reloadWeb } from './js/helper'
+import { checkStorage, createEntry, updateUser } from './js/storage'
+
+
 import { app } from './js/app'
 
-
-import  webBg from './images/bg.jpg'
-
+// Css
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-// no need to export other functions imho, no using it on index, or other files
 export {
-    webBg
+    checkInput,
+    checkStorage,
+    createEntry,
+    updateUser,
+    reloadWeb
 }
-
-

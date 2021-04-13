@@ -1,41 +1,16 @@
-//** Helper Functions **/
+/** Functions to Manage Platform */
+/** (I know It's better to separate this category,
+ * but it was way easier to do this way,
+ * because then I started I added more and more usability,
+ * and it was too hard to move this later) */
 
-// Check Input Field - Input Validation
-function checkInput(inputValue) {
-    if (inputValue !== null && inputValue.length !== 0) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-// Check and load Storage Data
-function checkStorage(systemName) {
-    let getData = localStorage.getItem(systemName);
-    let response = [];
-    if (getData) {
-        response.status = true;
-        response.load = JSON.parse(getData);
-    }
-    else {
-        response.status = false;
-        response.load = false;
-    }
-    return response;
-}
-
-// Create New Storage Value
-function createEntry(userName, valueSet) {
-    localStorage.setItem(userName, JSON.stringify(valueSet));
-    return true;
-}
-
+// Log Out Button
 function logOut (userName) {
+    // Clears User Entry
     let newEntry = { login: 0, user: 0 };
-    createEntry("system", newEntry);
+    Client.createEntry("system", newEntry);
 
-    //load login settings
+    // Hide Menu Elements, set Sign Out Mode
     document.getElementById("main-footer").classList.add("hiddenFooter");
     document.getElementById("main-content").classList.add("hiddenGrid");
     document.getElementById("main-header").classList.add("hiddenPart");
@@ -45,29 +20,40 @@ function logOut (userName) {
     document.getElementById("content-intro").classList.add("hiddenPart");
     document.getElementById("content-menu").classList.add("hiddenPart");
     document.getElementById("content-slider").classList.add("hiddenPart");
+    document.getElementById("content-app").classList.add("hiddenPart");
+
 
 
     blockManagement("content-profile", "hide");
     blockManagement("content-login", "show");
-
 }
-
 
 // Open App, with Logged In User settings
 function insideApp(userName) {
     // Load User Data
-    let checkData = checkStorage("users");
+    let checkData = Client.checkStorage("users");
     if (checkData["status"]) {
         if (checkData["load"][userName]) {
             // Set Login Status to system storage
             let newEntry = { login: 1, user: userName };
-            createEntry("system", newEntry);
+            Client.createEntry("system", newEntry);
             document.getElementById("header-logged-in").innerHTML = userName;
 
             // Add Logout button Listener
             document.getElementById('header-logout').addEventListener('click', function () { logOut(userName); });
+            // Add Intro button
+            document.getElementById('intro-confirm').addEventListener('click', function () { confirmIntro(userName); });
 
             let profilePic = checkData["load"][userName]["profile"];
+            let introMessage = checkData["load"][userName]["intro"];
+            console.log("intro:"+introMessage);
+            if (introMessage == 0) {
+                document.getElementById("content-intro").classList.remove("hiddenPart");
+            }
+            else {
+                document.getElementById("content-app").classList.remove("hiddenPart");
+            }
+
 
             // Set Profile
             setProfileImage (profilePic);
@@ -79,54 +65,17 @@ function insideApp(userName) {
             document.getElementById("travel-app").classList.remove("hiddenBody");
 
             document.getElementById("content-widget").classList.remove("hiddenPart");
-            document.getElementById("content-intro").classList.remove("hiddenPart");
+            
             document.getElementById("content-menu").classList.remove("hiddenPart");
             document.getElementById("content-slider").classList.remove("hiddenPart");
 
             blockManagement("content-profile", "hide");
             blockManagement("content-login", "hide");
-
-            console.log("INICIJUOJA APPSA")
-
         }
         else {
-            console.log("KLAIDA!");
+            console.log("ERROR!");
         }
     }    
-}
-
-// Create New User: add UserName and Selected Profile
-function updateUser(systemPart, userName, dataSet) {
-    console.log ("iraso i reiksme:"+userName);
-    console.log(dataSet)
-    let checkData = checkStorage(systemPart);
-    if (checkData["status"]) {
-        let loadedData = checkData["load"];
-        if (loadedData[userName]) {
-            let userData = loadedData[userName];
-
-            if (typeof dataSet === 'object' && dataSet !== null) {
-                for (const [key, value] of Object.entries(dataSet)) {
-                    console.log(`${key}: ${value}`);
-                    userData[key] = value;
-                }
-                let obj = {[userName]:userData};
-                createEntry(systemPart, obj);
-            }
-            else {
-                //Error
-                console.log("Error");
-            }
-        }
-        else {
-            //Error
-            console.log("Error");
-        }
-    }
-    else {
-        //Error
-        console.log("Error");
-    }
 }
 
 // Procced, Save Profile and Continue
@@ -141,13 +90,13 @@ function profileNext(userName) {
     }
 
     if (selectedValue == "first") {
-        let dataSet = { "profile": 1 };
-        updateUser("users", userName, dataSet);
+        let dataSet = { "profile": 1, "intro" : 0 };
+        Client.updateUser("users", userName, dataSet);
         insideApp(userName);
     }
     else if (selectedValue == "second") {
-        let dataSet = { "profile": 2 };
-        updateUser("users", userName, dataSet);
+        let dataSet = { "profile": 2, "intro" : 0 };
+        Client.updateUser("users", userName, dataSet);
         insideApp(userName);
     }
     else {
@@ -164,10 +113,8 @@ function profileNext(userName) {
 
 // Check if User is loggedIn or loggedOut, or mb new User
 function checkSystem() {
-    console.log("1.START");
-    let checkData = checkStorage("system");
+    let checkData = Client.checkStorage("system");
     if (checkData["status"]) {
-        console.log("1A.RADO");
         let loggedIn = checkData["load"]["login"];
         let loggedUser = checkData["load"]["user"];
 
@@ -187,8 +134,18 @@ function checkSystem() {
 
         // Create basic system settings, for further use
         let newEntry = { login: 0, user: 0 };
-        createEntry("system", newEntry);
+        Client.createEntry("system", newEntry);
     }
+}
+
+// Confirm Intro Page
+function confirmIntro (userName) {
+
+    let dataSet = { "intro" : 1 };
+    Client.updateUser("users", userName, dataSet);
+
+    document.getElementById("content-intro").classList.add("hiddenPart");
+    document.getElementById("content-app").classList.remove("hiddenPart");
 }
 
 // Set Profile Image To App
@@ -242,41 +199,31 @@ function openProfileSetup(userName) {
 
 // Check user Username in the system
 function proceedLogin(userName) {
-    console.log("tikrina:"+userName);
-    let checkData = checkStorage("users");
+    let checkData = Client.checkStorage("users");
     if (checkData["status"]) {
-        console.log("yra USERS");
         let loadedData = checkData["load"];
         if (loadedData[userName]) {
             let userData = loadedData[userName];
             let userProfile = userData["profile"];
             if (userProfile == 0) {
-                console.log("profilis nesukurtas");
-
                 openProfileSetup(userName);
             }
             else {
-                console.log("profilis ok, go toliau");
-
                 insideApp(userName);
             }
         }
         else {
-            console.log("mera tokio userio, kuria isnaujo");
-
-            console.log("nera tokio userio");
             loadedData[userName] = { "profile": 0 };
-            createEntry("users", loadedData);
+            Client.createEntry("users", loadedData);
             openProfileSetup(userName);
         }
     }
     else {
-        console.log("BLOGAI");
         var userData = {
             [userName]: { "profile": 0 }
         };
 
-        createEntry("users", userData);
+        Client.createEntry("users", userData);
         openProfileSetup(userName);
     }
 }
@@ -286,7 +233,7 @@ function loginManager() {
     const userName = document.getElementById("login-username");
     const userNotification = document.getElementById("login-notification");
 
-    if (checkInput(userName.value)) {
+    if (Client.checkInput(userName.value)) {
         userName.style.borderColor = "";
         userNotification.style.display = "none";
         proceedLogin(userName.value);
@@ -301,23 +248,15 @@ function loginManager() {
     }
 }
 
-// Add event Listeners and start app functions only than DOM is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    // Check User Status [ if loggedIn or loggedOut, or mb new User? ]
-    checkSystem();
-
-    // Event listener to add function to existing HTML DOM element
-    document.getElementById('login-username-button').addEventListener('click', function () { loginManager(); });
-    document.getElementById('first-label').addEventListener('click', function () { profileSelect(1); });
-    document.getElementById('second-label').addEventListener('click', function () { profileSelect(2); });
-});
-
-
-
-
-
-
-//** Inside APP Functionality **/ 
+// Manage Header PopUp
+function managePopup (popId, popOption) {
+    if (popOption == "show") {
+        document.getElementById(popId).style.display = "block";
+    }
+    else {
+       document.getElementById(popId).style.display = "none";
+    }
+}
 
 // Manage Navigation, Dinamically change play field :)
 function menuNavigation(menuButton) {
@@ -337,24 +276,48 @@ function menuNavigation(menuButton) {
 
     }
 
-    console.log ("ijungia:"+"content-" + menuButton);
     document.getElementById("content-" + menuButton).classList.remove("hiddenPart");
 }
 
-// Add event Listeners only than DOM is loaded to add Functionality to APP
+
+// Add event Listeners and start app functions only than DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
+    // Check User Status [ if loggedIn or loggedOut, or mb new User?! ]
+    checkSystem();
+
+    // Event listener to add function to existing HTML DOM element
+    document.getElementById('login-username-button').addEventListener('click', function () { loginManager(); });
+    document.getElementById('first-label').addEventListener('click', function () { profileSelect(1); });
+    document.getElementById('second-label').addEventListener('click', function () { profileSelect(2); });
+    document.getElementById('results-header-button').addEventListener('click', function () { managePopup("results-header-search", "hide"); });
+
+    // Menu Navigation Setup
     document.getElementById('menu-app').addEventListener('click', function () { menuNavigation("app"); });
     document.getElementById('menu-list').addEventListener('click', function () { menuNavigation("list"); });
     document.getElementById('menu-about').addEventListener('click', function () { menuNavigation("about"); });
     document.getElementById('menu-contact').addEventListener('click', function () { menuNavigation("contact"); });
+
+    //
+    document.getElementById('header-logo').addEventListener('click', function () { Client.reloadWeb(); });
+    document.getElementById('header-text').addEventListener('click', function () { Client.reloadWeb(); });
+
+
 });
+
+
+
+
+
+
+//** Inside APP Functionality **/ 
+
 
 
 
 /////////////////
 
-//* APP FUNCTIONS *//
-
+/** APP FUNCTIONS */
+/** Functions related to data managing and results */
 
 // Check Weather Header
 
@@ -412,24 +375,6 @@ function checkWeather () {
     getWeather(weatherInput);
 
 }
-
-
-
-function managePopup (popId, popOption) {
-    if (popOption == "show") {
-        document.getElementById(popId).style.display = "block";
-    }
-    else {
-       document.getElementById(popId).style.display = "none";
-    }
-
-}
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('results-header-button').addEventListener('click', function () { managePopup("results-header-search", "hide"); });
-});
-
 
 
 

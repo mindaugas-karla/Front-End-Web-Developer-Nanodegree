@@ -59,6 +59,7 @@ html {
 
 @media(min-width:250px) {
 	#travel-app {
+    max-width: 1300px;
     font: 100% $font-stack;
     color: $primary-color;
    
@@ -506,10 +507,34 @@ flex-direction: row;
   -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
   -moz-box-shadow: -1px 2px 8px 5px #0000001f;
   box-shadow: -1px 2px 8px 5px #0000001f;
-  display: block;
+
+  
+}
+
+#content-app-table {
+display: flex;
+  flex-direction: row;
+
 
 }
 
+#content-app-create {
+  background-color: #deeef7;
+  width: -webkit-fill-available;
+margin-right: 10px;
+padding: 15px;
+border-radius: 8px;
+}
+
+#content-app-result {
+  background-color: #fdbc56;
+  width: -webkit-fill-available;
+  margin-left: 10px;
+  padding: 15px;
+border-radius: 8px;
+
+
+}
 
 
 //list
@@ -943,6 +968,11 @@ b {
   }
 
   
+
+
+
+
+
   
 	
 }
