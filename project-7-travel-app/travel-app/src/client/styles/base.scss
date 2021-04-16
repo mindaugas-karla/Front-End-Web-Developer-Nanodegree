@@ -172,8 +172,9 @@ html {
   }
 
   #header-search-bar-confirm {
-    width: 30px;
+    width: 50px;
     padding: 0;
+    padding-right: 2px;
     height: 35px;
     margin-top: 17px;
     border: none;
@@ -191,9 +192,9 @@ html {
   #results-header-search {
  background-color: #ecf1f4;
   width: 300px;
-  height: 200px;
+  // min-height: 200px;
   position: absolute;
-  margin-top: 278px;
+  margin-top: 750px;
   border-width: 1px;
   border-color: #b4d7e6;
   border-style: solid;
@@ -204,20 +205,95 @@ html {
   display: none;
   }
 
+#results-header {
+  padding: 20px;
+    text-align: left;
+    line-height: 25px;
+}
 
- 
+
+.countryBlock {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.weatherSearchBlock {
+  padding-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #7faccd;
+
+}
+.imageSearchBlock {
+  text-align: center;
+}
+.imagePreviewSearch {
+  margin-bottom: 20px;
+
+}
+.generalInfoStyle {
+  padding-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #7faccd;
+
+}
+.weatherSearchTitle {
+
+  text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+.weatherIcon {
+  height: 25px;
+  margin-bottom: -7px;
+}
+  .countryFlag {
+    width: 25px;
+  }
+  .countryName {
+    padding-left: 10px;
+    font-weight: bold;
+  }
+
+.searchBarResultText {
+font-weight: bold;
+
+}
+.searchBarResultTitle {
+font-weight: lighter;
+
+}
+
+
+
 #content-slider {
   display: flex;
   flex-direction: column;
 
 }
 
-#pupular-destinations {
-display: flex;
-flex-direction: row;
+#popular-destinations {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
 
 
-
+}
+#todays-suggestion {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.popularDestinationSingle {
+  height: 90px;
+  width: 90px;
+  background-color: red;
+  border-radius: 15px;
+  margin-right: 15px;
 
 }
 
@@ -520,18 +596,41 @@ display: flex;
 
 #content-app-create {
   background-color: #deeef7;
-  width: -webkit-fill-available;
+  width: 50%;
 margin-right: 10px;
 padding: 15px;
 border-radius: 8px;
+height: -webkit-fill-available;
 }
 
+
+#content-app-create input {
+  margin: 0 !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  border-radius: 0;
+  font-size: 16px;
+  padding: 5px 20px;
+  border-color: #a3c2db;
+}
+
+
 #content-app-result {
-  background-color: #fdbc56;
-  width: -webkit-fill-available;
+  // background-color: #fdbc56;
+    background-image: url("../images/bgPlan.jpg");
+
+  width: 50%;
   margin-left: 10px;
   padding: 15px;
-border-radius: 8px;
+  border-radius: 8px;
+  min-height: 300px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #314f65;
 
 
 }
@@ -542,6 +641,9 @@ border-radius: 8px;
   grid-area: app;
   background-color: #fff5f5b0;
   padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+
   border-radius: 15px;
 
   -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
@@ -575,6 +677,7 @@ border-radius: 8px;
     ;
     
   justify-content: center;
+  line-height: 28px;
 }
 #aboutTitle {
   grid-area: aboutTitle;
@@ -610,6 +713,22 @@ border-radius: 8px;
   display: none !important;
 }
 
+#todoTitle {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+#tripTitle {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
 //contact
 #content-contact {
   grid-area: app;
@@ -640,12 +759,14 @@ border-radius: 8px;
   display: flex;
   flex-direction: column;
   padding: 30px;
-  background-color: #c1e8f1;
   border-radius: 10px;
 }
 
 #contactForm a {
   margin-bottom: 15px;
+    background-color: #c2e9f1;
+    padding: 10px;
+    border-radius: 10px;
 }
 .contact_icons {
   display: flex; flex-direction: row;
@@ -763,7 +884,37 @@ font-weight: lighter;
   margin-top:15px;
 text-align: center;
 font-weight: lighter;
+display: flex;
+flex-direction: column;
 }
+
+#widget-lists-results div {
+  padding: 5px;
+    background-color: #a6aeb1;
+    color: #2c3d54;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.widgetListLineTable {
+  display: flex;
+
+}
+
+
+.widgetListsName {
+  padding-left: 20px;
+  padding-right: 5px;
+  text-overflow:ellipsis;
+    overflow: hidden;
+    width: -webkit-fill-available;
+}
+.widgetListsDelete {
+  float: right;
+  padding-right: 10px;
+}
+
 
 
 #content-widget-author {
@@ -970,9 +1121,168 @@ b {
   
 
 
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #a3c2db;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+    text-align: center;
+    
+    margin-bottom: 20px;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+#content-list input {
+  margin: 0 !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+
+    border-radius: 0;
+    font-size: 16px;
+    padding: 5px 20px;
+    border-color: #a3c2db;
 
 
+}
 
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0;
+  border-left-width: 0px;
+  border-color: #a3c2db;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+#myDIV {
+  display: flex;
+  flex-direction: row;
+
+
+}
+
+#to-do-list-panel {
+ display: flex;
+ flex-direction: row;
+ margin-top: 20px;
+
+
+}
   
+#list-name {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  border-right-width: 0px;
+
+}
+
+#list-input-name {
+  height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #a3c2db;
+}
+
+.listButton {
+  border-style: solid;
+  border-width: 1px;
+  height: 40px;
+
+}
+
+
+
 	
 }

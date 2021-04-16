@@ -24,8 +24,8 @@
             </span>
         </section>
         <section id="header-search">
-            <input id="header-search-bar" type="text" placeholder="Weather by Destination...">
-            <input id="header-search-bar-confirm" type="button" value="" class="pointerCursor">
+            <input id="header-search-bar" type="text" placeholder="Destination info...">
+            <input id="header-search-bar-confirm" type="button" value="GO" class="pointerCursor">
             <div id="results-header-search">
                 <div id="results-header-button" class="noselect pointerCursor">x</div>
 
@@ -151,20 +151,53 @@
         </section>
 
         <section id="content-app" class="hiddenPart">
-            <div>adaasdasdsa</div>
+            <div id="tripTitle">Trip Planner</div>
+
             <div id="content-app-table">
-<div id="content-app-create">
-                Kurimas
+                <div id="content-app-create">
+                    <div style="text-align: center; font-weight: bold; padding-bottom: 15px;">New Plan</div>
+
+                    <div>
+                        <input type="text" id="plan-input-title" placeholder="Trip Title">
+
+                    </div>
+                    <div>
+                        <span>When you planning to travel?</span>
+
+                        <div style="display: flex; flex-direction: row;">
+                            <input type="date" id="travel-start" placeholder="travel start"> -
+                            <input type="date" id="travel-end" placeholder="travel end">
+                        </div>
+                    </div>
+                    <div>
+                        <span>Where you planning to travel for 14 days?</span>
+                        <br>
+                        <br>
+
+                        [Add Destination]
+                        <br>
+                        <br>
+
+                        <input type="text" id="plan-input-destination" placeholder="Destination">
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div id="content-app-result">
+                    rezultatai
+
+                </div>
+
 
             </div>
-            <div id="content-app-result">
- rezultatai
 
-            </div>
-
-
-            </div>
-            
 
 
 
@@ -173,33 +206,37 @@
 
 
         <section id="content-list" class="hiddenPart">
-
-            <div id="list-texts">
-                <span> Reach new productivity peak!</span>
-                <br>
-                <span>People often forget something importan when planning trip. Plan your trip before time comes and not too late!</span>
-                <br>
-                <span>Here you can create as many to do lists as you want!</span>
-                
-            </div>
-
+            <div id="todoTitle">To Do List</div>
 
             <div id="list-to-do">
-                <input id="list-title" placeholder="Title">
+                <div id="list-name">
+                    <input type="text" id="list-input-name" placeholder="List name...">
 
 
+                </div>
+                <div id="myDIV" class="header">
+                    <input type="text" id="myInput" placeholder="Task...">
+                    <span id="add-new-list-item" class="addBtn">Add</span>
+                </div>
 
-                <input id="list-item-1" placeholder="Passport..">
+                <ul id="myUL">
+                    <li>Charger</li>
+                    <li class="checked">Passport</li>
+                    <li>Tickets</li>
+                    <li>Say bye to my cat</li>
+                    <li>Take book</li>
+                </ul>
+
+                <div id="to-do-list-panel">
+                    <input type="button" id="list-clear-button" value="Clear" class="pointerCursor listButton">
+                    <input type="button" id="list-save-button" value="Save" class="pointerCursor listButton">
 
 
-                <input id="add-new-item" type="button" value="+">
-                <input id="list-save-button" type="button" value="Save">
-
+                </div>
 
 
 
             </div>
-
 
 
 
@@ -208,7 +245,15 @@
         <section id="content-about" class="hiddenPart">
             <div id="aboutTitle">About</div>
             <div id="aboutText"><b>Travel Assistant</b> is a powerful tool to plan your Trips.
-                You can create travel plans, add flight's dates, create to do lists.
+                You can create travel plans, add flight's dates, create to do lists. To lists is a good way to Reach new
+                productivity peak!
+                People often forget something importan when planning trip. Plan your trip before time comes and not too
+                late! Here you can create as many to do lists as you want!
+
+
+
+
+
                 This app was created as part of Udacity Nano Degree program as final project.
             </div>
             <div id="aboutImage"></div>
@@ -288,7 +333,7 @@
                     <div class="authorProfile"></div>
                 </div>
                 <h3>Mindaugas Karla</h3>
-                <h4>Web Developer</h4>
+                <h4>Udacity Student</h4>
                 <div class="authorIntroText">
                     <span>
                         One of the many aspects I have enjoyed about my job is the ability to manage my time by myself.
@@ -304,44 +349,16 @@
         </section>
 
         <section id="content-slider" class="hiddenPart">
-            <div>Popular Destinations</div>
+            <div id="todays-suggestion">Today's suggestion to visit:</div>
 
-            <div id="pupular-destinations">
-                <div style="height: 100px;
-                width: 100px;
-                background-color: red;
-                border-radius: 15px;
-                margin-right: 15px;">
-
-                    Paryzius
-
-
-                </div>
-
-                <div style="height: 100px;
-                width: 100px;
-                background-color: red;
-                border-radius: 15px;
-                margin-right: 15px;">
-
-Londonas
-
-
-                </div>
-
-                <div style="height: 100px;
-                width: 100px;
-                background-color: red;
-                border-radius: 15px;
-                margin-right: 15px;">Vilnius
+            <div id="popular-destinations">
                 
-                </div>
 
 
             </div>
 
 
-            
+
         </section>
 
 

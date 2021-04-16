@@ -46,7 +46,7 @@ const apiKey = process.env.API_KEY;
 
 /* Function to GET Web API Data - Async GET */
 const getAnalyses = async (req, res) => {
-    console.log ("analize");
+    console.log("analize");
     let analyseValue = req.body.analyseValue;
     let analyseOption = req.body.analyseOption;
     let analyseSet;
@@ -63,7 +63,7 @@ const getAnalyses = async (req, res) => {
 
     let urlSend = defaultUrl + analyseSet + '&key=' + apiKey + '&lang=en';
 
-    console.log ("urla:"+urlSend)
+    console.log("urla:" + urlSend)
     const response = await fetch(urlSend);
     try {
         const data = await response.json();
@@ -125,7 +125,7 @@ const getGeonameData = async (analyseValue) => {
 
 /* Function to GET Weather from Longitude and Latitude Using Weatherbit API Data - Async GET */
 const getWeatherbitData = async (lat, lng) => {
-    let urlSend = defaultUrl_weatherbit + "lat=" +lat + '&lon=' + lng + '&key=' + apiKey_weatherbit;
+    let urlSend = defaultUrl_weatherbit + "lat=" + lat + '&lon=' + lng + '&key=' + apiKey_weatherbit;
     const response = await fetch(urlSend);
     try {
         const data = await response.json();
@@ -151,7 +151,18 @@ const getPixabayData = async (destination) => {
 }
 
 
-
+/* Function to GET More information about Country Using RestCountries API Data - Async GET */
+const getRestCountriesData = async (name) => {
+    let urlSend = defaultUrl_restcountries + name;
+    const response = await fetch(urlSend);
+    try {
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.log('error', error);
+    }
+}
 
 
 
@@ -163,60 +174,116 @@ const getPixabayData = async (destination) => {
 // Data back
 let searchData = {};
 
-function getWeatherData (req, res) {
+function getWeatherData(req, res) {
     let analyseValue = req.body.analyseValue;
-    console.log("sitas:::"+analyseValue);
+    console.log("sitas:::" + analyseValue);
+    getGeonameData(analyseValue)
+        .then((data) => {
+            let resultsFound = data.totalResultsCount;
+            if (resultsFound > 0) {
+                const lat = data.geonames[0].lat;
+                const lng = data.geonames[0].lng;
+                const country = data.geonames[0].countryName;
+                const population = data.geonames[0].population;
+                const countryCode = data.geonames[0].countryCode;
+                const description = data.geonames[0].fcodeName;
+                const domain = data.geonames[0].topLevelDomain;
+
+                searchData["country"] = country;
+                searchData["population"] = population;
+                searchData["country_code"] = countryCode;
+                searchData["description"] = description;
+                searchData["web_domain"] = description;
+
+                const weatherData = getWeatherbitData(lat, lng);
+                return weatherData;
+            }
+            else {
+                return false;
+            }
+        })
+        .then((weatherData) => {
+            if (weatherData) {
+                console.log(weatherData);
+                searchData["time_zone"] = weatherData.data[0].timezone;
+                searchData["wind_speed"] = weatherData.data[0].wind_spd;
+                searchData["sunset"] = weatherData.data[0].sunset;
+                searchData["sunrise"] = weatherData.data[0].sunrise;
+
+                searchData["weather_icon"] = weatherData.data[0]["weather"].icon;
+                searchData["weather_code"] = weatherData.data[0]["weather"].code;
+                searchData["weather_description"] = weatherData.data[0]["weather"].description;
+                searchData["weather_temp"] = weatherData.data[0].temp;
+
+                const imageData = getPixabayData(analyseValue);
+                return imageData;
+            }
+            else {
+                return false;
+            }
+        })
+        .then((imageData) => {
+            if (imageData && imageData.total > 0) {
+                console.log(imageData);
+                let imageDataGet = imageData.hits[0];
+                searchData["image_preview"] = imageDataGet.previewURL;
+                searchData["image_web"] = imageDataGet.webformatURL;
+                searchData["tags"] = imageDataGet.tags;
+
+            }
+           
+            const restCountries = getRestCountriesData(searchData["country"]);
+            return restCountries;
+        })
+        .then((restCountries) => {
+            console.log(restCountries);
+            if (restCountries && restCountries.status !== 404) {
+                searchData["calling_code"] = restCountries[0].callingCodes;
+                searchData["capital"] = restCountries[0].capital;
+                searchData["region"] = restCountries[0].region;
+                searchData["flag"] = restCountries[0].flag;
+                searchData["country_population"] = restCountries[0].population;
+                searchData["subregion"] = restCountries[0].subregion;
+                searchData["demonym"] = restCountries[0].demonym;
+                searchData["web_domain"] = restCountries[0].topLevelDomain;
 
 
-    getGeonameData (analyseValue)
-    .then((data) => {
-        const lat = data.geonames[0].lat;
-        const lng = data.geonames[0].lng;
-        const country = data.geonames[0].countryName;
-        const pupulation = data.geonames[0].population;
-
-        searchData["country"] = country;
-        searchData["pupulation"] = pupulation;
-
-
-        const weatherData = getWeatherbitData(lat, lng);
-        return weatherData;
-      })
-      .then((weatherData) => {
-        console.log("orai");
-
-        console.log(weatherData.data[0].timezone);
-        console.log(weatherData.data[0].weather);
-        searchData["time_zone"] = weatherData.data[0].timezone;
-
-console.log ("ciaaa:"+analyseValue);
-        const imageData = getPixabayData(analyseValue);
-        return imageData;
-
-   
-      })
-      .then((imageData) => {
-       
-        console.log(imageData);
-
-        
-        res.send(searchData);
-
-   
-      })
-
-
-
-
-      
-
+                res.send(searchData);
+            }
+            else {
+                res.send(false);
+            }
+        })
 }
-
 
 
 
 // POST Route
 app.post('/apiWeather', getWeatherData);
+
+
+
+function getPopularImages(req, res) {
+    let analyseValue = req.body.analyseValue;
+    getPixabayData(analyseValue)
+        .then((data) => {
+            if (data && data.total > 0) {
+                res.send(data);
+                console.log("data:");
+                console.log(data);
+            }
+            else {
+                return false;
+            }
+        })
+}
+
+
+
+// POST Route
+app.post('/apiPopular', getPopularImages);
+
+
 
 
 
