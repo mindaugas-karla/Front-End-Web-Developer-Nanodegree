@@ -1565,5 +1565,33 @@ text-align: center;
 
 
 }
+
+.introText {
+  display:flex;
+flex-direction: column;
+text-align: center;
+line-height: 35px;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+
+}
+.introBeginButton {
+  text-align: center;
+}
+
+.introDescription {
+  display:flex;
+  flex-direction: column;
+  padding: 30px;
+}
+.introDescriptionText {
+  margin-left: 20px;
+  padding-top: 5px;
+  width: -webkit-fill-available;
+  font-weight: lighter;
+}
 	
 }
