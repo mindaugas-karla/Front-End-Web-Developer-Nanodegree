@@ -2,39 +2,85 @@
 /** (I know It's better to separate this category,
  * but it was way easier to do this way,
  * because then I started I added more and more usability,
- * and it was too hard to move this later) */
-
-
-
+ * and it was too hard to move this later, I just cant stop to add new things :) ) */
 
 /** 
- [-] Add end date and display length of trip.
- [-] Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
- [] Allow user to add multiple destinations on the same trip.
-    [] Pull in weather for additional locations.
- [] Allow the user to add hotel and/or flight data.
-    [] Multiple places to stay? Multiple flights?
- [] Integrate the REST Countries API to pull in data for the country being visited.
- [] Allow the user to remove the trip.
- [] Use Local Storage to save the data so that when they close, then revisit the page, their information is still there.
- [] Instead of just pulling a single day forecast, pull the forecast for multiple days.
- [] Incorporate icons into forecast.
- [] Allow user to Print their trip and/or export to PDF.
- [] Allow the user to add a todo list and/or packing list for their trip.
- [] Allow the user to add additional trips (this may take some heavy reworking, but is worth the challenge).
- [] Automatically sort additional trips by countdown.
- [] Move expired trips to bottom/have their style change so it’s clear it’s expired.
+ [x] Add end date and display length of trip.
+ [x] Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+ [+-] Allow user to add multiple destinations on the same trip.
+    [+-] Pull in weather for additional locations.
+    (object is ready for multimple save, but I kinga dont know how to vizualize it, someday mb I will finish it)
+ [+-] Allow the user to add hotel and/or flight data.
+    [+-] Multiple places to stay? Multiple flights?
+ [x] Integrate the REST Countries API to pull in data for the country being visited.
+ [x] Allow the user to remove the trip.
+ [x] Use Local Storage to save the data so that when they close, then revisit the page, their information is still there.
+ [-] Instead of just pulling a single day forecast, pull the forecast for multiple days.
+ [x] Incorporate icons into forecast. (Into Weather section)
+ [x] Allow user to Print their trip and/or export to PDF.
+ [x] Allow the user to add a todo list and/or packing list for their trip.
+ [x] Allow the user to add additional trips (this may take some heavy reworking, but is worth the challenge).
+ [-] Automatically sort additional trips by countdown.
+ [x] Move expired trips to bottom/have their style change so it’s clear it’s expired.
  */
 
+ /** General Functions */
+// Initiate Print Action
+function printPlan(idPrint) {
+    let printContents = document.getElementById(idPrint).innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    Client.reloadWeb();
+}
+
+// Get Date Difference
+function dateDifference(d1, d2) {
+    let t2 = d2.getTime();
+    let t1 = d1.getTime();
+    return parseInt((t2 - t1) / (24 * 3600 * 1000));
+}
+
+// Change date format, String -> Date
+function stringToDate(date) {
+    let parts = date.split('/');
+    // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
+    // January - 0, February - 1, etc.
+    let mydate = new Date(parts[0], parts[1] - 1, parts[2]);
+    return mydate;
+}
+
+// Check Time Left to Begin of Travel
+function timeLeft(travelStart) {
+    const currentDate = (Date.now()) / 1000;
+    const travelBegining = (travelStart.getTime()) / 1000;
+    const daysLeft = Math.round((travelBegining - currentDate) / 86400);
+    return daysLeft;
+}
+
+/* Function to POST data - Async POST */
+const postData = async (url = '', data = {}) => {
+    const postRequest = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    try {
+        const newData = await postRequest.json();
+        return newData;
+    }
+    catch (error) {
+        console.log('Error', error);
+    }
+}
+/** --------------------*/
 
 
-
-
-
-
-
-
-
+/** Platform Main Configuration Functions */
 // Log Out Button
 function logOut(userName) {
     // Clears User Entry
@@ -44,7 +90,6 @@ function logOut(userName) {
     document.getElementById("login-username").value = "";
     document.getElementById("header-logged-in").innerHTML = "";
     document.getElementById("intro-user-name").innerHTML = "";
-
 
     // Hide Menu Elements, set Sign Out Mode
     document.getElementById("main-footer").classList.add("hiddenFooter");
@@ -58,16 +103,11 @@ function logOut(userName) {
     document.getElementById("content-about").classList.add("hiddenPart");
     document.getElementById("content-contact").classList.add("hiddenPart");
 
-
-
     document.getElementById("content-widget").classList.add("hiddenPart");
     document.getElementById("content-menu").classList.add("hiddenPart");
     document.getElementById("content-slider").classList.add("hiddenPart");
 
     document.getElementById("content-trip-load").classList.add("hiddenPart");
-
-
-
 
     blockManagement("content-profile", "hide");
     blockManagement("content-login", "show");
@@ -85,8 +125,6 @@ function insideApp(userName) {
             document.getElementById("header-logged-in").innerHTML = userName;
             document.getElementById("intro-user-name").innerHTML = userName;
 
-
-
             // Add Logout button Listener
             document.getElementById('header-logout').addEventListener('click', function () { logOut(userName); });
             // Add Intro button
@@ -94,14 +132,12 @@ function insideApp(userName) {
 
             let profilePic = checkData["load"][userName]["profile"];
             let introMessage = checkData["load"][userName]["intro"];
-            console.log("intro:" + introMessage);
             if (introMessage == 0) {
                 document.getElementById("content-intro").classList.remove("hiddenPart");
             }
             else {
                 document.getElementById("content-app").classList.remove("hiddenPart");
             }
-
 
             // Set Profile
             setProfileImage(profilePic);
@@ -111,9 +147,7 @@ function insideApp(userName) {
             document.getElementById("main-content").classList.remove("hiddenGrid");
             document.getElementById("main-header").classList.remove("hiddenPart");
             document.getElementById("travel-app").classList.remove("hiddenBody");
-
             document.getElementById("content-widget").classList.remove("hiddenPart");
-
             document.getElementById("content-menu").classList.remove("hiddenPart");
             document.getElementById("content-slider").classList.remove("hiddenPart");
 
@@ -167,19 +201,13 @@ function checkSystem() {
         let loggedUser = checkData["load"]["user"];
 
         if (loggedIn == 1) {
-            console.log("1A1.PRILOGINTAS");
-
             insideApp(loggedUser);
         }
         else {
-            console.log("1A2.OFFLINE");
-
             // Do nothing: Leave Log In page
         }
     }
     else {
-        console.log("1B.NERADO");
-
         // Create basic system settings, for further use
         let newEntry = { login: 0, user: 0 };
         Client.createEntry("system", newEntry);
@@ -188,7 +216,6 @@ function checkSystem() {
 
 // Confirm Intro Page
 function confirmIntro(userName) {
-
     let dataSet = { "intro": 1 };
     Client.updateUser("users", userName, dataSet);
 
@@ -267,7 +294,7 @@ function proceedLogin(userName) {
         }
     }
     else {
-        var userData = {
+        let userData = {
             [userName]: { "profile": 0, "lists": {}, "trips": {} }
         };
 
@@ -317,14 +344,13 @@ function menuNavigation(menuButton) {
         "trip-load"
     ];
 
-    for (var i = 0; i < pagesAll.length; i++) {
+    for (let i = 0; i < pagesAll.length; i++) {
         let page = pagesAll[i];
         document.getElementById("content-" + page).classList.add("hiddenPart");
     }
 
     document.getElementById("content-" + menuButton).classList.remove("hiddenPart");
 }
-
 
 // Add event Listeners and start app functions only than DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
@@ -343,103 +369,29 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('menu-about').addEventListener('click', function () { menuNavigation("about"); });
     document.getElementById('menu-contact').addEventListener('click', function () { menuNavigation("contact"); });
 
-    //
+    // Reload Web Setup
     document.getElementById('header-logo').addEventListener('click', function () { Client.reloadWeb(); });
     document.getElementById('header-text').addEventListener('click', function () { Client.reloadWeb(); });
 
-
+    document.getElementById('header-search-bar-confirm').addEventListener('click', function () { checkWeather(); });
 });
+/** ------------ */
 
-
-
-
-
-
-//** Inside APP Functionality **/ 
-
-
-
+/** Inside APP Functionality **/ 
 
 /////////////////
 
 /** APP FUNCTIONS */
 /** Functions related to data managing and results */
 
-// Check Weather Header
+/** Check Weather Header */
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('header-search-bar-confirm').addEventListener('click', function () { checkWeather(); });
-});
-
-
-
-
-
-
-function setPopTodayDestinations(res) {
-    console.log("tvarkom");
-    console.log(res);
-    if (res && res.total > 4) {
-        let image1 = document.createDocumentFragment();
-        for (let i = 0; i < 5; i++) {
-            let image1_page = res.hits[i].pageUrl;
-            let image1_user = res.hits[i].user;
-            let image1_tags = res.hits[i].tags;
-            let image1_url = res.hits[i].webformatURL;
-
-            let image1_block = document.createElement('figure');
-
-            let image1_image = document.createElement('img');
-            image1_image.src = image1_url;
-            image1_image.alt = image1_tags;
-            image1_image.classList.add('popularDestinationSingle');
-
-            image1_block.appendChild(image1_image);
-            image1.appendChild(image1_block);
-        }
-
-        document.getElementById("popular-destinations").appendChild(image1);
-    }
-    else {
-        document.getElementById("content-slider").classList.add("hiddenPart");
-    }
-}
-
-
-function getPopularDestinationImages() {
-    let popularDestinations = "London,Malta,Vilnius,Cyprus";
-    let popularDestinationsArray = popularDestinations.split(",");
-
-    let todaysDestination = popularDestinationsArray[Math.floor(Math.random() * popularDestinationsArray.length)];
-
-    document.getElementById("todays-suggestion").innerHTML = `Today's suggestion to visit: <b>${todaysDestination}</b>`;
-
-    // Add data to POST request
-    postData('http://localhost:8082/apiPopular', {
-        analyseValue: todaysDestination
-    })
-        .then(function (res) {
-            // console.log("rezultatai");
-            //console.log(res);
-            setPopTodayDestinations(res);
-
-            //managePopup("results-header-search", "show");
-        })
-
-
-}
-
-
+// Update Results on header search bar
 function updateResultsCheckBar(resultsData, idAdd) {
-    //results-header
     if (resultsData) {
-        //rado!
-
-
         document.getElementById(idAdd).innerHTML = "";
 
         let formBlock = document.createDocumentFragment();
-
 
         // Country Flag, Name and Code
         let countryBlock = document.createElement('div');
@@ -573,42 +525,16 @@ function updateResultsCheckBar(resultsData, idAdd) {
     }
     else {
         document.getElementById(idAdd).innerHTML = "No Data";
-
-        //nerado !
-    }
-
-
-}
-
-
-/* Function to POST data - Async POST */
-const postData = async (url = '', data = {}) => {
-    const postRequest = await fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-    try {
-        const newData = await postRequest.json();
-        return newData;
-    }
-    catch (error) {
-        console.log('Error', error);
     }
 }
 
-
+// Get Weather
 function getWeather(analyseName) {
     // Add data to POST request
     postData('http://localhost:8082/apiWeather', {
         analyseValue: analyseName
     })
         .then(function (res) {
-            console.log("rezultatai");
-            console.log(res);
             managePopup("results-header-search", "show");
 
             if (res) {
@@ -619,17 +545,15 @@ function getWeather(analyseName) {
                     managePopup("results-header-search", "hide");
                 }, 3000);
             }
-
-
         })
 }
 
+// Iniciate Check weather for header menu search
 function checkWeather() {
     document.getElementById("results-header").innerHTML = "Loading...";
     managePopup("results-header-search", "show");
 
     let weatherInput = document.getElementById("header-search-bar");
-    console.log("Ieskos oro salies:" + weatherInput.value);
 
     if (Client.checkInput(weatherInput.value)) {
         weatherInput.style.borderColor = "";
@@ -642,13 +566,71 @@ function checkWeather() {
         }, 3000);
     }
 }
+/** ------------------ */
 
 
+/** Popular Destinations */
+// Set Popular destinations in bottom widget/slider section
+function setPopTodayDestinations(res) {
+    if (res && res.total > 4) {
+        let image1 = document.createDocumentFragment();
+        for (let i = 0; i < 5; i++) {
+            // I can add user and url to picture, but it's not my idea, its bad for my design
+            let image1_page = res.hits[i].pageUrl;
+            let image1_user = res.hits[i].user;
+            let image1_tags = res.hits[i].tags;
+            let image1_url = res.hits[i].webformatURL;
+
+            let image1_block = document.createElement('figure');
+
+            let image1_image = document.createElement('img');
+            image1_image.src = image1_url;
+            image1_image.alt = image1_tags;
+            image1_image.classList.add('popularDestinationSingle');
+
+            image1_block.appendChild(image1_image);
+            image1.appendChild(image1_block);
+        }
+        document.getElementById("popular-destinations").appendChild(image1);
+    }
+    else {
+        document.getElementById("content-slider").classList.add("hiddenPart");
+    }
+}
+
+// Get random country to suggest to visit
+function getPopularDestinationImages() {
+    let popularDestinations = "London,Malta,Vilnius,Cyprus";
+    let popularDestinationsArray = popularDestinations.split(",");
+
+    let todaysDestination = popularDestinationsArray[Math.floor(Math.random() * popularDestinationsArray.length)];
+
+    document.getElementById("todays-suggestion").innerHTML = `Today's suggestion to visit: <b>${todaysDestination}</b>`;
+
+    // Add data to POST request
+    postData('http://localhost:8082/apiPopular', {
+        analyseValue: todaysDestination
+    })
+        .then(function (res) {
+            setPopTodayDestinations(res);
+        })
+}
+/** ------------------ */
+
+
+
+
+
+
+
+
+
+/** To do List */
 // Create a new list item when clicking on the "Add" button
 function newElement() {
-    var li = document.createElement("li");
-    var inputValue = document.getElementById("myInput").value;
-    var t = document.createTextNode(inputValue);
+    let li = document.createElement("li");
+    let inputValue = document.getElementById("myInput").value;
+    let t = document.createTextNode(inputValue);
     li.appendChild(t);
     if (inputValue === '') {
         document.getElementById("myInput").style.borderColor = "red";
@@ -662,20 +644,21 @@ function newElement() {
     }
     document.getElementById("myInput").value = "";
 
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
+    let span = document.createElement("span");
+    let txt = document.createTextNode("\u00D7");
     span.className = "close";
     span.appendChild(txt);
     li.appendChild(span);
 
     for (let i = 0; i < close.length; i++) {
         close[i].onclick = function () {
-            var div = this.parentElement;
+            let div = this.parentElement;
             div.style.display = "none";
         }
     }
 }
 
+// Clear To Do List form
 function clearListform(listOption) {
     if (listOption == "save") {
         document.getElementById("myUL").innerHTML = "List saved";
@@ -691,17 +674,13 @@ function clearListform(listOption) {
     }
 }
 
+// Open Selected To Do List
 function openLists(listName) {
-    console.log("atidaro:" + listName);
-
     let userName = document.getElementById("header-logged-in").innerHTML;
-
     let checkUser = Client.checkStorage("users");
     let loadedData = checkUser["load"];
     let userData = loadedData[userName];
-
     let userLists = userData["lists"];
-
     let getList = userLists[listName];
 
     document.getElementById("list-input-name").value = listName;
@@ -711,20 +690,20 @@ function openLists(listName) {
         let text = value["text"];
         let status = value["completed"];
 
-        var listLine = document.createElement("li");
+        let listLine = document.createElement("li");
         listLine.innerHTML = text;
         if (status == 1) {
             listLine.className = "checked";
         }
 
-        var span = document.createElement("SPAN");
+        let span = document.createElement("span");
 
         span.onclick = function () {
-            var div = this.parentElement;
+            let div = this.parentElement;
             div.remove();
         }
 
-        var txt = document.createTextNode("\u00D7");
+        let txt = document.createTextNode("\u00D7");
         span.className = "close";
         span.appendChild(txt);
 
@@ -734,27 +713,23 @@ function openLists(listName) {
     menuNavigation("list");
 }
 
+// Delete Selected To Do List
 function deleteLists(listName) {
     let userName = document.getElementById("header-logged-in").innerHTML;
-
     let checkUser = Client.checkStorage("users");
     let loadedData = checkUser["load"];
     let userData = loadedData[userName];
-
     let userLists = userData["lists"];
 
     delete userLists[listName];
-
-    console.log(userLists);
-
 
     userData["lists"] = userLists;
     Client.updateUser("users", userName, userData);
 
     refreshLists();
-    // console.log(getList);
 }
 
+// Refresh To Do List Section at Widgets Menu
 function refreshLists() {
     let userName = document.getElementById("header-logged-in").innerHTML;
 
@@ -766,13 +741,12 @@ function refreshLists() {
 
         if (userLists && Object.keys(userLists).length !== 0) {
             document.getElementById("widget-lists-results").innerHTML = "";
-            var blockList = document.createElement("div");
 
             for (const [key, value] of Object.entries(userLists)) {
-                var lineFull = document.createElement("div");
+                let lineFull = document.createElement("div");
                 lineFull.classList.add('widgetListLineTable');
-                var span2 = document.createElement("SPAN");
-                var txt = document.createTextNode("\u00D7");
+                let span2 = document.createElement("span");
+                let txt = document.createTextNode("\u00D7");
                 span2.classList.add('widgetListsDelete');
                 span2.classList.add('noselect');
                 span2.classList.add('pointerCursor');
@@ -781,7 +755,7 @@ function refreshLists() {
                     deleteLists(key);
                 }
 
-                var span = document.createElement("SPAN");
+                let span = document.createElement("span");
                 span.innerHTML = key;
                 span.classList.add('noselect');
                 span.classList.add('pointerCursor');
@@ -800,11 +774,12 @@ function refreshLists() {
     }
 }
 
+// Save To Do List Form, and Refresh Widget section!
 function saveListform() {
     let listTitle = document.getElementById("list-input-name");
 
     if (Client.checkInput(listTitle.value)) {
-        var myNodelist = document.getElementsByTagName("LI");
+        let myNodelist = document.getElementsByTagName("li");
         let myListObject = {};
         for (let i = 0; i < myNodelist.length; i++) {
             let bySingle = myNodelist[i];
@@ -824,8 +799,6 @@ function saveListform() {
         let checkData = Client.checkStorage("system");
         let userName = checkData["load"]["user"];
 
-        console.log("username:" + userName);
-
         let checkUser = Client.checkStorage("users");
         let loadedData = checkUser["load"];
         let userData = loadedData[userName];
@@ -843,48 +816,10 @@ function saveListform() {
         }, 3000);
     }
 }
-//var $ = require( "jquery" );
-
-function checkDate(date) {
-    if (!isNaN(Date.parse(date))) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 
 
-function printPlan(idPrint) {
-    var printContents = document.getElementById(idPrint).innerHTML;
-    var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-    Client.reloadWeb();
-}
-
-function dateDifference(d1, d2) {
-    var t2 = d2.getTime();
-    var t1 = d1.getTime();
-    return parseInt((t2 - t1) / (24 * 3600 * 1000));
-}
-
-function stringToDate(date) {
-    var parts = date.split('/');
-    // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
-    // January - 0, February - 1, etc.
-    var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
-    return mydate;
-}
-
-function timeLeft(travelStart) {
-    const currentDate = (Date.now()) / 1000;
-    const travelBegining = (travelStart.getTime()) / 1000;
-    const daysLeft = Math.round((travelBegining - currentDate) / 86400);
-    return daysLeft;
-}
-
+/** Create Travel Plan */
+// Add Date To Live View
 function updateDate() {
     let travelStart = document.getElementById("travel-start");
     let travelEnd = document.getElementById("travel-end");
@@ -892,22 +827,15 @@ function updateDate() {
     //travelStart.value = "2021/04/21";
     //travelEnd.value = "2021/04/26";
 
-
-    if (checkDate(travelStart.value) && checkDate(travelEnd.value)) {
+    if (Client.checkDate(travelStart.value) && Client.checkDate(travelEnd.value)) {
         let startDate = stringToDate(travelStart.value);
         let endDate = stringToDate(travelEnd.value);
 
         let dayDifference = dateDifference(startDate, endDate);
-        console.log("kelione truks:" + dayDifference);
-        //let travelStartsIn = dateDifference (startDate, currentDateFix);
         let travelStartsIn = timeLeft(startDate);
-        console.log("kelione prasides uz:" + travelStartsIn);
 
         let fragmentBlock = document.createDocumentFragment();
-
-
         let dateInfoList = document.createElement('ul');
-
 
         let dateLi = document.createElement('li');
         dateLi.innerHTML = `<span class="titleInfoDate">Date: </span>${travelStart.value}-${travelEnd.value}`;
@@ -933,8 +861,6 @@ function updateDate() {
         document.getElementById("plan-date-live-preview").appendChild(fragmentBlock);
         document.getElementById("plan-date-live-preview").style.visibility = "unset";
 
-
-
         document.getElementById("add-date").value = "Update";
     }
     else {
@@ -947,19 +873,12 @@ function updateDate() {
     }
 }
 
-
-
-
-
-
-
+// Add Destination to Live View
 function addDestination() {
     let destinationInput = document.getElementById("plan-input-destination");
 
     let hotelInput = document.getElementById("plan-input-hotel").value;
     let flightInput = document.getElementById("plan-input-flight-date").value;
-
-
 
     if (Client.checkInput(destinationInput.value)) {
         document.getElementById("plan-destinations-live-preview").innerHTML = "Loading...";
@@ -969,19 +888,11 @@ function addDestination() {
             analyseValue: destinationInput.value
         })
             .then(function (res) {
-                console.log("rezultatai");
-                console.log(res);
 
                 document.getElementById("plan-destinations-live-preview").innerHTML = "";
-
                 document.getElementById("plan-destinations-live-title-preview").innerHTML = "Destination";
 
-
-
-
                 updateResultsCheckBar(res, "plan-destinations-live-preview");
-
-
 
                 if (Client.checkInput(hotelInput) == false) {
                     hotelInput = "-";
@@ -1012,10 +923,6 @@ function addDestination() {
                 document.getElementById("plan-destinations-live-general-preview").innerHTML = "";
                 document.getElementById("plan-destinations-live-general-preview").appendChild(fragmentBlock);
                 document.getElementById("add-destination").value = "Update";
-
-
-
-
             })
     }
     else {
@@ -1024,22 +931,16 @@ function addDestination() {
             destinationInput.style.borderColor = "";
         }, 3000);
     }
-
-
-
-
-
 }
 
+// Add Not to Live View
 function addNote() {
     let textInput = document.getElementById("plan-input-textarea");
 
     let fragmentBlock = document.createDocumentFragment();
 
-
     let textSpan = document.createElement('span');
     textSpan.innerHTML = `${textInput.value}`;
-
 
     let textList = document.createElement('span');
     textList.innerText = `Note`;
@@ -1053,21 +954,16 @@ function addNote() {
     document.getElementById("plan-note-live-preview").style.visibility = "unset";
 
     document.getElementById("add-note").value = "Update";
-
-
-
 }
 
+// Add To Do List to Live View
 function addTodDO() {
-    console.log("todo");
     let textInput = document.getElementById("plan-input-todo");
 
     let fragmentBlock = document.createDocumentFragment();
 
-
     let textSpan = document.createElement('span');
     textSpan.innerHTML = `${textInput.value}`;
-
 
     let textList = document.createElement('span');
     textList.innerText = `To Do List`;
@@ -1079,20 +975,12 @@ function addTodDO() {
     document.getElementById("plan-todolist-live-preview").innerHTML = "";
     document.getElementById("plan-todolist-live-preview").appendChild(fragmentBlock);
     document.getElementById("plan-todolist-live-preview").style.visibility = "unset";
+    
     document.getElementById("add-todo").value = "Update";
-
-
-
 }
 
-
-
+// Save Travel Plan to Storage and refresh Widgets Menu + activate Print Button
 function savePlan() {
-    console.log("SAVE");
-
-
-
-
     let confirmSave = true;
 
     let travelName = document.getElementById("plan-input-title");
@@ -1119,7 +1007,6 @@ function savePlan() {
         }, 3000);
     }
 
-
     let travelDestination = document.getElementById("plan-input-destination");
 
     if (Client.checkInput(travelDestination.value) == false) {
@@ -1132,9 +1019,6 @@ function savePlan() {
     }
 
     if (confirmSave) {
-        console.log("seivina");
-
-
         let travelHotel = document.getElementById("plan-input-hotel");
         let travelFlightDate = document.getElementById("plan-input-flight-date");
         let travelNote = document.getElementById("plan-input-textarea");
@@ -1149,13 +1033,8 @@ function savePlan() {
         myListObject["travelNote"] = travelNote.value;
         myListObject["travelTodo"] = travelTodo.value;
 
-
-
-
         let checkData = Client.checkStorage("system");
         let userName = checkData["load"]["user"];
-
-        console.log("username:" + userName);
 
         let checkUser = Client.checkStorage("users");
         let loadedData = checkUser["load"];
@@ -1168,31 +1047,18 @@ function savePlan() {
         document.getElementById("print-trip-button").style.display = "block";
 
         refreshPlans();
-
-
-
     }
     else {
-        console.log("NE seivina");
-
+        console.log("Error");
     }
 
-
-    
     document.getElementById("plan-date-live-preview").visibility = "hidden";
     document.getElementById("plan-destinations-live-general-preview").visibility = "hidden";
     document.getElementById("plan-note-live-preview").visibility = "hidden";
     document.getElementById("plan-todolist-live-preview").visibility = "hidden";
-
-
-
-
-
-
-
 }
 
-
+// Clear Travel Plan Form, Reset View
 function clearPlansform(optionValue) {
     document.getElementById("plan-input-title").value = "";
     document.getElementById("travel-start").value = "";
@@ -1203,7 +1069,6 @@ function clearPlansform(optionValue) {
     document.getElementById("plan-input-textarea").value = "";
     document.getElementById("plan-input-todo").value = "";
 
-
     document.getElementById("plan-name-live-preview").innerHTML = "";
     document.getElementById("plan-date-live-preview").innerHTML = "";
     document.getElementById("plan-destinations-live-title-preview").innerHTML = "";
@@ -1212,34 +1077,27 @@ function clearPlansform(optionValue) {
     document.getElementById("plan-note-live-preview").innerHTML = "";
     document.getElementById("plan-todolist-live-preview").innerHTML = "";
 
-
     document.getElementById("plan-date-live-preview").visibility = "hidden";
     document.getElementById("plan-note-live-preview").visibility = "hidden";
-
-
 }
 
+// Delete Selected Plan, Refresh view
 function deletePlans(listName) {
     let userName = document.getElementById("header-logged-in").innerHTML;
-
     let checkUser = Client.checkStorage("users");
     let loadedData = checkUser["load"];
     let userData = loadedData[userName];
-
     let userLists = userData["trips"];
 
     delete userLists[listName];
-
-    console.log(userLists);
-
 
     userData["trips"] = userLists;
     Client.updateUser("users", userName, userData);
 
     refreshPlans();
-    // console.log(getList);
 }
 
+// Refresh Travel Plan List on Widgets Side Menu
 function refreshPlans() {
     let checkData = Client.checkStorage("system");
     let userName = checkData["load"]["user"];
@@ -1254,22 +1112,13 @@ function refreshPlans() {
             document.getElementById("widget-plans-results").innerHTML = "";
             document.getElementById("widget-plans-expired").innerHTML = "";
 
-            var blockList = document.createElement("div");
-
             let expired = true;
             for (const [key, value] of Object.entries(userLists)) {
-
-                console.log(value);
-                //today date
-                //start date
-
-
-
-
-                var lineFull = document.createElement("div");
+                let lineFull = document.createElement("div");
                 lineFull.classList.add('widgetListLineTable');
-                var span2 = document.createElement("SPAN");
-                var txt = document.createTextNode("\u00D7");
+
+                let span2 = document.createElement("span");
+                let txt = document.createTextNode("\u00D7");
                 span2.classList.add('widgetListsDelete');
                 span2.classList.add('noselect');
                 span2.classList.add('pointerCursor');
@@ -1278,7 +1127,7 @@ function refreshPlans() {
                     deletePlans(key);
                 }
 
-                var span = document.createElement("SPAN");
+                let span = document.createElement("span");
                 span.innerHTML = key;
                 span.classList.add('noselect');
                 span.classList.add('pointerCursor');
@@ -1289,40 +1138,30 @@ function refreshPlans() {
                 lineFull.appendChild(span);
                 lineFull.appendChild(span2);
 
-
                 let startTripDay = stringToDate(value.travelStart);
 
                 let travelStartsIn = timeLeft(startTripDay);
 
                 if (travelStartsIn < 0) {
-
                     document.getElementById("widget-plans-expired").appendChild(lineFull);
                     expired = false;
-
                 }
                 else {
-
                     document.getElementById("widget-plans-results").appendChild(lineFull);
-
                 }
-
             }
 
             if (expired) {
                 document.getElementById("widget-plans-expired").innerHTML = "No Expired Plans";
-
-
             }
         }
         else {
             document.getElementById("widget-plans-results").innerHTML = "No Plans Yet";
         }
     }
-
-
-
 }
 
+// Open Selected Plan to View and print, and Delete
 function openPlans(planName) {
     document.getElementById("travel-app").classList.add("hiddenBody");
     document.getElementById("content-app").classList.add("hiddenPart");
@@ -1330,9 +1169,7 @@ function openPlans(planName) {
     document.getElementById("content-list").classList.add("hiddenPart");
     document.getElementById("content-about").classList.add("hiddenPart");
     document.getElementById("content-contact").classList.add("hiddenPart");
-
     document.getElementById("content-trip-load").classList.remove("hiddenPart");
-
 
     let userName = document.getElementById("header-logged-in").innerHTML;
 
@@ -1355,28 +1192,14 @@ function openPlans(planName) {
     let travelNote = getList["travelNote"];
     let travelTodo = getList["travelTodo"];
 
-
-
-    console.log(travelDestination);
-    console.log(travelStart);
-    console.log(travelEnd);
-    console.log(travelHotel);
-    console.log(travelNote);
-    console.log(travelTodo);
-
-
     let travelNameSpace = document.getElementById("loaded-trip-name");
     travelNameSpace.innerHTML = "";
     travelNameSpace.innerHTML = `<span class="categoryTitleInfo">Travel Name:</span><span> ${planName}</span>`;
-
-
 
     let startDate = stringToDate(travelStart);
     let endDate = stringToDate(travelEnd);
 
     let dayDifference = dateDifference(startDate, endDate);
-
-
     let travelStartsIn = timeLeft(startDate);
 
     let fragmentBlock = document.createDocumentFragment();
@@ -1406,19 +1229,12 @@ function openPlans(planName) {
     document.getElementById("loaded-trip-date").appendChild(fragmentBlock);
     document.getElementById("loaded-trip-date").style.visibility = "unset";
 
-
-
-
+    // Note
     if (Client.checkInput(travelNote)) {
-
-
-
         let fragmentBlock = document.createDocumentFragment();
-
 
         let textSpan = document.createElement('span');
         textSpan.innerHTML = `${travelNote}`;
-
 
         let textList = document.createElement('span');
         textList.innerText = `Note`;
@@ -1430,20 +1246,13 @@ function openPlans(planName) {
         document.getElementById("loaded-trip-note").innerHTML = "";
         document.getElementById("loaded-trip-note").appendChild(fragmentBlock);
         document.getElementById("loaded-trip-note").style.visibility = "unset";
-
     }
 
-
+    // To Do List
     if (Client.checkInput(travelTodo)) {
-
-        // To Do List
-
         let fragmentBlock = document.createDocumentFragment();
-
-
         let textSpan = document.createElement('span');
         textSpan.innerHTML = `${travelTodo}`;
-
 
         let textList = document.createElement('span');
         textList.innerText = `To Do List`;
@@ -1455,22 +1264,19 @@ function openPlans(planName) {
         document.getElementById("loaded-trip-todo").innerHTML = "";
         document.getElementById("loaded-trip-todo").appendChild(fragmentBlock);
         document.getElementById("loaded-trip-todo").style.visibility = "unset";
-
     }
 
+    // Destination
     document.getElementById("loaded-trip-destination").innerHTML = "Loading...";
-
+    
     // Add data to POST request
     postData('http://localhost:8082/apiWeather', {
         analyseValue: travelDestination
     })
         .then(function (res) {
-
             document.getElementById("loaded-plan-destinations-live-title-preview").innerHTML = "Destination";
             document.getElementById("loaded-trip-destination").innerHTML = "";
-
             updateResultsCheckBar(res, "loaded-plan-destinations-live-preview");
-
 
             if (Client.checkInput(travelHotel) == false) {
                 travelHotel = "-";
@@ -1498,33 +1304,22 @@ function openPlans(planName) {
             fragmentBlock.appendChild(textList);
             fragmentBlock.appendChild(dateInfoList);
 
-
             document.getElementById("loaded-plan-destinations-live-general-preview").style.visibility = "unset";
             document.getElementById("loaded-plan-destinations-live-general-preview").innerHTML = "";
             document.getElementById("loaded-plan-destinations-live-general-preview").appendChild(fragmentBlock);
-
-
         })
 
-
-        document.getElementById('loaded-clear-trip-button').addEventListener('click', function () {
-            menuNavigation("app");
-            deletePlans(planName);
-        });
-
-
-
-
-
-
-
+    document.getElementById('loaded-clear-trip-button').addEventListener('click', function () {
+        menuNavigation("app");
+        deletePlans(planName);
+    });
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
     refreshLists();
     refreshPlans();
-    //getPopularDestinationImages();
+    getPopularDestinationImages();
+
     document.getElementById('add-new-list-item').addEventListener('click', function () { newElement(); });
     document.getElementById('list-clear-button').addEventListener('click', function () { clearListform(); });
     document.getElementById('list-save-button').addEventListener('click', function () { saveListform(); });
@@ -1534,13 +1329,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('add-note').addEventListener('click', function () { addNote(); });
     document.getElementById('add-todo').addEventListener('click', function () { addTodDO(); });
     document.getElementById('save-trip-button').addEventListener('click', function () { savePlan(); });
-
     document.getElementById('clear-trip-button').addEventListener('click', function () { clearPlansform(); });
-
-
     document.getElementById('plan-input-title').addEventListener('change',
         function () {
-
             let travelName = document.getElementById("plan-input-title").value;
             let nameInput = `<span class="categoryTitleInfo">Travel Name:</span><span> ${travelName}</span>`;
             document.getElementById("plan-name-live-preview").innerHTML = nameInput;
@@ -1548,40 +1339,30 @@ document.addEventListener('DOMContentLoaded', function () {
     );
     document.getElementById('add-date').addEventListener('click', function () { updateDate(); });
 
-
-
     // Create a "close" button and append it to each list item
-    var myNodelist = document.getElementsByTagName("LI");
+    let myNodelist = document.getElementsByTagName("li");
     for (let i = 0; i < myNodelist.length; i++) {
-        var span = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
+        let span = document.createElement("span");
+        let txt = document.createTextNode("\u00D7");
         span.className = "close";
         span.appendChild(txt);
         myNodelist[i].appendChild(span);
     }
 
     // Click on a close button to hide the current list item
-    var close = document.getElementsByClassName("close");
+    let close = document.getElementsByClassName("close");
     for (let i = 0; i < close.length; i++) {
         close[i].onclick = function () {
-            var div = this.parentElement;
-            //div.style.display = "none";
+            let div = this.parentElement;
             div.remove();
-
-
         }
     }
 
     // Add a "checked" symbol when clicking on a list item
-    var list = document.querySelector('ul');
+    let list = document.querySelector('ul');
     list.addEventListener('click', function (ev) {
-        if (ev.target.tagName === 'LI') {
+        if (ev.target.tagName === 'li') {
             ev.target.classList.toggle('checked');
         }
     }, false);
-
-
-
 });
-
-

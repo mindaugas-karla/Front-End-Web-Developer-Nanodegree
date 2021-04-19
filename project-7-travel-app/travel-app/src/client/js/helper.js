@@ -10,15 +10,24 @@ function checkInput(inputValue) {
     }
 }
 
+// Reload Website
 function reloadWeb () {
     location.reload();
 }
 
-
-
+// Check if Date is Correct
+function checkDate(date) {
+    if (!isNaN(Date.parse(date))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 export {
     checkInput,
-    reloadWeb
+    reloadWeb,
+    checkDate
 
 }

@@ -4,7 +4,7 @@
 
 import { jsPDF } from "jspdf";
 
-import { checkInput, reloadWeb } from './js/helper'
+import { checkInput, reloadWeb, checkDate } from './js/helper'
 import { checkStorage, createEntry, updateUser } from './js/storage'
 
 
@@ -23,5 +23,6 @@ export {
     createEntry,
     updateUser,
     reloadWeb,
-    jsPDF
+    jsPDF,
+    checkDate
 }
