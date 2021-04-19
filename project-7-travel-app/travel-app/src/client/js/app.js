@@ -4,6 +4,37 @@
  * because then I started I added more and more usability,
  * and it was too hard to move this later) */
 
+
+
+
+/** 
+ [-] Add end date and display length of trip.
+ [-] Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+ [] Allow user to add multiple destinations on the same trip.
+    [] Pull in weather for additional locations.
+ [] Allow the user to add hotel and/or flight data.
+    [] Multiple places to stay? Multiple flights?
+ [] Integrate the REST Countries API to pull in data for the country being visited.
+ [] Allow the user to remove the trip.
+ [] Use Local Storage to save the data so that when they close, then revisit the page, their information is still there.
+ [] Instead of just pulling a single day forecast, pull the forecast for multiple days.
+ [] Incorporate icons into forecast.
+ [] Allow user to Print their trip and/or export to PDF.
+ [] Allow the user to add a todo list and/or packing list for their trip.
+ [] Allow the user to add additional trips (this may take some heavy reworking, but is worth the challenge).
+ [] Automatically sort additional trips by countdown.
+ [] Move expired trips to bottom/have their style change so it’s clear it’s expired.
+ */
+
+
+
+
+
+
+
+
+
+
 // Log Out Button
 function logOut(userName) {
     // Clears User Entry
@@ -11,21 +42,31 @@ function logOut(userName) {
     Client.createEntry("system", newEntry);
 
     document.getElementById("login-username").value = "";
-    document.getElementById("header-logged-in").value = "";
+    document.getElementById("header-logged-in").innerHTML = "";
+    document.getElementById("intro-user-name").innerHTML = "";
 
 
     // Hide Menu Elements, set Sign Out Mode
     document.getElementById("main-footer").classList.add("hiddenFooter");
     document.getElementById("main-content").classList.add("hiddenGrid");
     document.getElementById("main-header").classList.add("hiddenPart");
+
     document.getElementById("travel-app").classList.add("hiddenBody");
+    document.getElementById("content-app").classList.add("hiddenPart");
+    document.getElementById("content-intro").classList.add("hiddenPart");
+    document.getElementById("content-list").classList.add("hiddenPart");
+    document.getElementById("content-about").classList.add("hiddenPart");
+    document.getElementById("content-contact").classList.add("hiddenPart");
+
+
 
     document.getElementById("content-widget").classList.add("hiddenPart");
-    document.getElementById("content-intro").classList.add("hiddenPart");
     document.getElementById("content-menu").classList.add("hiddenPart");
     document.getElementById("content-slider").classList.add("hiddenPart");
-    document.getElementById("content-app").classList.add("hiddenPart");
-    document.getElementById("content-list").classList.add("hiddenPart");
+
+    document.getElementById("content-trip-load").classList.add("hiddenPart");
+
+
 
 
     blockManagement("content-profile", "hide");
@@ -42,6 +83,9 @@ function insideApp(userName) {
             let newEntry = { login: 1, user: userName };
             Client.createEntry("system", newEntry);
             document.getElementById("header-logged-in").innerHTML = userName;
+            document.getElementById("intro-user-name").innerHTML = userName;
+
+
 
             // Add Logout button Listener
             document.getElementById('header-logout').addEventListener('click', function () { logOut(userName); });
@@ -217,14 +261,14 @@ function proceedLogin(userName) {
             }
         }
         else {
-            loadedData[userName] = { "profile": 0, "lists": {} };
+            loadedData[userName] = { "profile": 0, "lists": {}, "trips": {} };
             Client.createEntry("users", loadedData);
             openProfileSetup(userName);
         }
     }
     else {
         var userData = {
-            [userName]: { "profile": 0, "lists": {} }
+            [userName]: { "profile": 0, "lists": {}, "trips": {} }
         };
 
         Client.createEntry("users", userData);
@@ -269,7 +313,8 @@ function menuNavigation(menuButton) {
         "app",
         "list",
         "about",
-        "contact"
+        "contact",
+        "trip-load"
     ];
 
     for (var i = 0; i < pagesAll.length; i++) {
@@ -361,7 +406,7 @@ function setPopTodayDestinations(res) {
 }
 
 
-function getPopularDestinationImages(popularDestination) {
+function getPopularDestinationImages() {
     let popularDestinations = "London,Malta,Vilnius,Cyprus";
     let popularDestinationsArray = popularDestinations.split(",");
 
@@ -385,13 +430,13 @@ function getPopularDestinationImages(popularDestination) {
 }
 
 
-function updateResultsCheckBar(resultsData) {
+function updateResultsCheckBar(resultsData, idAdd) {
     //results-header
     if (resultsData) {
         //rado!
 
 
-        document.getElementById("results-header").innerHTML = "";
+        document.getElementById(idAdd).innerHTML = "";
 
         let formBlock = document.createDocumentFragment();
 
@@ -464,9 +509,6 @@ function updateResultsCheckBar(resultsData) {
         formBlock.appendChild(infoGeneral);
 
 
-
-
-
         let imageIcon = `https://www.weatherbit.io/static/img/icons/${resultsData.weather_icon}.png`;
 
         let infoWeather = document.createElement('div');
@@ -478,9 +520,7 @@ function updateResultsCheckBar(resultsData) {
             <div>
                 <span class="searchBarResultTitle">Wind Speed:</span>
                 <span class="searchBarResultText">${resultsData.wind_speed} m/s</span>
-
             </div>
-
             <div>
                 <span class="searchBarResultTitle">Temperature:</span>
                 <span class="searchBarResultText">${resultsData.weather_temp} °C</span>
@@ -492,11 +532,7 @@ function updateResultsCheckBar(resultsData) {
             </div>
         `;
         infoWeather.innerHTML = infoBlockWeather;
-
-
         formBlock.appendChild(infoWeather);
-
-
 
         let infoImage = document.createElement('div');
         infoImage.classList.add('imageSearchBlock');
@@ -509,13 +545,9 @@ function updateResultsCheckBar(resultsData) {
         infoImage.appendChild(infoImageTitle);
 
         if (resultsData.image_preview) {
-
-
-
             let imagePreview = document.createElement('img');
             imagePreview.src = resultsData.image_preview;
             imagePreview.classList.add('imagePreviewSearch');
-
 
             infoImage.appendChild(imagePreview);
 
@@ -536,23 +568,12 @@ function updateResultsCheckBar(resultsData) {
             infoImage.appendChild(infoImageDescription);
         }
 
-
-
-
-
         formBlock.appendChild(infoImage);
-
-
-
-        document.getElementById("results-header").appendChild(formBlock);
-
-
+        document.getElementById(idAdd).appendChild(formBlock);
     }
     else {
-        document.getElementById("results-header").innerHTML = "No Data";
-        setTimeout(function () {
-            managePopup("results-header-search", "hide");
-        }, 3000);
+        document.getElementById(idAdd).innerHTML = "No Data";
+
         //nerado !
     }
 
@@ -588,9 +609,18 @@ function getWeather(analyseName) {
         .then(function (res) {
             console.log("rezultatai");
             console.log(res);
-            updateResultsCheckBar(res);
-
             managePopup("results-header-search", "show");
+
+            if (res) {
+                updateResultsCheckBar(res, "results-header");
+            }
+            else {
+                setTimeout(function () {
+                    managePopup("results-header-search", "hide");
+                }, 3000);
+            }
+
+
         })
 }
 
@@ -612,9 +642,6 @@ function checkWeather() {
         }, 3000);
     }
 }
-
-
-
 
 
 // Create a new list item when clicking on the "Add" button
@@ -680,7 +707,6 @@ function openLists(listName) {
     document.getElementById("list-input-name").value = listName;
     document.getElementById("myUL").innerHTML = "";
 
-
     for (const [key, value] of Object.entries(getList)) {
         let text = value["text"];
         let status = value["completed"];
@@ -705,23 +731,10 @@ function openLists(listName) {
         listLine.appendChild(span);
         document.getElementById("myUL").appendChild(listLine);
     }
-
-
-
-
-
-
-    console.log(getList);
-
-
     menuNavigation("list");
-
-
 }
 
-
 function deleteLists(listName) {
-
     let userName = document.getElementById("header-logged-in").innerHTML;
 
     let checkUser = Client.checkStorage("users");
@@ -740,27 +753,19 @@ function deleteLists(listName) {
 
     refreshLists();
     // console.log(getList);
-
-
-
 }
 
 function refreshLists() {
     let userName = document.getElementById("header-logged-in").innerHTML;
 
-
     let checkUser = Client.checkStorage("users");
-    console.log(checkUser);
     if (checkUser.status) {
         let loadedData = checkUser["load"];
         let userData = loadedData[userName];
-
         let userLists = userData["lists"];
-        console.log("listas");
-        console.log(userLists);
+
         if (userLists && Object.keys(userLists).length !== 0) {
             document.getElementById("widget-lists-results").innerHTML = "";
-
             var blockList = document.createElement("div");
 
             for (const [key, value] of Object.entries(userLists)) {
@@ -791,7 +796,6 @@ function refreshLists() {
         }
         else {
             document.getElementById("widget-lists-results").innerHTML = "No Lists Yet";
-
         }
     }
 }
@@ -809,18 +813,343 @@ function saveListform() {
                 completed = 1;
             }
 
-
             let textOnly = bySingle.textContent;
             let text = textOnly.slice(0, -1);
 
             let newObject = { "text": text, "completed": completed };
 
-            //console.log(text);
-
             myListObject[i] = newObject;
-
-
         }
+
+        let checkData = Client.checkStorage("system");
+        let userName = checkData["load"]["user"];
+
+        console.log("username:" + userName);
+
+        let checkUser = Client.checkStorage("users");
+        let loadedData = checkUser["load"];
+        let userData = loadedData[userName];
+
+        userData["lists"][listTitle.value] = myListObject;
+        Client.updateUser("users", userName, userData);
+
+        clearListform("save");
+        refreshLists();
+    }
+    else {
+        listTitle.style.borderColor = "red";
+        setTimeout(function () {
+            listTitle.style.borderColor = "";
+        }, 3000);
+    }
+}
+//var $ = require( "jquery" );
+
+function checkDate(date) {
+    if (!isNaN(Date.parse(date))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+function printPlan(idPrint) {
+    var printContents = document.getElementById(idPrint).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    Client.reloadWeb();
+}
+
+function dateDifference(d1, d2) {
+    var t2 = d2.getTime();
+    var t1 = d1.getTime();
+    return parseInt((t2 - t1) / (24 * 3600 * 1000));
+}
+
+function stringToDate(date) {
+    var parts = date.split('/');
+    // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
+    // January - 0, February - 1, etc.
+    var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
+    return mydate;
+}
+
+function timeLeft(travelStart) {
+    const currentDate = (Date.now()) / 1000;
+    const travelBegining = (travelStart.getTime()) / 1000;
+    const daysLeft = Math.round((travelBegining - currentDate) / 86400);
+    return daysLeft;
+}
+
+function updateDate() {
+    let travelStart = document.getElementById("travel-start");
+    let travelEnd = document.getElementById("travel-end");
+
+    //travelStart.value = "2021/04/21";
+    //travelEnd.value = "2021/04/26";
+
+
+    if (checkDate(travelStart.value) && checkDate(travelEnd.value)) {
+        let startDate = stringToDate(travelStart.value);
+        let endDate = stringToDate(travelEnd.value);
+
+        let dayDifference = dateDifference(startDate, endDate);
+        console.log("kelione truks:" + dayDifference);
+        //let travelStartsIn = dateDifference (startDate, currentDateFix);
+        let travelStartsIn = timeLeft(startDate);
+        console.log("kelione prasides uz:" + travelStartsIn);
+
+        let fragmentBlock = document.createDocumentFragment();
+
+
+        let dateInfoList = document.createElement('ul');
+
+
+        let dateLi = document.createElement('li');
+        dateLi.innerHTML = `<span class="titleInfoDate">Date: </span>${travelStart.value}-${travelEnd.value}`;
+
+        let durationLi = document.createElement('li');
+        durationLi.innerHTML = `<span class="titleInfoDate">Duration: </span>${dayDifference} days`;
+
+        let startsLi = document.createElement('li');
+        startsLi.innerHTML = `<span class="titleInfoDate">Starts in: </span>${travelStartsIn} days`;
+
+        dateInfoList.appendChild(dateLi);
+        dateInfoList.appendChild(durationLi);
+        dateInfoList.appendChild(startsLi);
+
+        let textList = document.createElement('span');
+        textList.innerText = `Travel Date`;
+        textList.classList.add('categoryTitleInfo');
+
+        fragmentBlock.appendChild(textList);
+        fragmentBlock.appendChild(dateInfoList);
+
+        document.getElementById("plan-date-live-preview").innerHTML = "";
+        document.getElementById("plan-date-live-preview").appendChild(fragmentBlock);
+        document.getElementById("plan-date-live-preview").style.visibility = "unset";
+
+
+
+        document.getElementById("add-date").value = "Update";
+    }
+    else {
+        travelStart.style.borderColor = "red";
+        travelEnd.style.borderColor = "red";
+        setTimeout(function () {
+            travelStart.style.borderColor = "";
+            travelEnd.style.borderColor = "";
+        }, 3000);
+    }
+}
+
+
+
+
+
+
+
+function addDestination() {
+    let destinationInput = document.getElementById("plan-input-destination");
+
+    let hotelInput = document.getElementById("plan-input-hotel").value;
+    let flightInput = document.getElementById("plan-input-flight-date").value;
+
+
+
+    if (Client.checkInput(destinationInput.value)) {
+        document.getElementById("plan-destinations-live-preview").innerHTML = "Loading...";
+
+        // Add data to POST request
+        postData('http://localhost:8082/apiWeather', {
+            analyseValue: destinationInput.value
+        })
+            .then(function (res) {
+                console.log("rezultatai");
+                console.log(res);
+
+                document.getElementById("plan-destinations-live-preview").innerHTML = "";
+
+                document.getElementById("plan-destinations-live-title-preview").innerHTML = "Destination";
+
+
+
+
+                updateResultsCheckBar(res, "plan-destinations-live-preview");
+
+
+
+                if (Client.checkInput(hotelInput) == false) {
+                    hotelInput = "-";
+                }
+                if (Client.checkInput(flightInput) == false) {
+                    flightInput = "-";
+                }
+
+                let fragmentBlock = document.createDocumentFragment();
+                let dateInfoList = document.createElement('ul');
+
+                let dateLi = document.createElement('li');
+                dateLi.innerHTML = `<span class="titleInfoDate">Flight date: </span>${hotelInput}`;
+
+                let durationLi = document.createElement('li');
+                durationLi.innerHTML = `<span class="titleInfoDate">Hotel: </span>${flightInput}`;
+
+                dateInfoList.appendChild(dateLi);
+                dateInfoList.appendChild(durationLi);
+
+                let textList = document.createElement('span');
+                textList.innerText = `General Information`;
+                textList.classList.add('generalInfo');
+
+                fragmentBlock.appendChild(textList);
+                fragmentBlock.appendChild(dateInfoList);
+                document.getElementById("plan-destinations-live-general-preview").style.visibility = "unset";
+                document.getElementById("plan-destinations-live-general-preview").innerHTML = "";
+                document.getElementById("plan-destinations-live-general-preview").appendChild(fragmentBlock);
+                document.getElementById("add-destination").value = "Update";
+
+
+
+
+            })
+    }
+    else {
+        destinationInput.style.borderColor = "red";
+        setTimeout(function () {
+            destinationInput.style.borderColor = "";
+        }, 3000);
+    }
+
+
+
+
+
+}
+
+function addNote() {
+    let textInput = document.getElementById("plan-input-textarea");
+
+    let fragmentBlock = document.createDocumentFragment();
+
+
+    let textSpan = document.createElement('span');
+    textSpan.innerHTML = `${textInput.value}`;
+
+
+    let textList = document.createElement('span');
+    textList.innerText = `Note`;
+    textList.classList.add('categoryTitleInfo');
+
+    fragmentBlock.appendChild(textList);
+    fragmentBlock.appendChild(textSpan);
+
+    document.getElementById("plan-note-live-preview").innerHTML = "";
+    document.getElementById("plan-note-live-preview").appendChild(fragmentBlock);
+    document.getElementById("plan-note-live-preview").style.visibility = "unset";
+
+    document.getElementById("add-note").value = "Update";
+
+
+
+}
+
+function addTodDO() {
+    console.log("todo");
+    let textInput = document.getElementById("plan-input-todo");
+
+    let fragmentBlock = document.createDocumentFragment();
+
+
+    let textSpan = document.createElement('span');
+    textSpan.innerHTML = `${textInput.value}`;
+
+
+    let textList = document.createElement('span');
+    textList.innerText = `To Do List`;
+    textList.classList.add('categoryTitleInfo');
+
+    fragmentBlock.appendChild(textList);
+    fragmentBlock.appendChild(textSpan);
+
+    document.getElementById("plan-todolist-live-preview").innerHTML = "";
+    document.getElementById("plan-todolist-live-preview").appendChild(fragmentBlock);
+    document.getElementById("plan-todolist-live-preview").style.visibility = "unset";
+    document.getElementById("add-todo").value = "Update";
+
+
+
+}
+
+
+
+function savePlan() {
+    console.log("SAVE");
+
+
+
+
+    let confirmSave = true;
+
+    let travelName = document.getElementById("plan-input-title");
+    if (Client.checkInput(travelName.value) == false) {
+        confirmSave = false;
+
+        travelName.style.borderColor = "red";
+        setTimeout(function () {
+            travelName.style.borderColor = "";
+        }, 3000);
+    }
+
+    let travelStart = document.getElementById("travel-start");
+    let travelEnd = document.getElementById("travel-end");
+
+    if (Client.checkInput(travelStart.value) == false || Client.checkInput(travelEnd.value) == false) {
+        confirmSave = false;
+
+        travelStart.style.borderColor = "red";
+        travelEnd.style.borderColor = "red";
+        setTimeout(function () {
+            travelStart.style.borderColor = "";
+            travelEnd.style.borderColor = "";
+        }, 3000);
+    }
+
+
+    let travelDestination = document.getElementById("plan-input-destination");
+
+    if (Client.checkInput(travelDestination.value) == false) {
+        confirmSave = false;
+
+        travelDestination.style.borderColor = "red";
+        setTimeout(function () {
+            travelDestination.style.borderColor = "";
+        }, 3000);
+    }
+
+    if (confirmSave) {
+        console.log("seivina");
+
+
+        let travelHotel = document.getElementById("plan-input-hotel");
+        let travelFlightDate = document.getElementById("plan-input-flight-date");
+        let travelNote = document.getElementById("plan-input-textarea");
+        let travelTodo = document.getElementById("plan-input-todo");
+
+        let myListObject = {};
+        myListObject["travelDestination"] = travelDestination.value;
+        myListObject["travelStart"] = travelStart.value;
+        myListObject["travelEnd"] = travelEnd.value;
+        myListObject["travelHotel"] = travelHotel.value;
+        myListObject["travelFlight"] = travelFlightDate.value;
+        myListObject["travelNote"] = travelNote.value;
+        myListObject["travelTodo"] = travelTodo.value;
+
+
 
 
         let checkData = Client.checkStorage("system");
@@ -832,26 +1161,357 @@ function saveListform() {
         let loadedData = checkUser["load"];
         let userData = loadedData[userName];
 
-        console.log("serdata");
-        console.log(userData);
-
-        // console.log(userDataLists);
-
-
-        userData["lists"][listTitle.value] = myListObject;
+        userData["trips"][travelName.value] = myListObject;
         Client.updateUser("users", userName, userData);
 
-        clearListform("save");
-        refreshLists();
+        clearPlansform("save");
+        document.getElementById("print-trip-button").style.display = "block";
+
+        refreshPlans();
+
 
 
     }
     else {
-        listTitle.style.borderColor = "red";
-        setTimeout(function () {
-            listTitle.style.borderColor = "";
-        }, 3000);
+        console.log("NE seivina");
+
     }
+
+
+    
+    document.getElementById("plan-date-live-preview").visibility = "hidden";
+    document.getElementById("plan-destinations-live-general-preview").visibility = "hidden";
+    document.getElementById("plan-note-live-preview").visibility = "hidden";
+    document.getElementById("plan-todolist-live-preview").visibility = "hidden";
+
+
+
+
+
+
+
+}
+
+
+function clearPlansform(optionValue) {
+    document.getElementById("plan-input-title").value = "";
+    document.getElementById("travel-start").value = "";
+    document.getElementById("travel-end").value = "";
+    document.getElementById("plan-input-destination").value = "";
+    document.getElementById("plan-input-hotel").value = "";
+    document.getElementById("plan-input-flight-date").value = "";
+    document.getElementById("plan-input-textarea").value = "";
+    document.getElementById("plan-input-todo").value = "";
+
+
+    document.getElementById("plan-name-live-preview").innerHTML = "";
+    document.getElementById("plan-date-live-preview").innerHTML = "";
+    document.getElementById("plan-destinations-live-title-preview").innerHTML = "";
+    document.getElementById("plan-destinations-live-preview").innerHTML = "";
+    document.getElementById("plan-destinations-live-general-preview").innerHTML = "";
+    document.getElementById("plan-note-live-preview").innerHTML = "";
+    document.getElementById("plan-todolist-live-preview").innerHTML = "";
+
+
+    document.getElementById("plan-date-live-preview").visibility = "hidden";
+    document.getElementById("plan-note-live-preview").visibility = "hidden";
+
+
+}
+
+function deletePlans(listName) {
+    let userName = document.getElementById("header-logged-in").innerHTML;
+
+    let checkUser = Client.checkStorage("users");
+    let loadedData = checkUser["load"];
+    let userData = loadedData[userName];
+
+    let userLists = userData["trips"];
+
+    delete userLists[listName];
+
+    console.log(userLists);
+
+
+    userData["trips"] = userLists;
+    Client.updateUser("users", userName, userData);
+
+    refreshPlans();
+    // console.log(getList);
+}
+
+function refreshPlans() {
+    let checkData = Client.checkStorage("system");
+    let userName = checkData["load"]["user"];
+
+    let checkUser = Client.checkStorage("users");
+    if (checkUser.status) {
+        let loadedData = checkUser["load"];
+        let userData = loadedData[userName];
+        let userLists = userData["trips"];
+
+        if (userLists && Object.keys(userLists).length !== 0) {
+            document.getElementById("widget-plans-results").innerHTML = "";
+            document.getElementById("widget-plans-expired").innerHTML = "";
+
+            var blockList = document.createElement("div");
+
+            let expired = true;
+            for (const [key, value] of Object.entries(userLists)) {
+
+                console.log(value);
+                //today date
+                //start date
+
+
+
+
+                var lineFull = document.createElement("div");
+                lineFull.classList.add('widgetListLineTable');
+                var span2 = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span2.classList.add('widgetListsDelete');
+                span2.classList.add('noselect');
+                span2.classList.add('pointerCursor');
+                span2.appendChild(txt);
+                span2.onclick = function () {
+                    deletePlans(key);
+                }
+
+                var span = document.createElement("SPAN");
+                span.innerHTML = key;
+                span.classList.add('noselect');
+                span.classList.add('pointerCursor');
+                span.classList.add('widgetListsName');
+                span.onclick = function () {
+                    openPlans(key);
+                }
+                lineFull.appendChild(span);
+                lineFull.appendChild(span2);
+
+
+                let startTripDay = stringToDate(value.travelStart);
+
+                let travelStartsIn = timeLeft(startTripDay);
+
+                if (travelStartsIn < 0) {
+
+                    document.getElementById("widget-plans-expired").appendChild(lineFull);
+                    expired = false;
+
+                }
+                else {
+
+                    document.getElementById("widget-plans-results").appendChild(lineFull);
+
+                }
+
+            }
+
+            if (expired) {
+                document.getElementById("widget-plans-expired").innerHTML = "No Expired Plans";
+
+
+            }
+        }
+        else {
+            document.getElementById("widget-plans-results").innerHTML = "No Plans Yet";
+        }
+    }
+
+
+
+}
+
+function openPlans(planName) {
+    document.getElementById("travel-app").classList.add("hiddenBody");
+    document.getElementById("content-app").classList.add("hiddenPart");
+    document.getElementById("content-intro").classList.add("hiddenPart");
+    document.getElementById("content-list").classList.add("hiddenPart");
+    document.getElementById("content-about").classList.add("hiddenPart");
+    document.getElementById("content-contact").classList.add("hiddenPart");
+
+    document.getElementById("content-trip-load").classList.remove("hiddenPart");
+
+
+    let userName = document.getElementById("header-logged-in").innerHTML;
+
+    let checkUser = Client.checkStorage("users");
+    let loadedData = checkUser["load"];
+    let userData = loadedData[userName];
+
+    let userLists = userData["trips"];
+
+    let getList = userLists[planName];
+
+    document.getElementById("list-input-name").value = planName;
+    document.getElementById("myUL").innerHTML = "";
+
+    let travelDestination = getList["travelDestination"];
+    let travelStart = getList["travelStart"];
+    let travelEnd = getList["travelEnd"];
+    let travelHotel = getList["travelHotel"];
+    let travelFlight = getList["travelFlight"];
+    let travelNote = getList["travelNote"];
+    let travelTodo = getList["travelTodo"];
+
+
+
+    console.log(travelDestination);
+    console.log(travelStart);
+    console.log(travelEnd);
+    console.log(travelHotel);
+    console.log(travelNote);
+    console.log(travelTodo);
+
+
+    let travelNameSpace = document.getElementById("loaded-trip-name");
+    travelNameSpace.innerHTML = "";
+    travelNameSpace.innerHTML = `<span class="categoryTitleInfo">Travel Name:</span><span> ${planName}</span>`;
+
+
+
+    let startDate = stringToDate(travelStart);
+    let endDate = stringToDate(travelEnd);
+
+    let dayDifference = dateDifference(startDate, endDate);
+
+
+    let travelStartsIn = timeLeft(startDate);
+
+    let fragmentBlock = document.createDocumentFragment();
+    let dateInfoList = document.createElement('ul');
+
+    let dateLi = document.createElement('li');
+    dateLi.innerHTML = `<span class="titleInfoDate">Date: </span>${travelStart}-${travelEnd}`;
+
+    let durationLi = document.createElement('li');
+    durationLi.innerHTML = `<span class="titleInfoDate">Duration: </span>${dayDifference} days`;
+
+    let startsLi = document.createElement('li');
+    startsLi.innerHTML = `<span class="titleInfoDate">Starts in: </span>${travelStartsIn} days`;
+
+    dateInfoList.appendChild(dateLi);
+    dateInfoList.appendChild(durationLi);
+    dateInfoList.appendChild(startsLi);
+
+    let textList = document.createElement('span');
+    textList.innerText = `Travel Date`;
+    textList.classList.add('categoryTitleInfo');
+
+    fragmentBlock.appendChild(textList);
+    fragmentBlock.appendChild(dateInfoList);
+
+    document.getElementById("loaded-trip-date").innerHTML = "";
+    document.getElementById("loaded-trip-date").appendChild(fragmentBlock);
+    document.getElementById("loaded-trip-date").style.visibility = "unset";
+
+
+
+
+    if (Client.checkInput(travelNote)) {
+
+
+
+        let fragmentBlock = document.createDocumentFragment();
+
+
+        let textSpan = document.createElement('span');
+        textSpan.innerHTML = `${travelNote}`;
+
+
+        let textList = document.createElement('span');
+        textList.innerText = `Note`;
+        textList.classList.add('categoryTitleInfo');
+
+        fragmentBlock.appendChild(textList);
+        fragmentBlock.appendChild(textSpan);
+
+        document.getElementById("loaded-trip-note").innerHTML = "";
+        document.getElementById("loaded-trip-note").appendChild(fragmentBlock);
+        document.getElementById("loaded-trip-note").style.visibility = "unset";
+
+    }
+
+
+    if (Client.checkInput(travelTodo)) {
+
+        // To Do List
+
+        let fragmentBlock = document.createDocumentFragment();
+
+
+        let textSpan = document.createElement('span');
+        textSpan.innerHTML = `${travelTodo}`;
+
+
+        let textList = document.createElement('span');
+        textList.innerText = `To Do List`;
+        textList.classList.add('categoryTitleInfo');
+
+        fragmentBlock.appendChild(textList);
+        fragmentBlock.appendChild(textSpan);
+
+        document.getElementById("loaded-trip-todo").innerHTML = "";
+        document.getElementById("loaded-trip-todo").appendChild(fragmentBlock);
+        document.getElementById("loaded-trip-todo").style.visibility = "unset";
+
+    }
+
+    document.getElementById("loaded-trip-destination").innerHTML = "Loading...";
+
+    // Add data to POST request
+    postData('http://localhost:8082/apiWeather', {
+        analyseValue: travelDestination
+    })
+        .then(function (res) {
+
+            document.getElementById("loaded-plan-destinations-live-title-preview").innerHTML = "Destination";
+            document.getElementById("loaded-trip-destination").innerHTML = "";
+
+            updateResultsCheckBar(res, "loaded-plan-destinations-live-preview");
+
+
+            if (Client.checkInput(travelHotel) == false) {
+                travelHotel = "-";
+            }
+            if (Client.checkInput(travelFlight) == false) {
+                travelFlight = "-";
+            }
+
+            let fragmentBlock = document.createDocumentFragment();
+            let dateInfoList = document.createElement('ul');
+
+            let dateLi = document.createElement('li');
+            dateLi.innerHTML = `<span class="titleInfoDate">Flight date: </span>${travelHotel}`;
+
+            let durationLi = document.createElement('li');
+            durationLi.innerHTML = `<span class="titleInfoDate">Hotel: </span>${travelFlight} days`;
+
+            dateInfoList.appendChild(dateLi);
+            dateInfoList.appendChild(durationLi);
+
+            let textList = document.createElement('span');
+            textList.innerText = `General Information`;
+            textList.classList.add('generalInfo');
+
+            fragmentBlock.appendChild(textList);
+            fragmentBlock.appendChild(dateInfoList);
+
+
+            document.getElementById("loaded-plan-destinations-live-general-preview").style.visibility = "unset";
+            document.getElementById("loaded-plan-destinations-live-general-preview").innerHTML = "";
+            document.getElementById("loaded-plan-destinations-live-general-preview").appendChild(fragmentBlock);
+
+
+        })
+
+
+        document.getElementById('loaded-clear-trip-button').addEventListener('click', function () {
+            menuNavigation("app");
+            deletePlans(planName);
+        });
+
 
 
 
@@ -863,10 +1523,32 @@ function saveListform() {
 
 document.addEventListener('DOMContentLoaded', function () {
     refreshLists();
-    getPopularDestinationImages("Vilnius");
+    refreshPlans();
+    //getPopularDestinationImages();
     document.getElementById('add-new-list-item').addEventListener('click', function () { newElement(); });
     document.getElementById('list-clear-button').addEventListener('click', function () { clearListform(); });
     document.getElementById('list-save-button').addEventListener('click', function () { saveListform(); });
+    document.getElementById('print-trip-button').addEventListener('click', function () { printPlan("results-print"); });
+    document.getElementById('loaded-print-trip-button').addEventListener('click', function () { printPlan("content-trip-load"); });
+    document.getElementById('add-destination').addEventListener('click', function () { addDestination(); });
+    document.getElementById('add-note').addEventListener('click', function () { addNote(); });
+    document.getElementById('add-todo').addEventListener('click', function () { addTodDO(); });
+    document.getElementById('save-trip-button').addEventListener('click', function () { savePlan(); });
+
+    document.getElementById('clear-trip-button').addEventListener('click', function () { clearPlansform(); });
+
+
+    document.getElementById('plan-input-title').addEventListener('change',
+        function () {
+
+            let travelName = document.getElementById("plan-input-title").value;
+            let nameInput = `<span class="categoryTitleInfo">Travel Name:</span><span> ${travelName}</span>`;
+            document.getElementById("plan-name-live-preview").innerHTML = nameInput;
+        }
+    );
+    document.getElementById('add-date').addEventListener('click', function () { updateDate(); });
+
+
 
     // Create a "close" button and append it to each list item
     var myNodelist = document.getElementsByTagName("LI");

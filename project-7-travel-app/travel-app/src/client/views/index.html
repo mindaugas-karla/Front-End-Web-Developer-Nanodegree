@@ -136,18 +136,108 @@
 
         </section>
 
-
-
         <section id="content-intro" class="hiddenPart">
-            intro
+            <div id="introTitle">Welcome, <span id="intro-user-name"></span>!</div>
+            <div style="display:flex;  flex-direction: column; text-align: center; line-height: 35px;">
+                <span>It's Your, first Travel planning here,</span>
+                <span>Don't be scared it's easy!</span>
+                <span>Travel Assistant is ready to help you!</span>
+            </div>
 
+            <div style="display:flex;  flex-direction: column; padding: 30px;">
+                <div style="display: flex; flex-direction: row;">
+                    <div class="menuButton noselect">
+                        <span class="newTripIcon"></span>
+                        <span class="buttonText">New Trip +</span>
+                    </div>
+                    <div
+                        style="margin-left: 20px; padding-top: 5px; width: -webkit-fill-available; font-weight: lighter;">
+                        You can create travel plans,
+                        add flight's dates, notes, to see information about country,
+                        weather, wind speed, population, flag, image, call code etc.
+                    </div>
+                </div>
 
+                <div style="display: flex; flex-direction: row;">
 
-            <div>
+                    <div class="menuButton noselect">
+                        <span class="newListIcon"></span>
+                        <span class="buttonText">New List +</span>
+                    </div>
+                    <div
+                        style="margin-left: 20px; padding-top: 5px; width: -webkit-fill-available; font-weight: lighter;">
+                        People often forget something importan when planning trip.
+                        Plan your trip before time comes and not too late!
+                        Here you can create as many to do lists as you want!
+                    </div>
 
-                <input id="intro-confirm" type="button" value="Done">
+                </div>
+
+                <div style="display: flex; flex-direction: row;">
+
+                    <div class="menuButton noselect">
+                        <span class="newAboutIcon"></span>
+                        <span class="buttonText">About</span>
+                    </div>
+                    <div
+                        style="margin-left: 20px; padding-top: 5px; width: -webkit-fill-available; font-weight: lighter;">
+                        Here you can see some information about project.
+                    </div>
+
+                </div>
+
+                <div style="display: flex; flex-direction: row;">
+
+                    <div class="menuButton noselect">
+                        <span class="newContactsIcon"></span>
+                        <span class="buttonText">Contacts</span>
+                    </div>
+                    <div
+                        style="margin-left: 20px; padding-top: 5px; width: -webkit-fill-available; font-weight: lighter;">
+                        Always good to find contact form to reach project developer and say hi :)
+                    </div>
+
+                </div>
+
 
             </div>
+
+
+            <div style="text-align: center;">
+
+                <input id="intro-confirm" class="formButton noselect pointerCursor" type="button" value="Begin">
+
+            </div>
+        </section>
+        <section id="content-trip-load" class="hiddenPart">
+            <div id="tripLoadTitle">Loaded Trip</div>
+
+            <div id="loaded-trip-set">
+                <div id="loaded-trip-name"></div>
+
+                <div id="loaded-trip-date"></div>
+
+
+                <div id="loaded-plan-destinations-live-title-preview"></div>
+                
+                <div id="loaded-plan-destinations-live-preview"></div>
+                <div id="loaded-plan-destinations-live-general-preview"></div>
+
+
+
+
+                <div id="loaded-trip-destination"></div>
+                <div id="loaded-trip-note"></div>
+                <div id="loaded-trip-todo"></div>
+
+
+            </div>
+            <div id="loaded-trip-build-panel">
+                <input type="button" id="loaded-clear-trip-button" value="Delete" class="pointerCursor formButton">
+                <input type="button" id="loaded-print-trip-button" value="Print/Pdf" class="pointerCursor formButton">
+            </div>
+
+
         </section>
 
         <section id="content-app" class="hiddenPart">
@@ -155,48 +245,92 @@
 
             <div id="content-app-table">
                 <div id="content-app-create">
-                    <div style="text-align: center; font-weight: bold; padding-bottom: 15px;">New Plan</div>
+                    <div class="tablesPlanTitle">
+                        Plan Builder
+                    </div>
 
                     <div>
-                        <input type="text" id="plan-input-title" placeholder="Trip Title">
+                        <input id="plan-input-title" type="text" placeholder="Plan Title...">
+                    </div>
+
+                    <div class="travelDateInputBlock">
+                        <span>When you planning to travel?</span>
+                        <div style="display: flex; flex-direction: row;">
+                            <input type="text" id="travel-start" placeholder="2000/12/24">
+                            <span class="deviderDateClass">-</span>
+                            <input type="text" id="travel-end" placeholder="2000/12/28">
+                        </div>
+                        <input type="button" class="pointerCursor" id="add-date" value="add">
 
                     </div>
-                    <div>
-                        <span>When you planning to travel?</span>
 
-                        <div style="display: flex; flex-direction: row;">
-                            <input type="date" id="travel-start" placeholder="travel start"> -
-                            <input type="date" id="travel-end" placeholder="travel end">
+                    <div class="travelDestinationBlock">
+                        <span>Where you planning to travel?</span>
+
+                        <div class="addDestinationSection">
+                            <input type="text" id="plan-input-destination" placeholder="Destination">
+                            <input type="text" id="plan-input-hotel" placeholder="Hotel">
+                            <input type="text" id="plan-input-flight-date" placeholder="Flight Date 2000/12/24">
+
+                            <input type="button" class="pointerCursor" id="add-destination" value="add">
                         </div>
                     </div>
-                    <div>
-                        <span>Where you planning to travel for 14 days?</span>
-                        <br>
-                        <br>
 
-                        [Add Destination]
-                        <br>
-                        <br>
+                    <div class="travelNoteBlock">
+                        <span>Add Note (Optional)</span>
 
-                        <input type="text" id="plan-input-destination" placeholder="Destination">
+                        <div class="addNoteSection">
+                            <textarea id="plan-input-textarea"></textarea>
 
-
-
+                            <input type="button" class="pointerCursor" id="add-note" value="add">
+                        </div>
                     </div>
 
+                    <div class="travelTodoBlock">
+                        <span>To Do List Name (Optional)</span>
 
+                        <div class="addTodoSection">
+                            <input type="text" id="plan-input-todo" placeholder="To Do List">
+                            <input type="button" class="pointerCursor" id="add-todo" value="add">
+                        </div>
+                    </div>
 
 
 
 
                 </div>
                 <div id="content-app-result">
-                    rezultatai
+                    <div class="tablesPlanTitle">
+                        Live Preview
+                    </div>
+                    <div id="results-print">
+                        <div id="plan-name-live-preview">
+                        </div>
+                        <div id="plan-date-live-preview"></div>
 
+                        <div id="plan-destinations-live-title-preview"></div>
+                        <div id="plan-destinations-live-preview"></div>
+                        <div id="plan-destinations-live-general-preview"></div>
+
+
+
+                        <div id="plan-note-live-preview"></div>
+
+
+                        <div id="plan-todolist-live-preview"></div>
+                    </div>
                 </div>
 
+            </div>
+
+            <div id="trip-build-panel">
+                <input type="button" id="clear-trip-button" value="Clear" class="pointerCursor formButton">
+                <input type="button" id="save-trip-button" value="Save" class="pointerCursor formButton">
+                <input type="button" id="print-trip-button" value="Print/Pdf" class="pointerCursor formButton">
 
             </div>
+
+
 
 
 
@@ -210,7 +344,7 @@
 
             <div id="list-to-do">
                 <div id="list-name">
-                    <input type="text" id="list-input-name" placeholder="List name...">
+                    <input type="text" id="list-input-name" placeholder="List Title...">
 
 
                 </div>
@@ -228,8 +362,8 @@
                 </ul>
 
                 <div id="to-do-list-panel">
-                    <input type="button" id="list-clear-button" value="Clear" class="pointerCursor listButton">
-                    <input type="button" id="list-save-button" value="Save" class="pointerCursor listButton">
+                    <input type="button" id="list-clear-button" value="Clear" class="pointerCursor formButton">
+                    <input type="button" id="list-save-button" value="Save" class="pointerCursor formButton">
 
 
                 </div>
@@ -317,6 +451,12 @@
                     No Plans Yet
 
                 </div>
+                <div class="widgetsTitle expiredSection">Expired</div>
+
+                <div id="widget-plans-expired">
+                    No Expired Plans
+
+                </div>
 
             </div>
             <div id="content-widget-lists" class="widget">
@@ -352,7 +492,7 @@
             <div id="todays-suggestion">Today's suggestion to visit:</div>
 
             <div id="popular-destinations">
-                
+
 
 
             </div>

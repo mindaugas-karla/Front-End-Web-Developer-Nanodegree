@@ -609,29 +609,31 @@ height: -webkit-fill-available;
   border-style: solid;
   border-width: 1px;
   border-radius: 0;
-  padding: 10px;
   font-size: 16px;
   outline: none;
   border-radius: 0;
   font-size: 16px;
-  padding: 5px 20px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 8px;
+  padding-left: 10px;
   border-color: #a3c2db;
 }
 
 
 #content-app-result {
   // background-color: #fdbc56;
-    background-image: url("../images/bgPlan.jpg");
+    //background-image: url("../images/bgPlan.jpg");
 
   width: 50%;
   margin-left: 10px;
   padding: 15px;
   border-radius: 8px;
   min-height: 300px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #314f65;
-
+  // border-style: solid;
+  // border-width: 2px;
+  // border-color: #314f65;
+  background-color: #eec46d4f;
 
 }
 
@@ -726,6 +728,30 @@ height: -webkit-fill-available;
   padding-bottom: 30px;
   font-size: 18px;
   font-weight: bold;
+}
+
+#tripLoadTitle {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+#introTitle {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#content-intro .menuButton {
+  width: 160px;
+}
+#intro-user-name {
+  color: #5bb0b6;
 }
 
 
@@ -874,18 +900,31 @@ height: -webkit-fill-available;
 }
 
 #widget-plans-results {
-margin-top:15px;
-text-align: center;
-font-weight: lighter;
-
+  margin-top:15px;
+  text-align: center;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: column;
 }
 
-#widget-lists-results {
+#widget-plans-results div {
+
+  padding: 5px;
+    background-color: #a6aeb1;
+    color: #2c3d54;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+
+#widget-lists-results, #widget-plans-expired {
   margin-top:15px;
 text-align: center;
 font-weight: lighter;
 display: flex;
 flex-direction: column;
+font-size: 16px;
 }
 
 #widget-lists-results div {
@@ -897,9 +936,23 @@ flex-direction: column;
     margin-bottom: 5px;
 }
 
+#widget-plans-expired div {
+  padding: 5px;
+    background-color: #a6aeb1;
+    color: #2c3d54;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
 .widgetListLineTable {
   display: flex;
 
+}
+
+.expiredSection {
+
+  padding-top: 15px;
 }
 
 
@@ -1127,13 +1180,13 @@ b {
 }
 
 /* Remove margins and padding from the list */
-ul {
+#myUL ul {
   margin: 0;
   padding: 0;
 }
 
 /* Style the list items */
-ul li {
+#myUL  li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
@@ -1149,24 +1202,24 @@ ul li {
 }
 
 /* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
+#myUL  li:nth-child(odd) {
   background: #f9f9f9;
 }
 
 /* Darker background-color on hover */
-ul li:hover {
+#myUL  li:hover {
   background: #ddd;
 }
 
 /* When clicked on, add a background color and strike out text */
-ul li.checked {
+#myUL  li.checked {
   background: #a3c2db;
   color: #fff;
   text-decoration: line-through;
 }
 
 /* Add a "checked" mark when clicked on */
-ul li.checked::before {
+#myUL  li.checked::before {
   content: '';
   position: absolute;
   border-color: #fff;
@@ -1211,12 +1264,10 @@ ul li.checked::before {
   margin: 0 !important;
   border-style: solid;
   border-width: 1px;
-  border-radius: 0;
   padding: 10px;
   font-size: 16px;
   outline: none;
 
-    border-radius: 0;
     font-size: 16px;
     padding: 5px 20px;
     border-color: #a3c2db;
@@ -1237,7 +1288,6 @@ ul li.checked::before {
   transition: 0.3s;
   border-style: solid;
   border-width: 1px;
-  border-radius: 0;
   border-left-width: 0px;
   border-color: #a3c2db;
 }
@@ -1252,13 +1302,20 @@ ul li.checked::before {
 
 }
 
-#to-do-list-panel {
+#to-do-list-panel, #trip-build-panel, #loaded-trip-build-panel {
  display: flex;
  flex-direction: row;
  margin-top: 20px;
-
+ align-items: center;
+ justify-content: center;
 
 }
+
+#to-do-list-panel input, #trip-build-panel input, #loaded-trip-build-panel input {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+
   
 #list-name {
   display: flex;
@@ -1284,5 +1341,229 @@ ul li.checked::before {
 
 
 
+// Plan Trip
+.tablesPlanTitle {
+
+  text-align: center;
+  font-weight: bold;
+border-bottom-style: solid;
+  border-bottom-width: 1px;
+  margin-bottom: 20px;
+}
+
+  .travelDateInputBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .travelDateInputBlock span {
+    padding-bottom: 5px;
+  }
+  .travelDateInputBlock input {
+    text-align: center;
+  }
+
+  .travelDestinationBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .travelDestinationBlock span {
+    padding-bottom: 5px;
+  }
+
+  .travelNoteBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .travelNoteBlock span {
+    padding-bottom: 5px;
+  }
+
+  .travelTodoBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .travelTodoBlock span {
+    padding-bottom: 5px;
+  }
+
+
+  .addDestinationSection {
+    display: flex;
+    flex-direction: column;
+  }
+  .deviderDateClass {
+    padding-top: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-weight: bold;
+  }
+
+ 
+  #add-date {
+  }
+.travelDestinationBlock input {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+  #plan-name-live-preview {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 10px;
+    
+  }
+
+
+  #travelDateInputBlock input {
+    font-size: 12px !important;
+  }
+
+  #plan-input-textarea {
+    resize: vertical;
+    width: -webkit-fill-available;
+  }
+
+  .categoryTitleInfo {
+    font-weight: bold;
+    //text-decoration: underline;
+    margin-bottom: 10px;
+    text-align: center;
+    
+}
+.generalInfo {
+  font-weight: bold;
+    //text-decoration: underline;
+    margin-bottom: 10px;
+    text-align: center;
+    border-top: 1px solid;
+    border-color: #7faccd;
+    padding-top: 15px;
+}
+
+
+.titleInfoDate {
+  font-weight: lighter;
+}
+
+#plan-note-live-preview, #loaded-trip-note {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid;
+  border-color: #7faccd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  visibility: hidden;
+
+}
+#plan-todolist-live-preview, #loaded-trip-todo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  border-bottom: 1px solid;
+  border-color: #7faccd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+
+  visibility: hidden;
+
+}
+
+
+
+
+
+
+#plan-destinations-live-title-preview, #loaded-plan-destinations-live-title-preview {
+  margin-bottom: 10px;
+}
+#plan-destinations-live-general-preview, #loaded-plan-destinations-live-general-preview {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  border-bottom: 1px solid;
+  border-color: #7faccd;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  visibility: hidden;
+
+}
+#plan-destinations-live-title-preview, #plan-destinations-live-general-preview, #loaded-plan-destinations-live-title-preview, #loaded-plan-destinations-live-general-preview {
+  font-weight: bold;
+  text-align: center;
+    margin-top: 15px;
+
+}
+
+
+
+
+
+#plan-date-live-preview, #loaded-trip-date {
+  border-bottom: 1px solid;
+  border-color: #7faccd;
+  padding-bottom: 10px;
+  visibility: hidden;
+  margin-top:15px;
+
+}
+#plan-date-live-preview, #plan-input-title, #loaded-trip-date {
+  font-weight: lighter;
+  display: flex;
+    flex-direction: column;
+}
+
+#plan-date-live-preview li, #loaded-trip-date li {
+  font-weight: bold;
+}
+  
+
+#print-trip-button {
+  display: none;
+}
+
+#content-trip-load {
+grid-area: app;
+background-color: #fff5f5b0;
+padding: 15px;
+border-radius: 15px;
+padding-left: 30px;
+padding-right: 30px;
+
+-webkit-box-shadow: -1px 2px 8px 5px #0000001f;
+-moz-box-shadow: -1px 2px 8px 5px #0000001f;
+box-shadow: -1px 2px 8px 5px #0000001f;
+display: block;
+font-weight: lighter;
+
+text-align: center;
+}
+
+
+#loaded-trip-set {
+  width: -webkit-fill-available;
+  padding: 15px;
+  border-radius: 8px;
+  min-height: 300px;
+  background-color: rgba(238,196,109,.30980392156862746);
+
+}
+
+
+#content-trip-load .countryBlock  {
+  align-items: center;
+  justify-content: center;
+
+
+}
 	
 }

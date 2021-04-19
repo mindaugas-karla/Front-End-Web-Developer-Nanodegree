@@ -2,6 +2,7 @@
 //import { extraMods } from './js/extraMods'
 //import { base } from './js/base'
 
+import { jsPDF } from "jspdf";
 
 import { checkInput, reloadWeb } from './js/helper'
 import { checkStorage, createEntry, updateUser } from './js/storage'
@@ -21,5 +22,6 @@ export {
     checkStorage,
     createEntry,
     updateUser,
-    reloadWeb
+    reloadWeb,
+    jsPDF
 }
