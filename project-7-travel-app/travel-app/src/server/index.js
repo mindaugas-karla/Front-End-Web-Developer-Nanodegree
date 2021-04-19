@@ -46,7 +46,6 @@ const apiKey = process.env.API_KEY;
 
 /* Function to GET Web API Data - Async GET */
 const getAnalyses = async (req, res) => {
-    console.log("analize");
     let analyseValue = req.body.analyseValue;
     let analyseOption = req.body.analyseOption;
     let analyseSet;
@@ -63,11 +62,9 @@ const getAnalyses = async (req, res) => {
 
     let urlSend = defaultUrl + analyseSet + '&key=' + apiKey + '&lang=en';
 
-    console.log("urla:" + urlSend)
     const response = await fetch(urlSend);
     try {
         const data = await response.json();
-        console.log(data)
         res.send(data)
     }
     catch (error) {
@@ -77,11 +74,6 @@ const getAnalyses = async (req, res) => {
 
 // POST Route
 app.post('/apiFeed', getAnalyses);
-
-
-
-// newwwwwww
-
 
 // Geonames API, Default Url
 const defaultUrl_geonames = 'http://api.geonames.org/searchJSON?q=';
@@ -95,7 +87,6 @@ const defaultUrl_pixabay = 'http://pixabay.com/api/?q=';
 // Get more Info about Country via Restcountries API
 const defaultUrl_restcountries = 'https://restcountries.eu/rest/v2/name/';
 
-
 // Get Geonames API KEY
 const apiKey_geonames = process.env.API_KEY_GEONAMES;
 
@@ -104,10 +95,6 @@ const apiKey_weatherbit = process.env.API_KEY_WEATHERBIT;
 
 // Get Pixabay API KEY
 const apiKey_pixabay = process.env.API_KEY_PIXABAY;
-
-
-
-
 
 
 /* Function to GET Longitude and Latitude Using Geoname API Data - Async GET */
@@ -138,8 +125,6 @@ const getWeatherbitData = async (lat, lng) => {
 /* Function to GET Weather from Longitude and Latitude Using Weatherbit API Data - Async GET */
 const getPixabayData = async (destination) => {
     let urlSend = defaultUrl_pixabay + destination + '&image_type=photo' + '&category=places' + '&safesearch=true' + '&orientation=horizontal' + '&key=' + apiKey_pixabay;
-
-    console.log(urlSend);
     const response = await fetch(urlSend);
     try {
         const data = await response.json();
@@ -149,7 +134,6 @@ const getPixabayData = async (destination) => {
         console.log('error', error);
     }
 }
-
 
 /* Function to GET More information about Country Using RestCountries API Data - Async GET */
 const getRestCountriesData = async (name) => {
@@ -166,17 +150,10 @@ const getRestCountriesData = async (name) => {
 
 
 
-
-
-
-
-
-// Data back
+// Gather all data and back
 let searchData = {};
-
 function getWeatherData(req, res) {
     let analyseValue = req.body.analyseValue;
-    console.log("sitas:::" + analyseValue);
     getGeonameData(analyseValue)
         .then((data) => {
             let resultsFound = data.totalResultsCount;
@@ -204,7 +181,6 @@ function getWeatherData(req, res) {
         })
         .then((weatherData) => {
             if (weatherData) {
-                console.log(weatherData);
                 searchData["time_zone"] = weatherData.data[0].timezone;
                 searchData["wind_speed"] = weatherData.data[0].wind_spd;
                 searchData["sunset"] = weatherData.data[0].sunset;
@@ -224,19 +200,16 @@ function getWeatherData(req, res) {
         })
         .then((imageData) => {
             if (imageData && imageData.total > 0) {
-                console.log(imageData);
                 let imageDataGet = imageData.hits[0];
                 searchData["image_preview"] = imageDataGet.previewURL;
                 searchData["image_web"] = imageDataGet.webformatURL;
                 searchData["tags"] = imageDataGet.tags;
-
             }
            
             const restCountries = getRestCountriesData(searchData["country"]);
             return restCountries;
         })
         .then((restCountries) => {
-            console.log(restCountries);
             if (restCountries && restCountries.status !== 404) {
                 searchData["calling_code"] = restCountries[0].callingCodes;
                 searchData["capital"] = restCountries[0].capital;
@@ -246,8 +219,6 @@ function getWeatherData(req, res) {
                 searchData["subregion"] = restCountries[0].subregion;
                 searchData["demonym"] = restCountries[0].demonym;
                 searchData["web_domain"] = restCountries[0].topLevelDomain;
-
-
                 res.send(searchData);
             }
             else {
@@ -261,16 +232,12 @@ function getWeatherData(req, res) {
 // POST Route
 app.post('/apiWeather', getWeatherData);
 
-
-
 function getPopularImages(req, res) {
     let analyseValue = req.body.analyseValue;
     getPixabayData(analyseValue)
         .then((data) => {
             if (data && data.total > 0) {
                 res.send(data);
-                console.log("data:");
-                console.log(data);
             }
             else {
                 return false;
@@ -279,16 +246,11 @@ function getPopularImages(req, res) {
 }
 
 
-
 // POST Route
 app.post('/apiPopular', getPopularImages);
 
 
-
-
-
-
-
+// Main Index Route
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
