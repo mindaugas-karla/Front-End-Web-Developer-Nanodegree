@@ -148,8 +148,6 @@ const getRestCountriesData = async (name) => {
     }
 }
 
-
-
 // Gather all data and back
 let searchData = {};
 function getWeatherData(req, res) {
@@ -205,7 +203,7 @@ function getWeatherData(req, res) {
                 searchData["image_web"] = imageDataGet.webformatURL;
                 searchData["tags"] = imageDataGet.tags;
             }
-           
+
             const restCountries = getRestCountriesData(searchData["country"]);
             return restCountries;
         })
@@ -227,8 +225,6 @@ function getWeatherData(req, res) {
         })
 }
 
-
-
 // POST Route
 app.post('/apiWeather', getWeatherData);
 
@@ -245,10 +241,8 @@ function getPopularImages(req, res) {
         })
 }
 
-
 // POST Route
 app.post('/apiPopular', getPopularImages);
-
 
 // Main Index Route
 app.get('/', function (req, res) {
