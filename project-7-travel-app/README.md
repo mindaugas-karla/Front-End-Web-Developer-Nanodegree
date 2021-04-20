@@ -7,8 +7,9 @@ Following are the project prerequisites:
 - Web application framework for routing - Express
 - Build tool - Webpack. Using webpack, we will set up the app to have dev and prod environments, each with their own set of tools and commands.
 - External script - Service Worker
-- External API - Meaningcloud
-- 
+- External API - Geonames, WeatherBit and Pixabay
+- HTML structure
+
 
 ## Requirements
 This project aims to give an opportunity to put all of the skills participant learned into one project to build own custom travel app. Due to the nature of this course, it is very JavaScript heavy, but it is still expected to write clean and appealing HTML/CSS. Participant has targeting the DOM, working with objects, and retrieving data from 3 APIs in which one of those is reliant on another to work. Finally, this is all done in a Webpack environment, using an express server, and wrapped up with service workers.
@@ -79,7 +80,7 @@ Travel Assistant is a powerful tool to plan your Trips. You can create travel pl
 - Webpack
 - Jest
 - Workbox
-- Meaningcloud API
+- API: Geonames, WeatherBit and Pixabay
 
 
 ## Results
