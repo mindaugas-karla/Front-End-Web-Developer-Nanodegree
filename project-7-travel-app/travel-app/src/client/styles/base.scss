@@ -149,115 +149,27 @@ html {
     line-height: 25px;
   }
 
-  
-
-  .weatherSearchBlock {
-    padding-bottom: 10px;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-color: #7faccd;
-
-  }
-  .imageSearchBlock {
-    text-align: center;
-  }
-  .imagePreviewSearch {
-    margin-bottom: 20px;
-
-  }
-  .generalInfoStyle {
-    padding-bottom: 10px;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-color: #7faccd;
-
-  }
-  .weatherSearchTitle {
-
-    text-align: center;
-      margin-top: 20px;
-      margin-bottom: 5px;
-      font-weight: bolder;
-  }
-  .weatherIcon {
-    height: 25px;
-    margin-bottom: -7px;
-  }
-    .countryFlag {
-      width: 25px;
-    }
-    .countryName {
-      padding-left: 10px;
-      font-weight: bold;
-    }
-
-  .searchBarResultText {
-  font-weight: bold;
-
-  }
-  .searchBarResultTitle {
-  font-weight: lighter;
-
-  }
-
-
-
-  #content-slider {
-    display: flex;
-    flex-direction: column;
-
-  }
-
-  #popular-destinations {
-    display: flex;
-    flex-direction: row;
-
-    align-items: center;
-    justify-content: center;
-
-
-  }
-  #todays-suggestion {
-    text-align: center;
-    padding-bottom: 10px;
-  }
-  .popularDestinationSingle {
-    height: 90px;
-    width: 90px;
-    background-color: red;
-    border-radius: 15px;
-    margin-right: 15px;
-
-  }
-
-
-
-
-  
-
-
   #header-profile {
     grid-area: profile;
     display: flex;
     flex-direction: row;
   }
 
-#header-profile-image {
-    background-repeat: no-repeat;
-    background-size: 55px;
-    height: 55px;
-    width: 55px;
-    border-radius: 50%;
-    margin-top: 3px;
-}
+  #header-profile-image {
+      background-repeat: no-repeat;
+      background-size: 55px;
+      height: 55px;
+      width: 55px;
+      border-radius: 50%;
+      margin-top: 3px;
+  }
 
-.profile_image_first {
-  background-image: url("../images/avatar_female.jpg");
-}
-.profile_image_second {
-  background-image: url("../images/avatar_male.jpg");
-}
-
+  .profile_image_first {
+    background-image: url("../images/avatar_female.jpg");
+  }
+  .profile_image_second {
+    background-image: url("../images/avatar_male.jpg");
+  }
 
   #header-profile-login {
     display: flex;
@@ -271,17 +183,105 @@ html {
     font-weight: 700;
   }
 
-
-
   #header-logout {
     grid-area: logout;
-
     background-image: url("../images/logout_doors.png");
     background-repeat: no-repeat;
     background-size: 58px;
-
-
   }
+
+  #results-header-button {
+    margin-top: 10px;
+    text-align: right;
+    margin-right: 15px;
+    font-weight: bold;
+  }
+
+
+
+  .weatherSearchBlock {
+    padding-bottom: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #7faccd;
+  }
+
+  .imageSearchBlock {
+    text-align: center;
+  }
+
+  .imagePreviewSearch {
+    margin-bottom: 20px;
+  }
+
+  .generalInfoStyle {
+    padding-bottom: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #7faccd;
+  }
+
+  .weatherSearchTitle {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bolder;
+  }
+
+  .weatherIcon {
+    height: 25px;
+    margin-bottom: -7px;
+  }
+
+  .countryFlag {
+    width: 25px;
+  }
+
+  .countryName {
+    padding-left: 10px;
+    font-weight: bold;
+  }
+
+  .searchBarResultText {
+    font-weight: bold;
+  }
+  .searchBarResultTitle {
+    font-weight: lighter;
+  }
+
+
+  #content-slider {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #popular-destinations {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+    #todays-suggestion {
+      text-align: center;
+      padding-bottom: 10px;
+    }
+    .popularDestinationSingle {
+      height: 90px;
+      width: 90px;
+      background-color: red;
+      border-radius: 15px;
+      margin-right: 15px;
+    }
+
+
+
+
+  
+
+
+  
 
 
   /** CONTENT **/
@@ -301,7 +301,6 @@ html {
     grid-template-areas: 
       "menu app widget"
       "menu slider widget";
-      
   }
 
   .hiddenGrid {
@@ -310,7 +309,6 @@ html {
     grid-template-areas: 
       "app" !important;
       width: 500px !important;
-    
   }
 
   .hiddenBody {
@@ -326,7 +324,6 @@ html {
   .hiddenFooter {
     display: grid;
     width: 500px !important;
-
   }
 
 
@@ -400,8 +397,6 @@ html {
   /* ---------------- */
 
   /* Login */
-
-
   #login-username-frame {
     padding-top: 15px;
   }
@@ -448,7 +443,6 @@ html {
       display: none;
   }
 
-
   #avatar-selection {
     display: -webkit-inline-box;
   }
@@ -463,9 +457,11 @@ html {
     border-radius: 50%;
     background-color: white;
   }
+
   .selectorProfiles {
     display: none;
   }
+  
   .profileError {
     border-style: solid;
     border-right-width: 5px;
@@ -745,12 +741,7 @@ html {
 
 
 
-#results-header-button {
-  margin-top: 10px;
-  text-align: right;
-  margin-right: 15px;
-  font-weight: bold;
-}
+
 
 
 
@@ -1002,10 +993,9 @@ b {
 .helloProfile {
   background-image: url("../images/hello_image.png");
   background-repeat: no-repeat;
-    background-size: 150px;
-    height: 150px;
-    width: 150px;
-
+  background-size: 150px;
+  height: 150px;
+  width: 150px;
 }
 
   /** FOOTER **/
@@ -1121,7 +1111,6 @@ b {
   /* Style the header */
   .header {
       text-align: center;
-      
       margin-bottom: 20px;
   }
 
@@ -1141,11 +1130,9 @@ b {
     font-size: 16px;
     outline: none;
 
-      font-size: 16px;
-      padding: 5px 20px;
-      border-color: #a3c2db;
-
-
+    font-size: 16px;
+    padding: 5px 20px;
+    border-color: #a3c2db;
   }
 
   /* Style the "Add" button */
@@ -1171,17 +1158,14 @@ b {
   #myDIV {
     display: flex;
     flex-direction: row;
-
-
   }
 
   #to-do-list-panel, #trip-build-panel, #loaded-trip-build-panel {
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: center;
-
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
   }
 
   #to-do-list-panel input, #trip-build-panel input, #loaded-trip-build-panel input {
@@ -1195,7 +1179,6 @@ b {
     flex-direction: row;
     margin-bottom: 20px;
     border-right-width: 0px;
-
   }
 
   #list-input-name {
@@ -1209,17 +1192,15 @@ b {
     border-style: solid;
     border-width: 1px;
     height: 40px;
-
   }
 
 
 
   // Plan Trip
   .tablesPlanTitle {
-
     text-align: center;
     font-weight: bold;
-  border-bottom-style: solid;
+    border-bottom-style: solid;
     border-bottom-width: 1px;
     margin-bottom: 20px;
   }
@@ -1310,22 +1291,22 @@ b {
       //text-decoration: underline;
       margin-bottom: 10px;
       text-align: center;
-      
-  }
-  .generalInfo {
-    font-weight: bold;
+    }
+
+    .generalInfo {
+      font-weight: bold;
       //text-decoration: underline;
       margin-bottom: 10px;
       text-align: center;
       border-top: 1px solid;
       border-color: #7faccd;
       padding-top: 15px;
-  }
+    }
 
 
-  .titleInfoDate {
-    font-weight: lighter;
-  }
+    .titleInfoDate {
+      font-weight: lighter;
+    }
 
   #plan-note-live-preview, #loaded-trip-note {
     display: flex;
