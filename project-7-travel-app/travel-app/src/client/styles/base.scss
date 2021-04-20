@@ -271,7 +271,7 @@ b {
 
   .formButton {
     border-color: #8ec0dc4a;
-    width: 180px;
+    max-width: 180px;
     height: 50px;
 
     border-radius: 10px;
@@ -412,8 +412,8 @@ b {
     grid-area: app;
     background-color: #fff5f5b0;
     padding: 15px;
-    padding-left: 50px;
-    padding-right: 50px;
+    // padding-left: 50px;
+    // padding-right: 50px;
 
     border-radius: 15px;
 
@@ -427,8 +427,8 @@ b {
     grid-area: app;
     background-color: #fff5f5b0;
     padding: 15px;
-    padding-left: 50px;
-    padding-right: 50px;
+    // padding-left: 50px;
+    // padding-right: 50px;
     border-radius: 15px;
 
     -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
@@ -509,8 +509,8 @@ b {
     background-color: #fff5f5b0;
     padding: 15px;
     border-radius: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
+    // padding-left: 30px;
+    // padding-right: 30px;
 
     -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
     -moz-box-shadow: -1px 2px 8px 5px #0000001f;
@@ -871,6 +871,9 @@ b {
   }
 
   /* Remove margins and padding from the list */
+  #myUL {
+    z-index: 0;
+  }
   #myUL ul {
     margin: 0;
     padding: 0;
@@ -1202,8 +1205,8 @@ b {
     background-color: #fff5f5b0;
     padding: 15px;
     border-radius: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
+    // padding-left: 30px;
+    // padding-right: 30px;
 
     -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
     -moz-box-shadow: -1px 2px 8px 5px #0000001f;
@@ -1261,7 +1264,9 @@ b {
     font-weight: lighter;
   }
 
-  
+  #profile-minimize {
+    display: none;
+  }
 
 
   @media(max-width:1500px) {
@@ -1400,6 +1405,8 @@ b {
       align-items: center;
     justify-content: center;
     width: -webkit-fill-available;
+    z-index: 1;
+    position: sticky;
   }
 
   #content-menu .menuButton {
@@ -1420,6 +1427,35 @@ b {
 
   }
 
+  @media(max-width:525px) {
+
+    #main-header {
+      grid-template-columns: 55px 0px 1fr 200px 0px 30px !important;
+    }
+
+    #header-search {
+      padding-right: 5px !important;
+    }
+
+    #profile-minimize {
+      display: none;
+    }
+
+#header-profile {
+  display: none !important;
+
+}
+#profile-minimize {
+  display: block;
+}
+
+  }
+  @media(max-width:400px) {
+    #main-header {
+
+    grid-gap: 2px !important;
+    }
+  }
 
 @media(max-width:600px) {
   .hiddenFooter {

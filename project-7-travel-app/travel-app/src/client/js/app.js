@@ -231,10 +231,18 @@ function setProfileImage(selection) {
     if (selection == 1) {
         document.getElementById("header-profile-image").classList.remove("profile_image_second");
         document.getElementById("header-profile-image").classList.add("profile_image_first");
+
+        document.getElementById("profile-minimize").classList.remove("profile_image_second");
+        document.getElementById("profile-minimize").classList.add("profile_image_first");
     }
     else {
         document.getElementById("header-profile-image").classList.remove("profile_image_first");
         document.getElementById("header-profile-image").classList.add("profile_image_second");
+
+
+        document.getElementById("profile-minimize").classList.remove("profile_image_first");
+        document.getElementById("profile-minimize").classList.add("profile_image_second");
+
     }
 }
 
@@ -1084,8 +1092,13 @@ function clearPlansform(optionValue) {
     document.getElementById("plan-note-live-preview").innerHTML = "";
     document.getElementById("plan-todolist-live-preview").innerHTML = "";
 
-    document.getElementById("plan-date-live-preview").visibility = "hidden";
-    document.getElementById("plan-note-live-preview").visibility = "hidden";
+    document.getElementById("plan-destinations-live-general-preview").style.visibility = "hidden";
+    document.getElementById("plan-todolist-live-preview").style.visibility = "hidden";
+    
+    
+
+    document.getElementById("plan-date-live-preview").style.visibility = "hidden";
+    document.getElementById("plan-note-live-preview").style.visibility = "hidden";
 }
 
 // Delete Selected Plan, Refresh view

@@ -26,6 +26,7 @@
 
     top: 50px;
     position: sticky;
+    z-index: 1;
   }
 
   #header-logo {
@@ -123,7 +124,7 @@
     flex-direction: row;
   }
 
-  #header-profile-image {
+  .header-profile-image {
       background-repeat: no-repeat;
       background-size: 55px;
       height: 55px;
