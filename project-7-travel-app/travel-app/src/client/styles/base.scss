@@ -5,6 +5,9 @@ html {
   height: 100%;
   width: 100%;
 }
+b {
+  font-weight: bold;
+}
 
 @media(min-width:250px) {
 	#travel-app {
@@ -30,175 +33,10 @@ html {
 		justify-content: center;
 	}
 
-  /** HEADER **/
-  #main-header {
-    grid-area: top;
-    background-color: #fff5f5b0;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-
-    padding-top: 25px;
-    padding: 10px 20px;
-    -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
-    -moz-box-shadow: -1px 2px 8px 5px #0000001f;
-    box-shadow: -1px 2px 8px 5px #0000001f;
-
-    display: grid;
-    width: 100%;
-    // margin: auto;
-    grid-template-columns: 70px 200px 1fr 250px 180px 60px;
-    grid-template-rows: 1fr;
-    grid-gap: 10px;
-    grid-template-areas: 
-      "logo logoText empty search profile logout";
-    justify-content: center;
-
-    top: 50px;
-    position: sticky;
-  }
-
-  #header-logo {
-    grid-area: logo;
-    background-image: url("../images/logo_robot.png");
-    background-repeat: no-repeat;
-    background-size: 60px;
-  }
-
-  #header-text {
-    grid-area: logoText;
-    display: flex;
-    flex-direction: column;
-    padding-top: 14px;
-  }
-
-  #header-text span:nth-child(1) {
-    font-weight: 800;
-    font-size: 20px;
-  }
-
-  #header-text span:nth-child(2) {
-    font-weight: lighter;
-    font-size: 16px;
-  }
-
-  #header-search {
-    grid-area: search;
-
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-right: 30px;
-
-    display: flex;
-    flex-direction: row;
-  }
-  
-  #header-search-bar {
-    font-size: 12px;
-    border-radius: 5px;
-    border: 1px solid #e7e8e7;
-    background-color: #f9fafa;
-    padding-left: 10px;
-    margin-top: 17px;
-    height: 35px;
-    width: 100%;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    outline: none;
-  }
-
-  #header-search-bar-confirm {
-    width: 50px;
-    padding: 0;
-    padding-right: 2px;
-    height: 35px;
-    margin-top: 17px;
-    border: none;
-    border-width: 1px;
-    border-style: solid;
-    border-left-width: 0px;
-    border-radius: 30px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-color: #e7e8e7;
-    outline: none;
-    background-color: #c1e8f1;
-  }
-
-  #results-header-search {
-    background-color: #ecf1f4;
-    width: 300px;
-    position: absolute;
-    margin-top: 750px;
-    border-width: 1px;
-    border-color: #b4d7e6;
-    border-style: solid;
-    border-radius: 15px;
-    -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
-    -moz-box-shadow: -1px 2px 8px 5px #0000001f;
-    box-shadow: -1px 2px 8px 5px #0000001f;
-    display: none;
-  }
-
-  #results-header {
-    padding: 20px;
-    text-align: left;
-    line-height: 25px;
-  }
-
-  #header-profile {
-    grid-area: profile;
-    display: flex;
-    flex-direction: row;
-  }
-
-  #header-profile-image {
-      background-repeat: no-repeat;
-      background-size: 55px;
-      height: 55px;
-      width: 55px;
-      border-radius: 50%;
-      margin-top: 3px;
-  }
-
-  .profile_image_first {
-    background-image: url("../images/avatar_female.jpg");
-  }
-  .profile_image_second {
-    background-image: url("../images/avatar_male.jpg");
-  }
-
-  #header-profile-login {
-    display: flex;
-    flex-direction: column;
-    padding-top: 14px;
-    font-size: 14px;
-    padding-left: 20px;
-  }
-
-  #header-logged-in {
-    font-weight: 700;
-  }
-
-  #header-logout {
-    grid-area: logout;
-    background-image: url("../images/logout_doors.png");
-    background-repeat: no-repeat;
-    background-size: 58px;
-  }
-
-  #results-header-button {
-    margin-top: 10px;
-    text-align: right;
-    margin-right: 15px;
-    font-weight: bold;
-  }
 
 
 
+  // Search Country Data Styles / weather / flag / icons
   .weatherSearchBlock {
     padding-bottom: 10px;
     border-bottom-style: solid;
@@ -245,11 +83,16 @@ html {
   .searchBarResultText {
     font-weight: bold;
   }
+
   .searchBarResultTitle {
     font-weight: lighter;
   }
+  //-----------------------
 
 
+
+
+  // Content Slider Styles
   #content-slider {
     display: flex;
     flex-direction: column;
@@ -263,18 +106,19 @@ html {
     justify-content: center;
   }
 
-    #todays-suggestion {
-      text-align: center;
-      padding-bottom: 10px;
-    }
-    .popularDestinationSingle {
-      height: 90px;
-      width: 90px;
-      background-color: red;
-      border-radius: 15px;
-      margin-right: 15px;
-    }
-
+  #todays-suggestion {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  
+  .popularDestinationSingle {
+    height: 90px;
+    width: 90px;
+    background-color: red;
+    border-radius: 15px;
+    margin-right: 15px;
+  }
+  // ---------------------
 
 
 
@@ -396,6 +240,8 @@ html {
   }
   /* ---------------- */
 
+
+  
   /* Login */
   #login-username-frame {
     padding-top: 15px;
@@ -461,7 +307,7 @@ html {
   .selectorProfiles {
     display: none;
   }
-  
+
   .profileError {
     border-style: solid;
     border-right-width: 5px;
@@ -905,119 +751,97 @@ html {
 
 
 
+  // User Profile Selection / Login
 
+  .activated {
+    display: block !important;
+  }
+  .deactivated {
+    display: none !important;
+  }
 
-.activated {
-  display: block !important;
-}
-.deactivated {
-  display: none !important;
-}
+  #user-name-profile {
+    font-weight: bolder;
+  }
 
-#user-name-profile {
-  font-weight: bolder;
-}
-
-#content-profile {
-  grid-area: app;
-  background-color: #fff5f5b0;
-  padding: 15px;
-  border-radius: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
-  -moz-box-shadow: -1px 2px 8px 5px #0000001f;
-  box-shadow: -1px 2px 8px 5px #0000001f;
-  font-weight: lighter;
-
-  text-align: center;
-
-  display: block;
-  flex-direction: column;
-  
-}
-
-
-#content-login {
-  grid-area: app;
-  background-color: #fff5f5b0;
-  padding: 15px;
-  border-radius: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
-  -moz-box-shadow: -1px 2px 8px 5px #0000001f;
-  box-shadow: -1px 2px 8px 5px #0000001f;
-  display: block;
-  font-weight: lighter;
-
-  text-align: center;
-
-  display: flex;
-  flex-direction: column;
-
-}
-.hello_text {
-  margin-top: 30px;
-  line-height: 34px;
-}
-
-b {
-  font-weight: bolder;
-}
-
-.login-logo {
-  text-align: -webkit-center;
-    width: 200px;
-    height: 200px;
-    padding-top: 20px;
-    background-color: #ecf1f4;
-    border-radius: 50%;
-    margin-top: -100px;
-    margin-left: 115px;
-    border-style: solid;
-    border-width: 10px;
-    border-color: #c1e8f1;
-    -webkit-box-shadow: 0px -12px 9px -2px #0000001f;
-    -moz-box-shadow: 0px -12px 9px -2px #0000001f;
-    box-shadow: 0px -12px 9px -2px #0000001f;
-}
-
-.hello_text span:nth-child(1) {
-  font-size: 20px;
-  font-weight: lighter;
-}
-
-.helloProfile {
-  background-image: url("../images/hello_image.png");
-  background-repeat: no-repeat;
-  background-size: 150px;
-  height: 150px;
-  width: 150px;
-}
-
-  /** FOOTER **/
-  #main-footer {
-    grid-area: bottom;
+  #content-profile {
+    grid-area: app;
     background-color: #fff5f5b0;
-    width: -webkit-fill-available;
-    text-align: center;
-    border-top-width: 5px;
-    font-weight: lighter;
-    padding-top: 17px;
-    color: #708188;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
 
     -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
     -moz-box-shadow: -1px 2px 8px 5px #0000001f;
     box-shadow: -1px 2px 8px 5px #0000001f;
+    font-weight: lighter;
+
+    text-align: center;
+
+    display: block;
+    flex-direction: column;
   }
+
+  #content-login {
+    grid-area: app;
+    background-color: #fff5f5b0;
+    padding: 15px;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
+    -moz-box-shadow: -1px 2px 8px 5px #0000001f;
+    box-shadow: -1px 2px 8px 5px #0000001f;
+    display: block;
+    font-weight: lighter;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hello_text {
+    margin-top: 30px;
+    line-height: 34px;
+  }
+
+  .login-logo {
+    text-align: -webkit-center;
+      width: 200px;
+      height: 200px;
+      padding-top: 20px;
+      background-color: #ecf1f4;
+      border-radius: 50%;
+      margin-top: -100px;
+      margin-left: 115px;
+      border-style: solid;
+      border-width: 10px;
+      border-color: #c1e8f1;
+      -webkit-box-shadow: 0px -12px 9px -2px #0000001f;
+      -moz-box-shadow: 0px -12px 9px -2px #0000001f;
+      box-shadow: 0px -12px 9px -2px #0000001f;
+  }
+
+  .hello_text span:nth-child(1) {
+    font-size: 20px;
+    font-weight: lighter;
+  }
+
+  .helloProfile {
+    background-image: url("../images/hello_image.png");
+    background-repeat: no-repeat;
+    background-size: 150px;
+    height: 150px;
+    width: 150px;
+  }
+
+  
+
+
+
 
   #main-navigation {
     grid-area: navigation;
@@ -1109,13 +933,13 @@ b {
   }
 
   /* Style the header */
-  .header {
+  .myListAddHeader {
       text-align: center;
       margin-bottom: 20px;
   }
 
   /* Clear floats after the header */
-  .header:after {
+  .myListAddHeader:after {
     content: "";
     display: table;
     clear: both;
@@ -1160,6 +984,8 @@ b {
     flex-direction: row;
   }
 
+
+  // Styling Mods
   #to-do-list-panel, #trip-build-panel, #loaded-trip-build-panel {
     display: flex;
     flex-direction: row;
@@ -1172,7 +998,6 @@ b {
     margin-left: 10px !important;
     margin-right: 10px !important;
   }
-
     
   #list-name {
     display: flex;
@@ -1194,8 +1019,6 @@ b {
     height: 40px;
   }
 
-
-
   // Plan Trip
   .tablesPlanTitle {
     text-align: center;
@@ -1205,108 +1028,106 @@ b {
     margin-bottom: 20px;
   }
 
-    .travelDateInputBlock {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
+  .travelDateInputBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
 
-    }
-    .travelDateInputBlock span {
-      padding-bottom: 5px;
-    }
-    .travelDateInputBlock input {
-      text-align: center;
-    }
+  }
 
-    .travelDestinationBlock {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
+  .travelDateInputBlock span {
+    padding-bottom: 5px;
+  }
 
-    }
-    .travelDestinationBlock span {
-      padding-bottom: 5px;
-    }
+  .travelDateInputBlock input {
+    text-align: center;
+  }
 
-    .travelNoteBlock {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
+  .travelDestinationBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+  }
 
-    }
-    .travelNoteBlock span {
-      padding-bottom: 5px;
-    }
+  .travelDestinationBlock span {
+    padding-bottom: 5px;
+  }
 
-    .travelTodoBlock {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
+  .travelNoteBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
 
-    }
-    .travelTodoBlock span {
-      padding-bottom: 5px;
-    }
+  }
 
+  .travelNoteBlock span {
+    padding-bottom: 5px;
+  }
 
-    .addDestinationSection {
-      display: flex;
-      flex-direction: column;
-    }
-    .deviderDateClass {
-      padding-top: 10px;
-      padding-left: 2px;
-      padding-right: 2px;
-      font-weight: bold;
-    }
+  .travelTodoBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+  }
 
+  .travelTodoBlock span {
+    padding-bottom: 5px;
+  }
+
+  .addDestinationSection {
+    display: flex;
+    flex-direction: column;
+  }
+  .deviderDateClass {
+    padding-top: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-weight: bold;
+  }
   
-    #add-date {
-    }
   .travelDestinationBlock input {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
 
-    #plan-name-live-preview {
-      text-align: center;
-      font-weight: bold;
-      text-decoration: underline;
-      padding-bottom: 10px;
-      
-    }
+  #plan-name-live-preview {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 10px;
+    
+  }
+
+  #travelDateInputBlock input {
+    font-size: 12px !important;
+  }
+
+  #plan-input-textarea {
+    resize: vertical;
+    width: -webkit-fill-available;
+  }
+
+  .categoryTitleInfo {
+    font-weight: bold;
+    //text-decoration: underline;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .generalInfo {
+    font-weight: bold;
+    //text-decoration: underline;
+    margin-bottom: 10px;
+    text-align: center;
+    border-top: 1px solid;
+    border-color: #7faccd;
+    padding-top: 15px;
+  }
 
 
-    #travelDateInputBlock input {
-      font-size: 12px !important;
-    }
-
-    #plan-input-textarea {
-      resize: vertical;
-      width: -webkit-fill-available;
-    }
-
-    .categoryTitleInfo {
-      font-weight: bold;
-      //text-decoration: underline;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .generalInfo {
-      font-weight: bold;
-      //text-decoration: underline;
-      margin-bottom: 10px;
-      text-align: center;
-      border-top: 1px solid;
-      border-color: #7faccd;
-      padding-top: 15px;
-    }
-
-
-    .titleInfoDate {
-      font-weight: lighter;
-    }
+  .titleInfoDate {
+    font-weight: lighter;
+  }
 
   #plan-note-live-preview, #loaded-trip-note {
     display: flex;
@@ -1316,8 +1137,8 @@ b {
     margin-bottom: 10px;
     padding-bottom: 10px;
     visibility: hidden;
-
   }
+
   #plan-todolist-live-preview, #loaded-trip-todo {
     display: flex;
     flex-direction: column;
@@ -1326,19 +1147,13 @@ b {
     border-color: #7faccd;
     margin-bottom: 10px;
     padding-bottom: 10px;
-
     visibility: hidden;
-
   }
-
-
-
-
-
 
   #plan-destinations-live-title-preview, #loaded-plan-destinations-live-title-preview {
     margin-bottom: 10px;
   }
+
   #plan-destinations-live-general-preview, #loaded-plan-destinations-live-general-preview {
     display: flex;
     flex-direction: column;
@@ -1354,13 +1169,8 @@ b {
   #plan-destinations-live-title-preview, #plan-destinations-live-general-preview, #loaded-plan-destinations-live-title-preview, #loaded-plan-destinations-live-general-preview {
     font-weight: bold;
     text-align: center;
-      margin-top: 15px;
-
+    margin-top: 15px;
   }
-
-
-
-
 
   #plan-date-live-preview, #loaded-trip-date {
     border-bottom: 1px solid;
@@ -1368,7 +1178,6 @@ b {
     padding-bottom: 10px;
     visibility: hidden;
     margin-top:15px;
-
   }
   #plan-date-live-preview, #plan-input-title, #loaded-trip-date {
     font-weight: lighter;
@@ -1379,29 +1188,27 @@ b {
   #plan-date-live-preview li, #loaded-trip-date li {
     font-weight: bold;
   }
-    
 
   #print-trip-button {
     display: none;
   }
 
   #content-trip-load {
-  grid-area: app;
-  background-color: #fff5f5b0;
-  padding: 15px;
-  border-radius: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
+    grid-area: app;
+    background-color: #fff5f5b0;
+    padding: 15px;
+    border-radius: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
 
-  -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
-  -moz-box-shadow: -1px 2px 8px 5px #0000001f;
-  box-shadow: -1px 2px 8px 5px #0000001f;
-  display: block;
-  font-weight: lighter;
+    -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
+    -moz-box-shadow: -1px 2px 8px 5px #0000001f;
+    box-shadow: -1px 2px 8px 5px #0000001f;
+    display: block;
+    font-weight: lighter;
 
-  text-align: center;
+    text-align: center;
   }
-
 
   #loaded-trip-set {
     width: -webkit-fill-available;
@@ -1409,7 +1216,6 @@ b {
     border-radius: 8px;
     min-height: 300px;
     background-color: rgba(238,196,109,.30980392156862746);
-
   }
 
   .countryBlock {
