@@ -385,7 +385,6 @@ document.addEventListener('DOMContentLoaded', function () {
 /** Functions related to data managing and results */
 
 /** Check Weather Header */
-
 // Update Results on header search bar
 function updateResultsCheckBar(resultsData, idAdd) {
     if (resultsData) {
