@@ -195,6 +195,7 @@ function profileNext(userName) {
 
 // Check if User is loggedIn or loggedOut, or mb new User
 function checkSystem() {
+    let online = false;
     let checkData = Client.checkStorage("system");
     if (checkData["status"]) {
         let loggedIn = checkData["load"]["login"];
@@ -202,6 +203,7 @@ function checkSystem() {
 
         if (loggedIn == 1) {
             insideApp(loggedUser);
+            online = true;
         }
         else {
             // Do nothing: Leave Log In page
@@ -212,6 +214,7 @@ function checkSystem() {
         let newEntry = { login: 0, user: 0 };
         Client.createEntry("system", newEntry);
     }
+    return online;
 }
 
 // Confirm Intro Page
@@ -355,7 +358,12 @@ function menuNavigation(menuButton) {
 // Add event Listeners and start app functions only than DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
     // Check User Status [ if loggedIn or loggedOut, or mb new User?! ]
-    checkSystem();
+    let systemOnline = checkSystem();
+    if (systemOnline) {
+        refreshLists();
+        refreshPlans();
+        getPopularDestinationImages();
+    }
 
     // Event listener to add function to existing HTML DOM element
     document.getElementById('login-username-button').addEventListener('click', function () { loginManager(); });
@@ -1315,9 +1323,8 @@ function openPlans(planName) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    refreshLists();
-    refreshPlans();
-    getPopularDestinationImages();
+  
+    
 
     document.getElementById('add-new-list-item').addEventListener('click', function () { newElement(); });
     document.getElementById('list-clear-button').addEventListener('click', function () { clearListform(); });

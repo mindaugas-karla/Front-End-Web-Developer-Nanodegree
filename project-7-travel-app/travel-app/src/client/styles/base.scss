@@ -9,7 +9,10 @@ b {
   font-weight: bold;
 }
 
-@media(min-width:250px) {
+
+
+
+
 	#travel-app {
     max-width: 1300px;
     font: 100% $font-stack;
@@ -167,7 +170,7 @@ b {
 
   .hiddenFooter {
     display: grid;
-    width: 500px !important;
+    width: 500px;
   }
 
 
@@ -1256,6 +1259,224 @@ b {
     padding-top: 5px;
     width: -webkit-fill-available;
     font-weight: lighter;
+  }
+
+  
+
+
+  @media(max-width:1500px) {
+    
+    #content-app-table {
+      display: flex;
+      flex-direction: column;
+    }
+    #content-app-create {
+      margin-right: 0px;
+      width: -webkit-fill-available;
+    }
+    #content-app-result {
+      margin-top: 10px;
+      margin-left: 0px;
+      width: -webkit-fill-available;
+    }
+
+  }
+
+  @media(max-width:1405px) {
+    .buttonText {
+    font-size: 13px;
+
+    }
+
+  }
+
+
+@media(max-width:1285px) {
+  .buttonText {
+    display: none;
+  }
+  .menuButton {
+        height: 50px;
+
+  }
+
+#content-intro .flexRow {
+
+  margin-bottom: 15px;
+}
+
+  
+  #main-content {
+    grid-template-columns: 40px 1fr 250px;
+  }
+
+  #content-intro .menuButton {
+          width: auto;
+    }
+  }
+
+  @media(max-width:980px) {
+    #main-content {
+
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: 1fr 150px;
+    grid-template-areas:
+        "menu app"
+        "menu slider"
+        "menu widget"
+        ;
+    }
+
+
+  }
+  @media(max-width:920px) {
+    #header-profile-login {
+      display: none !important;
+    }
+    #main-header {
+      grid-template-columns: 70px 170px 1fr 250px 80px 60px !important;
+
+    }
+
+    #content-about {
+      grid-template-columns: 1fr;
+      grid-template-rows: min-content;
+      grid-gap: 15px;
+      grid-template-areas:
+          "aboutTitle"
+          "aboutText"
+          "aboutImage"
+          "aboutDescription";
+
+    }
+
+    #aboutImage {
+      height: 180px;
+
+
+    }
+
+
+  }
+  @media(max-width:800px) {
+    #main-header {
+      grid-template-columns: 70px 110px 1fr 250px 80px 60px !important;
+
+    }
+
+
+  }
+  @media(max-width:705px) {
+
+  #header-text {
+    display: none !important;
+
+  }
+  #main-header {
+    grid-template-columns: 70px 0px 1fr 250px 55px 30px !important;
+
+  }
+
+  }
+
+  @media(max-width:550px) {
+    #main-content {
+      grid-template-columns:1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+      "menu"
+      "app"
+      "slider"
+          "widget";
+    }
+    #content-menu {
+      grid-area: menu;
+      display: flex;
+      flex-direction: row;
+      top: 125px;
+      position: fixed;
+      background-color: unset;
+
+      align-items: center;
+    justify-content: center;
+    width: -webkit-fill-available;
+  }
+
+  #content-menu .menuButton {
+    background-color: #e9c472;
+    padding: 12px;
+    -webkit-box-shadow: -1px 2px 8px 5px #0000001f;
+    -moz-box-shadow: -1px 2px 8px 5px #0000001f;
+    box-shadow: -1px 2px 8px 5px #0000001f;
+    display: flex;
+    flex-direction: row;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+
+  
+
+  }
+
+
+@media(max-width:600px) {
+  .hiddenFooter {
+    width: 450px;
+
+  }
+  .hiddenGrid {
+    width: 450px !important;
+
+  }
+
+  .login-logo {
+    margin-left: 100px;
+  }
+}
+
+@media(max-width:510px) {
+  .hiddenFooter {
+    width: 400px;
+
+  }
+  .hiddenGrid {
+    width: 400px !important;
+
+  }
+
+  .login-logo {
+      margin-left: 75px;
+  }
+	
+}
+
+@media(max-width:450px) {
+  .hiddenFooter {
+    width: 340px;
+
+  }
+  .hiddenGrid {
+    width: 340px !important;
+
+  }
+
+  .login-logo {
+      margin-left: 65px;
+  }
+  .helloProfile {
+    background-size: 100px;
+    height: 100px;
+    width: 100px;
+  }
+  .login-logo {
+    width: 150px;
+    height: 150px;
+  }
+  .hello_text {
+    line-height: unset;
+
   }
 	
 }
