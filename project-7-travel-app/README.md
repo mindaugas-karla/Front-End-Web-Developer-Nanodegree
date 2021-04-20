@@ -115,6 +115,15 @@ About Section
 Contacts Section
 ![](images/image6.png)
 
+### API Used
+This project using 4 API Geonames, WeatherBit and Pixabay.
+
+- To set API you need to create a file named .env with the following code and your API credentials.
+```
+API_KEY_GEONAMES = geoname USERNAME
+API_KEY_WEATHERBIT = API KEY
+API_KEY_PIXABAY = API KEY
+```
 
 
 ### Deployment
