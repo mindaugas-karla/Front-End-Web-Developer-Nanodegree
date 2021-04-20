@@ -1,15 +1,21 @@
-# Project 4: News Article NLP
+# Project 7: Travel Assistant
 ##### Udacity Front End Developer Nanodegree Program
+
+
 Following are the project prerequisites:
 - Webserver - Node
 - Web application framework for routing - Express
 - Build tool - Webpack. Using webpack, we will set up the app to have dev and prod environments, each with their own set of tools and commands.
 - External script - Service Worker
 - External API - Meaningcloud
+- 
 
 ## Requirements
-This project requires you to build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. NLP is a subset of AI that provides computers ability to process or interact with natural human speech. In NLP, machine learning and deep learning are used on massive amounts of data to obtain the rules and understanding of nuance in human speech.
+This project aims to give an opportunity to put all of the skills participant learned into one project to build own custom travel app. Due to the nature of this course, it is very JavaScript heavy, but it is still expected to write clean and appealing HTML/CSS. Participant has targeting the DOM, working with objects, and retrieving data from 3 APIs in which one of those is reliant on another to work. Finally, this is all done in a Webpack environment, using an express server, and wrapped up with service workers.
 
+
+## Travel Assistant
+Travel Assistant is a powerful tool to plan your Trips. You can create travel plans, add flight's dates, create to do lists. To lists is a good way to Reach new productivity peak! People often forget something importan when planning trip. Plan your trip before time comes and not too late! Here you can create as many to do lists as you want! This app was created as part of Udacity Nano Degree program as final project.
 
 ## This project helped with :speech_balloon:
 - [x] Setting up Webpack
@@ -32,6 +38,38 @@ This project requires you to build a web tool that allows users to run Natural L
 - [x] Added Service workers to be able to show content offline
 
 
+## Optional tasks completed :speech_balloon:
+
+- [x] Add end date and display length of trip.
+- [x] Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+- [] Allow user to add multiple destinations on the same trip.
+- [x] Pull in weather for additional locations.
+- [x] Allow the user to add hotel and/or flight data.
+- [] Multiple places to stay? Multiple flights?
+- [x] Integrate the REST Countries API to pull in data for the country being visited.
+- [x] Allow the user to remove the trip.
+- [x] Use Local Storage to save the data so that when they close, then revisit the page, their information is still there.
+- [] Instead of just pulling a single day forecast, pull the forecast for multiple days.
+- [x] Incorporate icons into forecast (Student: Incorporated into weather).
+- [x] Allow user to Print their trip and/or export to PDF.
+- [x] Allow the user to add a todo list and/or packing list for their trip.
+- [x] Allow the user to add additional trips (this may take some heavy reworking, but is worth the challenge).
+- [x] Automatically sort additional trips by countdown (Student: by list display in the widgets).
+- [x] Move expired trips to bottom/have their style change so it’s clear it’s expired.
+
+## Added modifications by me :speech_balloon:
+- [x] Mimic Log In using internal storage.
+- [x] Created User Profile.
+- [x] Created mini Platform to use application.
+- [x] Multiple To Do Lists.
+- [x] Live Preview Travel Builder.
+- [x] Search Bar in header to investigate country before adding to trip.
+
+
+
+
+
+
 ## Technologies Used
 - Html
 - Css
@@ -45,19 +83,44 @@ This project requires you to build a web tool that allows users to run Natural L
 
 
 ## Results
-Before Analyse
+Log In Menu
 ![](images/image1.png)
 
-After Analyse
+Profile Icon Selection
 ![](images/image2.png)
+
+Welcome message for the first time joining platform
+![](images/image3.png)
+
+New Trip Plan with Live Preview
+![](images/image7.png)
+
+
+Loaded Trip
+![](images/image8.png)
+
+
+Print or Save to Pdf
+![](images/image9.png)
+
+
+Create List Section
+![](images/image4.png)
+
+About Section
+![](images/image5.png)
+
+Contacts Section
+![](images/image6.png)
+
 
 
 ### Deployment
 To get the project up and running follow the steps below:
 - Open Terminal & navigate to project folder
 ```
-cd project-4-nlp-article
-cd evaluate-4-nlp-article
+cd project-7-travel-app
+cd travel-app
 ```
 - To set up project environment, make sure that the Node and packages (Express, Cors and Body-Parser) installed, and which are used to create the server. Install all dependencies to run.
 ```
@@ -85,16 +148,19 @@ npm run test
 ```
 
 
+
+
 ### Also Used
-Meaningcloud - Sentiment Analysis API: 
-- [Sentiment Analysis version 2.1](https://learn.meaningcloud.com/developer/sentiment-analysis/2.1)
+Geonames API: 
+- [Geonames](https://www.geonames.org/)
 
 
-Background animation by Julian Laval:
-- [Codepen.io Code](https://codepen.io/JulianLaval/pen/KpLXOO)
+Weatherbit API:
+- [Weatherbit](https://www.weatherbit.io/)
 
 
-Free background wallpaper:
-- [Wallpaperaccess](https://wallpaperaccess.com/minimalist-robot)
+Pixabay API:
+- [Pixabay](http://pixabay.com/)
 
-
+Restcountries API:
+- [Restcountries](https://restcountries.eu/)
