@@ -64,7 +64,9 @@ Travel Assistant is a powerful tool to plan your Trips. You can create travel pl
 - [x] Multiple To Do Lists.
 - [x] Live Preview Travel Builder.
 - [x] Search Bar in header to investigate country before adding to trip.
-
+- [x] Validation for inputs.
+- [x] Process Messages.
+- [x] Close button for popups.
 
 
 
@@ -164,3 +166,18 @@ Pixabay API:
 
 Restcountries API:
 - [Restcountries](https://restcountries.eu/)
+
+Robot Images from Freepik.com Designed by upklyak
+- [Freepik](http://www.freepik.com/)
+
+Logout Icon Designed by rawpixel.com
+- [Freepik](http://www.freepik.com/)
+
+Buttons Icons from Enginetemplates
+- [Enginetemplates](https://enginetemplates.com/set-of-20-high-quality-travel-free-icons/)
+
+
+
+
+### Author
+- [Mindaugas Karla](https://www.linkedin.com/in/mindaugas-karla/)
