@@ -30,8 +30,8 @@ The main goal to start this program was to refresh my knowledge and set myself o
 - [GitHub ](https://github.com/mindaugas-karla/)
 
 ## Project 7: Travel App
-- [Travel App: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-6-travel-app/)
-- [Travel App: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-6-travel-app/travel-app)
+- [Travel App: Datasheet](https://mindaugas-karla.github.io/Front-End-Web-Developer-Nanodegree/project-7-travel-app/)
+- [Travel App: Files](https://github.com/mindaugas-karla/Front-End-Web-Developer-Nanodegree/tree/master/project-7-travel-app/travel-app)
 
 
 ## Front End Web Developer Nanodegree
