@@ -60,6 +60,7 @@ Travel Assistant is a powerful tool to plan your Trips. You can create travel pl
 
 ## Added modifications by me :speech_balloon:
 - [x] Mimic Log In using internal storage.
+- [x] Multipe Users.
 - [x] Created User Profile.
 - [x] Created mini Platform to use application.
 - [x] Multiple To Do Lists.

@@ -19,6 +19,7 @@
 - [x] Move expired trips to bottom/have their style change so it’s clear it’s expired.
 ### Added modifications by me 💬
 - [x] Mimic Log In using internal storage.
+- [x] Multiple Users.
 - [x] Created User Profile.
 - [x] Created mini Platform to use application.
 - [x] Multiple To Do Lists.
