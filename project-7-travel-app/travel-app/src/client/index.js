@@ -1,4 +1,5 @@
-import { jsPDF } from "jspdf";
+//import { jsPDF } from "jspdf";
+//can't make it work exatcly as I wish
 
 import { checkInput, reloadWeb, checkDate } from './js/helper'
 import { checkStorage, createEntry, updateUser } from './js/storage'
@@ -20,6 +21,6 @@ export {
     createEntry,
     updateUser,
     reloadWeb,
-    jsPDF,
+    //jsPDF,
     checkDate
 }
