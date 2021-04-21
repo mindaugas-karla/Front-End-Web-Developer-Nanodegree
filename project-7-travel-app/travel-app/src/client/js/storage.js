@@ -29,7 +29,6 @@ function updateUser(systemPart, userName, dataSet) {
 
             if (typeof dataSet === 'object' && dataSet !== null) {
                 for (const [key, value] of Object.entries(dataSet)) {
-                    console.log(`${key}: ${value}`);
                     userData[key] = value;
                 }
                 let obj = {[userName]:userData};

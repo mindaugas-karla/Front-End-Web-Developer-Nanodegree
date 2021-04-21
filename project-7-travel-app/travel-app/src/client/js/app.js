@@ -120,8 +120,8 @@ function insideApp(userName) {
     if (checkData["status"]) {
         if (checkData["load"][userName]) {
             // Set Login Status to system storage
-            let newEntry = { login: 1, user: userName };
-            Client.createEntry("system", newEntry);
+            console.log("123");
+            
             document.getElementById("header-logged-in").innerHTML = userName;
             document.getElementById("intro-user-name").innerHTML = userName;
 
@@ -174,12 +174,28 @@ function profileNext(userName) {
     if (selectedValue == "first") {
         let dataSet = { "profile": 1, "intro": 0, "lists": {} };
         Client.updateUser("users", userName, dataSet);
+        
+        let newEntry = { login: 1, user: userName };
+        Client.createEntry("system", newEntry);
+        
         insideApp(userName);
+
+        refreshLists();
+        refreshPlans();
+        getPopularDestinationImages();
     }
     else if (selectedValue == "second") {
         let dataSet = { "profile": 2, "intro": 0, "lists": {} };
         Client.updateUser("users", userName, dataSet);
+        
+        let newEntry = { login: 1, user: userName };
+        Client.createEntry("system", newEntry);
+        
         insideApp(userName);
+
+        refreshLists();
+        refreshPlans();
+        getPopularDestinationImages();
     }
     else {
         document.getElementById("first-label").classList.add("profileError");
@@ -295,6 +311,8 @@ function proceedLogin(userName) {
                 openProfileSetup(userName);
             }
             else {
+                let newEntry = { login: 1, user: userName };
+                Client.createEntry("system", newEntry);
                 insideApp(userName);
             }
         }

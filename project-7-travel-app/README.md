@@ -7,7 +7,7 @@ Following are the project prerequisites:
 - Web application framework for routing - Express
 - Build tool - Webpack. Using webpack, we will set up the app to have dev and prod environments, each with their own set of tools and commands.
 - External script - Service Worker
-- External API - Geonames, WeatherBit and Pixabay
+- External API - Geonames, WeatherBit, Pixabay and Restcountries
 - HTML structure
 
 
@@ -80,7 +80,7 @@ Travel Assistant is a powerful tool to plan your Trips. You can create travel pl
 - Webpack
 - Jest
 - Workbox
-- API: Geonames, WeatherBit and Pixabay
+- API: Geonames, WeatherBit, Pixabay and Restcountries
 
 
 ## Results
@@ -115,7 +115,7 @@ Contacts Section
 ![](images/image6.png)
 
 ### API Used
-This project using 4 API Geonames, WeatherBit and Pixabay.
+This project using 4 API Geonames, WeatherBit, Pixabay and Restcountries.
 
 - To set API you need to create a file named .env with the following code and your API credentials.
 ```
