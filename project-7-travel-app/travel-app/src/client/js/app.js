@@ -119,9 +119,7 @@ function insideApp(userName) {
     let checkData = Client.checkStorage("users");
     if (checkData["status"]) {
         if (checkData["load"][userName]) {
-            // Set Login Status to system storage
-            console.log("123");
-            
+            // Set Login Status to system storage            
             document.getElementById("header-logged-in").innerHTML = userName;
             document.getElementById("intro-user-name").innerHTML = userName;
 
