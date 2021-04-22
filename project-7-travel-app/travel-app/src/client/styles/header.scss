@@ -101,7 +101,7 @@
     background-color: #ecf1f4;
     width: 300px;
     position: absolute;
-    margin-top: 750px;
+    margin-top: 500px;
     border-width: 1px;
     border-color: #b4d7e6;
     border-style: solid;
@@ -113,9 +113,11 @@
   }
 
   #results-header {
+    max-height: 400px;
     padding: 20px;
     text-align: left;
     line-height: 25px;
+    overflow: auto;
   }
 
   #header-profile {

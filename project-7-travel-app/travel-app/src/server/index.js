@@ -241,6 +241,17 @@ function getPopularImages(req, res) {
         })
 }
 
+function testas (inputName) {
+    let response = false;
+    if (inputName == "Vilnius") {
+        response = "Lithuania";
+    }
+    else {
+        response = false;
+    }
+    return response;
+}
+
 // POST Route
 app.post('/apiPopular', getPopularImages);
 

@@ -1050,7 +1050,6 @@ function savePlan() {
     }
 
     if (confirmSave) {
-        console.log("prraeizia");
         let travelHotel = document.getElementById("plan-input-hotel");
         let travelFlightDate = document.getElementById("plan-input-flight-date");
         let travelNote = document.getElementById("plan-input-textarea");
@@ -1354,10 +1353,7 @@ function openPlans(planName) {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  
-    
-
+document.addEventListener('DOMContentLoaded', function () {    
     document.getElementById('add-new-list-item').addEventListener('click', function () { newElement(); });
     document.getElementById('list-clear-button').addEventListener('click', function () { clearListform(); });
     document.getElementById('list-save-button').addEventListener('click', function () { saveListform(); });
